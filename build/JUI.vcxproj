@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\core\base\JuiControl.cxx" />
+    <ClCompile Include="..\src\core\base\JuiInputManager.cxx" />
+    <ClCompile Include="..\src\core\button\JuiButton.cxx" />
+    <ClCompile Include="..\src\core\button\JuiCheckButton.cxx" />
+    <ClCompile Include="..\src\core\button\JuiRadioButton.cxx" />
+    <ClCompile Include="..\src\core\container\JuiContainer.cxx" />
+    <ClCompile Include="..\src\core\container\JuiRollout.cxx" />
+    <ClCompile Include="..\src\core\container\JuiScroll.cxx" />
+    <ClCompile Include="..\src\core\layout\JuiHorizontalLayout.cxx" />
+    <ClCompile Include="..\src\core\layout\JuiVerticalLayout.cxx" />
+    <ClCompile Include="..\src\core\list\JuiListBox.cxx" />
+    <ClCompile Include="..\src\core\script\JuiAttribute.cxx" />
+    <ClCompile Include="..\src\core\script\JuiCreater.cxx" />
+    <ClCompile Include="..\src\graphics\gdi\JGdiImage.cxx" />
+    <ClCompile Include="..\src\graphics\gdi\JGdiRender.cxx" />
+    <ClCompile Include="..\src\graphics\JImage.cxx" />
+    <ClCompile Include="..\src\graphics\JResourceManager.cxx" />
+    <ClCompile Include="..\src\graphics\lookup3.c" />
+    <ClCompile Include="..\src\graphics\stb_image.c" />
+    <ClCompile Include="..\src\math\JList.cxx" />
+    <ClCompile Include="..\src\win32\JuiFrame.cxx" />
+    <ClCompile Include="..\src\win32\JuiWindow.cxx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\core\base\JuiControl.hxx" />
+    <ClInclude Include="..\src\core\base\JuiInputEvent.hxx" />
+    <ClInclude Include="..\src\core\base\JuiInputManager.hxx" />
+    <ClInclude Include="..\src\core\base\JuiTypes.hxx" />
+    <ClInclude Include="..\src\core\button\JuiButton.hxx" />
+    <ClInclude Include="..\src\core\button\JuiCheckButton.hxx" />
+    <ClInclude Include="..\src\core\button\JuiRadioButton.hxx" />
+    <ClInclude Include="..\src\core\container\JuiContainer.hxx" />
+    <ClInclude Include="..\src\core\container\JuiRollout.hxx" />
+    <ClInclude Include="..\src\core\container\JuiScroll.hxx" />
+    <ClInclude Include="..\src\core\layout\JuiHorizontalLayout.hxx" />
+    <ClInclude Include="..\src\core\layout\JuiVerticalLayout.hxx" />
+    <ClInclude Include="..\src\core\list\JuiListBox.hxx" />
+    <ClInclude Include="..\src\core\script\JuiCreater.hxx" />
+    <ClInclude Include="..\src\graphics\gdi\JGdiImage.hxx" />
+    <ClInclude Include="..\src\graphics\gdi\JGdiRender.hxx" />
+    <ClInclude Include="..\src\graphics\JImage.hxx" />
+    <ClInclude Include="..\src\graphics\JRender.hxx" />
+    <ClInclude Include="..\src\graphics\JResourceManager.hxx" />
+    <ClInclude Include="..\src\math\JList.hxx" />
+    <ClInclude Include="..\src\math\JMath.hxx" />
+    <ClInclude Include="..\src\math\JPoint.hxx" />
+    <ClInclude Include="..\src\math\JRect.hxx" />
+    <ClInclude Include="..\src\win32\JuiFrame.hxx" />
+    <ClInclude Include="..\src\win32\JuiWindow.hxx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\core\base\JuiControl.inl" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{76DF20BA-64E8-4F3C-B637-7639CB34A798}</ProjectGuid>
+    <RootNamespace>JUI</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\src;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\src;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
