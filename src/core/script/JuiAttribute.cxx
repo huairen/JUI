@@ -1,5 +1,6 @@
 #include "JuiCreater.hxx"
 #include "core/button/JuiRadioButton.hxx"
+#include "core/container/JuiScroll.hxx"
 #include "win32/JuiFrame.hxx"
 
 void AttriPoint(JuiControl *control, int ctrlClass, int param, char* value)
@@ -16,7 +17,7 @@ void AttriPoint(JuiControl *control, int ctrlClass, int param, char* value)
 			control->SetPosition(atoi(tok), atoi(next));
 			break;
 		case PT_EFFECT_SIZE:
-			control->SetSize(atoi(tok), atoi(next));
+			control->SetExtent(atoi(tok), atoi(next));
 			break;
 		case PT_EFFECT_MINSIZE:
 			control->SetMinSize(atoi(tok), atoi(next));
@@ -76,6 +77,10 @@ void AttriImage(JuiControl *control, int ctrlClass, int param, char* value)
 	{
 		static_cast<JuiFrame*>(control)->SetBackground(value);
 	}
+	else if(ctrlClass == CTRL_CLASS_SCROLL)
+	{
+		static_cast<JuiScroll*>(control)->LoadImage(value);
+	}
 	else if (ctrlClass & CTRL_CLASS_BUTTON)
 	{
 		switch (param)
@@ -127,6 +132,7 @@ ControlAttribute attriTable[] = {
 	{"keyboardEnable", 14, CTRL_CLASS_BASE, AttriFlag, CTRL_FLAG_KEYBOARD_ENABLE},
 	{"scaleMode", 9, CTRL_CLASS_BASE, AttriScaleMode, 0},
 	{"image", 5, CTRL_CLASS_FRAME, AttriImage, IMG_EFFECT_BACKGROUND},
+	{"image", 5, CTRL_CLASS_SCROLL, AttriImage, IMG_EFFECT_BACKGROUND},
 	{"normalImage", 11, CTRL_CLASS_BUTTON, AttriImage, IMG_EFFECT_NORMAL},
 	{"highlightImage", 14, CTRL_CLASS_BUTTON, AttriImage, IMG_EFFECT_HIGHLIGHT},
 	{"pressImage", 10, CTRL_CLASS_BUTTON, AttriImage, IMG_EFFECT_PRESS},

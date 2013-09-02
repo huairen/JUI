@@ -24,7 +24,7 @@ void JuiContainer::OnRender(JPoint2I offset,  const JRectI& rcPaint )
 		if(pControl->IsVisible())
 		{
 			JPoint2I childPos = offset + pControl->GetPosition();
-			JRectI childClip(childPos, pControl->GetSize());
+			JRectI childClip(childPos, pControl->GetExtent());
 
 			if(childClip.Intersect(rcPaint))
 				pControl->OnRender(childPos, childClip);
@@ -36,7 +36,7 @@ void JuiContainer::OnRender(JPoint2I offset,  const JRectI& rcPaint )
 
 void JuiContainer::UpdateLayout(const JRectI& newRect)
 {
-	if(newRect.size == m_rcBounds.size)
+	if(newRect.extent == m_rcBounds.extent)
 		return;
 
 	JuiControl* pCom = (JuiControl*)m_lsChilds.First();

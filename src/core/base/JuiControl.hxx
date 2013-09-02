@@ -79,15 +79,15 @@ public:
 	// @ point and size
 	// @ {
 	//set point and size
-	virtual void SetBounds(const JPoint2I& point, const JPoint2I& size);
+	virtual void SetBounds(const JPoint2I& position, const JPoint2I& extent);
 	void SetBounds(const JRectI& bounds);
 	void SetBounds(int x, int y, int width, int height);
 
 	void SetPosition(const JPoint2I& point);
 	void SetPosition(int x, int y);
 
-	void SetSize(const JPoint2I& size);
-	void SetSize(int width, int height);
+	void SetExtent(const JPoint2I& size);
+	void SetExtent(int width, int height);
 	void SetWidth(int width);
 	void SetHeight(int height);
 
@@ -96,7 +96,7 @@ public:
 
 	//get point and size
 	const JPoint2I& GetPosition();
-	const JPoint2I& GetSize();
+	const JPoint2I& GetExtent();
 
 	int GetPosX();
 	int GetPosY();

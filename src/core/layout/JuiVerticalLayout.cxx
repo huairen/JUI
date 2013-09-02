@@ -14,8 +14,8 @@ void JuiVerticalLayout::UpdateLayout( const JRectI& newRect )
 	if(nCount == 0)
 		return;
 
-	int nWidth = newRect.size.x;
-	int nHeight = newRect.size.y / nCount;
+	int nWidth = newRect.extent.x;
+	int nHeight = newRect.extent.y / nCount;
 	int y = 0;
 	int index = 1;
 
@@ -23,7 +23,7 @@ void JuiVerticalLayout::UpdateLayout( const JRectI& newRect )
 	while(pCom)
 	{
 		if(index == nCount)
-			nHeight = newRect.size.y - y;
+			nHeight = newRect.extent.y - y;
 
 		pCom->SetBounds(0, y, nWidth, nHeight);
 		y += nHeight;

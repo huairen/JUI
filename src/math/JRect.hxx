@@ -7,8 +7,8 @@
 class JRectI
 {
 public:
-	JPoint2I point;
-	JPoint2I size;
+	JPoint2I position;
+	JPoint2I extent;
 
 public:
 	JRectI() {};
@@ -25,40 +25,40 @@ public:
 	bool operator!=(const JRectI&) const;
 };
 
-inline JRectI::JRectI(const JPoint2I& _point, const JPoint2I& _size)
+inline JRectI::JRectI(const JPoint2I& _position, const JPoint2I& _extent)
 {
-	point = _point;
-	size = _size;
+	position = _position;
+	extent = _extent;
 }
 
 inline JRectI::JRectI(int _x, int _y, int _wigth, int _height)
 {
-	point.x = _x; point.y = _y; size.x = _wigth; size.y = _height;
+	position.x = _x; position.y = _y; extent.x = _wigth; extent.y = _height;
 }
 
 inline bool JRectI::isValidRect() const
 {
-	return (size.x > 0 && size.y > 0);
+	return (extent.x > 0 && extent.y > 0);
 }
 
 inline bool JRectI::Intersect(const JRectI& clipRect)
 {
 	JPoint2I bottomL;
-	bottomL.x = GetMin(point.x + size.x, clipRect.point.x + clipRect.size.x);
-	bottomL.y = GetMin(point.y + size.y, clipRect.point.y + clipRect.size.y);
+	bottomL.x = GetMin(position.x + extent.x, clipRect.position.x + clipRect.extent.x);
+	bottomL.y = GetMin(position.y + extent.y, clipRect.position.y + clipRect.extent.y);
 	
-	point.x = GetMax(point.x, clipRect.point.x);
-	point.y = GetMax(point.y, clipRect.point.y);
+	position.x = GetMax(position.x, clipRect.position.x);
+	position.y = GetMax(position.y, clipRect.position.y);
 
-	size.x = bottomL.x - point.x;
-	size.y = bottomL.y - point.y;
+	extent.x = bottomL.x - position.x;
+	extent.y = bottomL.y - position.y;
 
 	return isValidRect();
 }
 
 inline bool JRectI::IsPointIn(const JPoint2I& pt)
 {
-	return (pt.x >= point.x && pt.x < point.x + size.x && pt.y >= point.y && pt.y < point.y + size.y);
+	return (pt.x >= position.x && pt.x < position.x + extent.x && pt.y >= position.y && pt.y < position.y + extent.y);
 }
 
 inline bool JRectI::Overlaps( JRectI R ) const
@@ -68,16 +68,16 @@ inline bool JRectI::Overlaps( JRectI R ) const
 
 inline bool JRectI::Contains( const JRectI& R ) const
 {
-	if (point.x <= R.point.x && point.y <= R.point.y)
-		if (R.point.x + R.size.x <= point.x + size.x)
-			if (R.point.y + R.size.y <= point.y + size.y)
+	if (position.x <= R.position.x && position.y <= R.position.y)
+		if (R.position.x + R.extent.x <= position.x + extent.x)
+			if (R.position.y + R.extent.y <= position.y + extent.y)
 				return true;
 	return false;
 }
 
 inline bool JRectI::operator==( const JRectI& cmp) const
 {
-	return (point == cmp.point) && (size == cmp.size);
+	return (position == cmp.position) && (extent == cmp.extent);
 }
 
 inline bool JRectI::operator!=( const JRectI& cmp) const

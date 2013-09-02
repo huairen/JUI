@@ -13,9 +13,9 @@ public:
 	JuiFrame();
 	virtual ~JuiFrame();
 
-	virtual void SetUpdateRegion( JPoint2I pos, JPoint2I size );
+	virtual void SetUpdateRegion( JPoint2I pos, JPoint2I extent );
 	virtual JuiInputManager *GetInputGenerator();
-	virtual void SetBounds(const JPoint2I& point, const JPoint2I& size);
+	virtual void SetBounds(const JPoint2I& position, const JPoint2I& extent);
 	virtual void OnRender(JPoint2I offset, const JRectI& rcPaint);
 
 	bool SetBackground(const char* filename);

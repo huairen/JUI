@@ -11,7 +11,7 @@ JuiFrame::~JuiFrame()
 
 }
 
-void JuiFrame::SetUpdateRegion( JPoint2I pos, JPoint2I size )
+void JuiFrame::SetUpdateRegion( JPoint2I pos, JPoint2I extent )
 {
 	if(m_pBackground->HasAlphaChannel())
 	{
@@ -22,8 +22,8 @@ void JuiFrame::SetUpdateRegion( JPoint2I pos, JPoint2I size )
 	RECT rcUpdate;
 	rcUpdate.left = pos.x;
 	rcUpdate.top = pos.y;
-	rcUpdate.right = pos.x + size.x;
-	rcUpdate.bottom = pos.y + size.y;
+	rcUpdate.right = pos.x + extent.x;
+	rcUpdate.bottom = pos.y + extent.y;
 
 	::InvalidateRect(m_hWnd, &rcUpdate, FALSE);
 }
@@ -33,10 +33,10 @@ JuiInputManager * JuiFrame::GetInputGenerator()
 	return &m_InputMgr;
 }
 
-void JuiFrame::SetBounds( const JPoint2I& point, const JPoint2I& size )
+void JuiFrame::SetBounds( const JPoint2I& position, const JPoint2I& extent )
 {
-	Parent::SetBounds(point, size);
-	JuiWindow::SetSize(size.x,size.y);
+	Parent::SetBounds(position, extent);
+	JuiWindow::SetSize(extent.x,extent.y);
 }
 
 void JuiFrame::OnRender( JPoint2I offset, const JRectI& rcPaint )
@@ -296,7 +296,7 @@ bool JuiFrame::HandleSize(UINT nSizeType, WORD nWidht, WORD nHeight)
 {
 	if(GetWidth() != nWidht || GetHeight() != nHeight)
 	{
-		JuiContainer::SetSize(nWidht, nHeight);
+		JuiContainer::SetExtent(nWidht, nHeight);
 		::InvalidateRect(m_hWnd, NULL, FALSE);
 		return true;
 	}

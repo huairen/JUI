@@ -15,8 +15,8 @@ void JuiHorizontalLayout::UpdateLayout( const JRectI& newRect )
 	if(nCount == 0)
 		return;
 
-	int nWidth = newRect.size.x / nCount;
-	int nHeight = newRect.size.y;
+	int nWidth = newRect.extent.x / nCount;
+	int nHeight = newRect.extent.y;
 	int x = 0;
 	int index = 1;
 
@@ -24,7 +24,7 @@ void JuiHorizontalLayout::UpdateLayout( const JRectI& newRect )
 	while(pCom)
 	{
 		if(index == nCount)
-			nWidth = newRect.size.x - x;
+			nWidth = newRect.extent.x - x;
 
 		pCom->SetBounds(x, 0, nWidth, nHeight);
 		x += nWidth;

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "core/button/JuiRadioButton.hxx"
+#include "core/container/JuiScroll.hxx"
 #include "core/layout/JuiHorizontalLayout.hxx"
 
 static char* Squish( char* src )
@@ -171,6 +172,8 @@ static int GetControlClass(char *line)
 		return CTRL_CLASS_RADIO_BUTTON;
 	else if(_strnicmp(line, "frame", 5) == 0)
 		return CTRL_CLASS_FRAME;
+	else if(_strnicmp(line, "scroll", 5) == 0)
+		return CTRL_CLASS_SCROLL;
 	else if(_strnicmp(line, "horizontalLayout", 16) == 0)
 		return CTRL_CLASS_HORIZLAYOUT;
 
@@ -187,6 +190,8 @@ static JuiControl *CreateControl( int ctrlClass )
 		return new JuiCheckButton;
 	case CTRL_CLASS_RADIO_BUTTON:
 		return new JuiRadioButton;
+	case CTRL_CLASS_SCROLL:
+		return new JuiScroll;
 	case CTRL_CLASS_HORIZLAYOUT:
 		return new JuiHorizontalLayout;
 	}

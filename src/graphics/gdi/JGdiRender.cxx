@@ -31,15 +31,15 @@ bool JGdiRender::BeginPaint()
 	if(!::GetUpdateRect(m_hWnd, &rcPaint, FALSE))
 		return false;
 
-	m_rcUpdateRect.point.x = rcPaint.left;
-	m_rcUpdateRect.point.y = rcPaint.top;
-	m_rcUpdateRect.size.x = rcPaint.right - rcPaint.left;
-	m_rcUpdateRect.size.y = rcPaint.bottom - rcPaint.top;
+	m_rcUpdateRect.position.x = rcPaint.left;
+	m_rcUpdateRect.position.y = rcPaint.top;
+	m_rcUpdateRect.extent.x = rcPaint.right - rcPaint.left;
+	m_rcUpdateRect.extent.y = rcPaint.bottom - rcPaint.top;
 
 	::BeginPaint(m_hWnd, &m_PaintInfo);
 
 	m_hBackDC = ::CreateCompatibleDC(m_PaintInfo.hdc);
-	m_hBackBMP = ::CreateCompatibleBitmap(m_PaintInfo.hdc, m_rcUpdateRect.size.x, m_rcUpdateRect.size.y); 
+	m_hBackBMP = ::CreateCompatibleBitmap(m_PaintInfo.hdc, m_rcUpdateRect.extent.x, m_rcUpdateRect.extent.y); 
 	m_hOldBMP =  (HBITMAP)::SelectObject(m_hBackDC, m_hBackBMP);
 
 	m_bBeginPaint = true;
@@ -69,8 +69,8 @@ bool JGdiRender::EndPaint()
 		::ReleaseDC(m_hWnd, hdcTemp);
 	}*/
 
-	::BitBlt(m_PaintInfo.hdc, m_rcUpdateRect.point.x, m_rcUpdateRect.point.y,
-		m_rcUpdateRect.size.x, m_rcUpdateRect.size.y, m_hBackDC, 0, 0, SRCCOPY);
+	::BitBlt(m_PaintInfo.hdc, m_rcUpdateRect.position.x, m_rcUpdateRect.position.y,
+		m_rcUpdateRect.extent.x, m_rcUpdateRect.extent.y, m_hBackDC, 0, 0, SRCCOPY);
 
 	::SelectObject(m_hBackDC, m_hOldBMP);
 	::DeleteObject(m_hBackBMP);
@@ -118,8 +118,8 @@ void JGdiRender::DrawImage( JImage* img, const JPoint2I& pos )
 	HDC hSrcDc = ::CreateCompatibleDC(NULL);
 	HBITMAP	hOldBmp = (HBITMAP)::SelectObject(hSrcDc, hBmp);
 
-	::BitBlt(m_hBackDC, pos.x - m_rcUpdateRect.point.x,
-		pos.y - m_rcUpdateRect.point.x, img->GetWidth(),
+	::BitBlt(m_hBackDC, pos.x - m_rcUpdateRect.position.x,
+		pos.y - m_rcUpdateRect.position.x, img->GetWidth(),
 		img->GetHeight(), hSrcDc, 0, 0, SRCCOPY);
 
 	::SelectObject(hSrcDc, hOldBmp);
@@ -133,9 +133,9 @@ void JGdiRender::DrawImageSR( JImage* img, const JPoint2I& pos, const JRectI& sr
 	HDC hSrcDc = ::CreateCompatibleDC(NULL);
 	HBITMAP	hOldBmp = (HBITMAP)::SelectObject(hSrcDc, hBmp);
 
-	::StretchBlt(m_hBackDC, pos.x - m_rcUpdateRect.point.x,
-		pos.y - m_rcUpdateRect.point.x, img->GetWidth(), img->GetHeight(), 
-		hSrcDc, srcRect.point.x, srcRect.point.y, srcRect.size.x, srcRect.size.y, SRCCOPY);
+	::StretchBlt(m_hBackDC, pos.x - m_rcUpdateRect.position.x,
+		pos.y - m_rcUpdateRect.position.x, img->GetWidth(), img->GetHeight(), 
+		hSrcDc, srcRect.position.x, srcRect.position.y, srcRect.extent.x, srcRect.extent.y, SRCCOPY);
 
 	::SelectObject(hSrcDc, hOldBmp);
 	::DeleteObject(hSrcDc);
@@ -148,9 +148,9 @@ void JGdiRender::DrawImageStretch( JImage* img, const JRectI& destRect )
 	HDC hSrcDc = ::CreateCompatibleDC(NULL);
 	HBITMAP	hOldBmp = (HBITMAP)::SelectObject(hSrcDc, hBmp);
 
-	::BitBlt(m_hBackDC, destRect.point.x - m_rcUpdateRect.point.x,
-		destRect.point.y - m_rcUpdateRect.point.y, destRect.size.x,
-		destRect.size.y, hSrcDc, 0, 0, SRCCOPY);
+	::BitBlt(m_hBackDC, destRect.position.x - m_rcUpdateRect.position.x,
+		destRect.position.y - m_rcUpdateRect.position.y, destRect.extent.x,
+		destRect.extent.y, hSrcDc, 0, 0, SRCCOPY);
 
 	::SelectObject(hSrcDc, hOldBmp);
 	::DeleteObject(hSrcDc);
@@ -166,15 +166,15 @@ void JGdiRender::DrawImageStretchSR( JImage* img, const JRectI& destRect, const 
 	if(img->HasAlphaChannel())
 	{
 		BLENDFUNCTION bf = { AC_SRC_OVER, 0, 255, AC_SRC_ALPHA };
-		::AlphaBlend(m_hBackDC, destRect.point.x - m_rcUpdateRect.point.x,
-			destRect.point.y - m_rcUpdateRect.point.y, destRect.size.x, destRect.size.y,
-			hSrcDc, srcRect.point.x, srcRect.point.y, srcRect.size.x, srcRect.size.y, bf);
+		::AlphaBlend(m_hBackDC, destRect.position.x - m_rcUpdateRect.position.x,
+			destRect.position.y - m_rcUpdateRect.position.y, destRect.extent.x, destRect.extent.y,
+			hSrcDc, srcRect.position.x, srcRect.position.y, srcRect.extent.x, srcRect.extent.y, bf);
 	}
 	else
 	{
-		::StretchBlt(m_hBackDC, destRect.point.x - m_rcUpdateRect.point.x,
-			destRect.point.y - m_rcUpdateRect.point.y, destRect.size.x, destRect.size.y, 
-			hSrcDc, srcRect.point.x, srcRect.point.y, srcRect.size.x, srcRect.size.y, SRCCOPY);
+		::StretchBlt(m_hBackDC, destRect.position.x - m_rcUpdateRect.position.x,
+			destRect.position.y - m_rcUpdateRect.position.y, destRect.extent.x, destRect.extent.y, 
+			hSrcDc, srcRect.position.x, srcRect.position.y, srcRect.extent.x, srcRect.extent.y, SRCCOPY);
 	}
 
 	::SelectObject(hSrcDc, hOldBmp);

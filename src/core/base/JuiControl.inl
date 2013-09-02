@@ -37,7 +37,7 @@ inline const char* JuiControl::GetName()
 //---------------------------------------------------------------------------
 inline void JuiControl::SetBounds( const JRectI& bounds )
 {
-	SetBounds(bounds.point, bounds.size);
+	SetBounds(bounds.position, bounds.extent);
 }
 
 inline void JuiControl::SetBounds( int x, int y, int width, int height )
@@ -47,32 +47,32 @@ inline void JuiControl::SetBounds( int x, int y, int width, int height )
 
 inline void JuiControl::SetPosition(const JPoint2I& point)
 {
-	SetBounds(point, m_rcBounds.size);
+	SetBounds(point, m_rcBounds.extent);
 }
 
 inline void JuiControl::SetPosition( int x, int y )
 {
-	SetBounds(JPoint2I(x,y), m_rcBounds.size);
+	SetBounds(JPoint2I(x,y), m_rcBounds.extent);
 }
 
-inline void JuiControl::SetSize(const JPoint2I& size)
+inline void JuiControl::SetExtent(const JPoint2I& size)
 {
-	SetBounds(m_rcBounds.point, size);
+	SetBounds(m_rcBounds.position, size);
 }
 
-inline void JuiControl::SetSize( int width, int height )
+inline void JuiControl::SetExtent( int width, int height )
 {
-	SetBounds(m_rcBounds.point, JPoint2I(width, height));
+	SetBounds(m_rcBounds.position, JPoint2I(width, height));
 }
 
 inline void JuiControl::SetWidth(int width)
 {
-	SetSize(width, m_rcBounds.size.y);
+	SetExtent(width, m_rcBounds.extent.y);
 }
 
 inline void JuiControl::SetHeight(int height)
 {
-	SetSize(m_rcBounds.size.x, height);
+	SetExtent(m_rcBounds.extent.x, height);
 }
 
 inline void JuiControl::SetMinSize( int width, int height )
@@ -90,42 +90,42 @@ inline void JuiControl::SetMaxSize( int width, int height )
 //get point and size
 inline const JPoint2I& JuiControl::GetPosition()
 {
-	return m_rcBounds.point;
+	return m_rcBounds.position;
 }
 
-inline const JPoint2I& JuiControl::GetSize()
+inline const JPoint2I& JuiControl::GetExtent()
 {
-	return m_rcBounds.size;
+	return m_rcBounds.extent;
 }
 
 inline int JuiControl::GetPosX()
 {
-	return m_rcBounds.point.x;
+	return m_rcBounds.position.x;
 }
 
 inline int JuiControl::GetPosY()
 {
-	return m_rcBounds.point.y;
+	return m_rcBounds.position.y;
 }
 
 inline int JuiControl::GetWidth()
 {
-	return m_rcBounds.size.x;
+	return m_rcBounds.extent.x;
 }
 
 inline int JuiControl::GetHeight()
 {
-	return m_rcBounds.size.y;
+	return m_rcBounds.extent.y;
 }
 
 inline int JuiControl::GetRight()
 {
-	return m_rcBounds.point.x + m_rcBounds.size.x;
+	return m_rcBounds.position.x + m_rcBounds.extent.x;
 }
 
 inline int JuiControl::GetBottom()
 {
-	return m_rcBounds.point.y + m_rcBounds.size.y;
+	return m_rcBounds.position.y + m_rcBounds.extent.y;
 }
 
 //---------------------------------------------------------------------------

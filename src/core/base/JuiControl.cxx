@@ -34,7 +34,7 @@ void JuiControl::SetUpdate()
 {
 	JuiControl *root = GetRoot();
 	if(root != NULL)
-		root->SetUpdateRegion(LocalToRoot(JPoint2I(0,0)), GetSize());
+		root->SetUpdateRegion(LocalToRoot(JPoint2I(0,0)), GetExtent());
 }
 
 void JuiControl::MouseLock()
@@ -71,10 +71,10 @@ bool JuiControl::IsMouseLocked()
 	return false;
 }
 
-void JuiControl::SetBounds(const JPoint2I& point, const JPoint2I& size)
+void JuiControl::SetBounds(const JPoint2I& position, const JPoint2I& extent)
 {
-	m_rcBounds.size = size;
-	m_rcBounds.point = point;
+	m_rcBounds.extent = extent;
+	m_rcBounds.position = position;
 }
 
 bool JuiControl::IsPointIn( const JPoint2I& pt )
@@ -100,15 +100,15 @@ JPoint2I JuiControl::LocalToRoot( const JPoint2I &pos )
 void JuiControl::OnParentResized( const JRectI &oldRect, const JRectI &newRect )
 {
 	JPoint2I newPosition = GetPosition();
-	JPoint2I newSize = GetSize();
+	JPoint2I newSize = GetExtent();
 
-	int deltaX = newRect.size.x - oldRect.size.x;
-	int deltaY = newRect.size.y - oldRect.size.y;
+	int deltaX = newRect.extent.x - oldRect.extent.x;
+	int deltaY = newRect.extent.y - oldRect.extent.y;
 
 	switch (m_HorizAlign)
 	{
 	case CTRL_HORIZ_ALIGN_CENTER:
-		newPosition.x = (newRect.size.x - GetWidth()) >> 1;
+		newPosition.x = (newRect.extent.x - GetWidth()) >> 1;
 		break;
 	case CTRL_HORIZ_ALIGN_RIGHT:
 		newPosition.x += deltaX;
@@ -121,7 +121,7 @@ void JuiControl::OnParentResized( const JRectI &oldRect, const JRectI &newRect )
 	switch (m_VerzAlign)
 	{
 	case CTRL_VERT_ALIGN_CENTER:
-		newPosition.y = (newRect.size.y - GetHeight()) >> 1;
+		newPosition.y = (newRect.extent.y - GetHeight()) >> 1;
 		break;
 	case CTRL_VERT_ALIGN_BOTTOM:
 		newPosition.y += deltaY;
@@ -159,7 +159,7 @@ void JuiControl::DrawImage( JImage* img, const JPoint2I &offset, const JRectI &r
 	if(img->GetWidth() == GetWidth() && img->GetHeight() == GetHeight())
 	{
 		JRectI srcRect = rcPaint;
-		srcRect.point -= offset;
+		srcRect.position -= offset;
 
 		sm_pRender->DrawImageStretchSR(img, rcPaint, srcRect);
 		return;
@@ -173,10 +173,10 @@ void JuiControl::DrawImage( JImage* img, const JPoint2I &offset, const JRectI &r
 			float yScale = (float)img->GetHeight() / GetHeight();
 
 			JRectI srcRect;
-			srcRect.point.x = (int)((rcPaint.point.x - offset.x) * xScale);
-			srcRect.point.y = (int)((rcPaint.point.y - offset.y) * yScale);
-			srcRect.size.x = (int)(rcPaint.size.x * xScale);
-			srcRect.size.y = (int)(rcPaint.size.y * yScale);
+			srcRect.position.x = (int)((rcPaint.position.x - offset.x) * xScale);
+			srcRect.position.y = (int)((rcPaint.position.y - offset.y) * yScale);
+			srcRect.extent.x = (int)(rcPaint.extent.x * xScale);
+			srcRect.extent.y = (int)(rcPaint.extent.y * yScale);
 
 			sm_pRender->DrawImageStretchSR(img, rcPaint, srcRect);
 		}
@@ -188,23 +188,23 @@ void JuiControl::DrawImage( JImage* img, const JPoint2I &offset, const JRectI &r
 
 			for (int y = 0; y < 3; y++)
 			{
-				DestRect.point.x = NextRect.point.x;
-				DestRect.size.x = NextRect.size.x;
-				NextRect.point.y = DestRect.point.y;
-				NextRect.size.y = DestRect.size.y;
+				DestRect.position.x = NextRect.position.x;
+				DestRect.extent.x = NextRect.extent.x;
+				NextRect.position.y = DestRect.position.y;
+				NextRect.extent.y = DestRect.extent.y;
 
 				for (int x = 0; x < 3; x++)
 				{
-					DestRect.point.y = NextRect.point.y;
-					DestRect.size.y = NextRect.size.y;
+					DestRect.position.y = NextRect.position.y;
+					DestRect.extent.y = NextRect.extent.y;
 
 					DrawImageScaleCenter(img, offset, DestRect);
 
-					if(DestRect.size.x == 0)
+					if(DestRect.extent.x == 0)
 						break;
 				}
 
-				if(DestRect.size.y == 0)
+				if(DestRect.extent.y == 0)
 					break;
 			}
 		}
@@ -231,64 +231,64 @@ void JuiControl::DrawImageScaleCenter( JImage* img, const JPoint2I &offset, JRec
 	int rightStart = GetWidth() - imgHalfWidth;
 	int bottomStart = GetHeight() - imgHalfHeight;
 
-	dstRect.point.x = rcPaint.point.x;
-	dstRect.point.y = rcPaint.point.y;
-	startPos = dstRect.point - offset;
+	dstRect.position.x = rcPaint.position.x;
+	dstRect.position.y = rcPaint.position.y;
+	startPos = dstRect.position - offset;
 
 	if(!xScale)
 	{
-		dstRect.size.x = rcPaint.size.x;
-		srcRect.point.x = 0;
-		srcRect.size.x = dstRect.size.x;
+		dstRect.extent.x = rcPaint.extent.x;
+		srcRect.position.x = 0;
+		srcRect.extent.x = dstRect.extent.x;
 	}
 	else if(startPos.x < imgHalfWidth)
 	{
-		dstRect.size.x = GetMin(rcPaint.size.x, imgHalfWidth - startPos.x);
-		srcRect.point.x = (dstRect.point.x - offset.x);
-		srcRect.size.x = dstRect.size.x;
+		dstRect.extent.x = GetMin(rcPaint.extent.x, imgHalfWidth - startPos.x);
+		srcRect.position.x = (dstRect.position.x - offset.x);
+		srcRect.extent.x = dstRect.extent.x;
 	}
 	else if(startPos.x < rightStart)
 	{
-		dstRect.size.x = GetMin(rcPaint.size.x, rightStart - startPos.x);
-		srcRect.point.x = imgHalfWidth;
-		srcRect.size.x = 1;
+		dstRect.extent.x = GetMin(rcPaint.extent.x, rightStart - startPos.x);
+		srcRect.position.x = imgHalfWidth;
+		srcRect.extent.x = 1;
 	}
 	else
 	{
-		dstRect.size.x = rcPaint.size.x;
-		srcRect.point.x = startPos.x - (GetWidth() - img->GetWidth());
-		srcRect.size.x = dstRect.size.x;
+		dstRect.extent.x = rcPaint.extent.x;
+		srcRect.position.x = startPos.x - (GetWidth() - img->GetWidth());
+		srcRect.extent.x = dstRect.extent.x;
 	}
 
 	if(!yScale)
 	{
-		dstRect.size.y = rcPaint.size.y;
-		srcRect.point.y = 0;
-		srcRect.size.y = dstRect.size.y;
+		dstRect.extent.y = rcPaint.extent.y;
+		srcRect.position.y = 0;
+		srcRect.extent.y = dstRect.extent.y;
 	}
 	else if(startPos.y < imgHalfHeight)
 	{
-		dstRect.size.y = GetMin(rcPaint.size.y, imgHalfHeight - startPos.y);
-		srcRect.point.y = (dstRect.point.y - offset.y);
-		srcRect.size.y = dstRect.size.y;
+		dstRect.extent.y = GetMin(rcPaint.extent.y, imgHalfHeight - startPos.y);
+		srcRect.position.y = (dstRect.position.y - offset.y);
+		srcRect.extent.y = dstRect.extent.y;
 	}
 	else if(startPos.y < bottomStart)
 	{
-		dstRect.size.y = GetMin(rcPaint.size.y, bottomStart - startPos.y);
-		srcRect.point.y = imgHalfHeight;
-		srcRect.size.y = 1;
+		dstRect.extent.y = GetMin(rcPaint.extent.y, bottomStart - startPos.y);
+		srcRect.position.y = imgHalfHeight;
+		srcRect.extent.y = 1;
 	}
 	else
 	{
-		dstRect.size.y = rcPaint.size.y;
-		srcRect.point.y = startPos.y - (GetHeight() - img->GetHeight());
-		srcRect.size.y = dstRect.size.y;
+		dstRect.extent.y = rcPaint.extent.y;
+		srcRect.position.y = startPos.y - (GetHeight() - img->GetHeight());
+		srcRect.extent.y = dstRect.extent.y;
 	}
 
 	sm_pRender->DrawImageStretchSR(img, dstRect, srcRect);
 
-	rcPaint.point.x += dstRect.size.x;
-	rcPaint.point.y += dstRect.size.y;
-	rcPaint.size.x -= dstRect.size.x;
-	rcPaint.size.y -= dstRect.size.y;
+	rcPaint.position.x += dstRect.extent.x;
+	rcPaint.position.y += dstRect.extent.y;
+	rcPaint.extent.x -= dstRect.extent.x;
+	rcPaint.extent.y -= dstRect.extent.y;
 }
