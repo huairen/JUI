@@ -79,7 +79,10 @@ void AttriImage(JuiControl *control, int ctrlClass, int param, char* value)
 	}
 	else if(ctrlClass == CTRL_CLASS_SCROLL)
 	{
-		static_cast<JuiScroll*>(control)->LoadImage(value);
+		if(param == IMG_EFFECT_BAR)
+			static_cast<JuiScroll*>(control)->LoadBarImage(value);
+		else if(param == IMG_EFFECT_ARROW)
+			static_cast<JuiScroll*>(control)->LoadArrowImage(value);
 	}
 	else if (ctrlClass & CTRL_CLASS_BUTTON)
 	{
@@ -132,7 +135,8 @@ ControlAttribute attriTable[] = {
 	{"keyboardEnable", 14, CTRL_CLASS_BASE, AttriFlag, CTRL_FLAG_KEYBOARD_ENABLE},
 	{"scaleMode", 9, CTRL_CLASS_BASE, AttriScaleMode, 0},
 	{"image", 5, CTRL_CLASS_FRAME, AttriImage, IMG_EFFECT_BACKGROUND},
-	{"image", 5, CTRL_CLASS_SCROLL, AttriImage, IMG_EFFECT_BACKGROUND},
+	{"barImage", 5, CTRL_CLASS_SCROLL, AttriImage, IMG_EFFECT_BAR},
+	{"arrowImage", 5, CTRL_CLASS_SCROLL, AttriImage, IMG_EFFECT_ARROW},
 	{"normalImage", 11, CTRL_CLASS_BUTTON, AttriImage, IMG_EFFECT_NORMAL},
 	{"highlightImage", 14, CTRL_CLASS_BUTTON, AttriImage, IMG_EFFECT_HIGHLIGHT},
 	{"pressImage", 10, CTRL_CLASS_BUTTON, AttriImage, IMG_EFFECT_PRESS},

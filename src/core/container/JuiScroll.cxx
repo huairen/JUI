@@ -6,7 +6,7 @@ JuiScroll::JuiScroll()
 	m_bVertBar = true;
 	m_bHorizBar = false;
 
-	m_pImage = NULL;
+	m_pBarImg = NULL;
 }
 
 JuiScroll::~JuiScroll()
@@ -14,9 +14,14 @@ JuiScroll::~JuiScroll()
 
 }
 
-void JuiScroll::LoadImage( const char* filename )
+void JuiScroll::LoadBarImage( const char* filename )
 {
-	m_pImage = sm_pRender->CreateImage(filename);
+	m_pBarImg = sm_pRender->CreateImage(filename);
+}
+
+void JuiScroll::LoadArrowImage( const char* filename )
+{
+	m_pArrowImg = sm_pRender->CreateImage(filename);
 }
 
 void JuiScroll::OnMouseDown( const MouseEventInfo& event )
@@ -41,27 +46,25 @@ void JuiScroll::OnRender( JPoint2I offset, const JRectI& rcPaint )
 
 	Parent::OnRender(offset, contentRect);
 
-	if(m_pImage)
-	{
-		if(m_bVertBar)
-			DrawVertBar(offset);
+	if(m_bVertBar)
+		DrawVScrollBar(offset);
 
-		if(m_bHorizBar)
-			DrawHorizBar(offset);
-	}
+	if(m_bHorizBar)
+		DrawHScrollBar(offset);
 }
 
 void JuiScroll::UpdateLayout( const JRectI& newRect )
 {
 }
 
-void JuiScroll::DrawVertBar( const JPoint2I &offset )
+void JuiScroll::DrawVScrollBar( const JPoint2I &offset )
 {
-	if(m_pImage == NULL)
+	JPoint2I pos = offset;
+	if(m_pBarImg == NULL)
 		return;
 }
 
-void JuiScroll::DrawHorizBar( const JPoint2I &offset )
+void JuiScroll::DrawHScrollBar( const JPoint2I &offset )
 {
 
 }
