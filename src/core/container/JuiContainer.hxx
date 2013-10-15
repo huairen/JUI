@@ -13,18 +13,19 @@ public:
 
 	virtual void SetBounds(const JPoint2I& point, const JPoint2I& size);
 	virtual void OnRender(JPoint2I offset, const JRectI& rcPaint);
+	virtual void OnChildAdded(JuiControl *child) {};
+	virtual void OnChildRemoved(JuiControl *chile) {};
 
-	virtual void UpdateLayout(const JRectI& newRect);
-
-	void AddControl(JuiControl *obj);
 	JuiControl *FindControl(const JPoint2I& pt);
 	JuiControl *FileControl(const char* name);
+	void AddControl(JuiControl *obj);
+	void RemoveControl(JuiControl* obj);
 
 	JuiControl *FirstChild();
 	JuiControl *NextChild();
 	
 protected:
-	JListPtr m_lsChilds;
+	JPtrList m_lsChilds;
 };
 
 #endif 

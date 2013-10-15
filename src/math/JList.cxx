@@ -1,6 +1,6 @@
 #include "JList.hxx"
 
-JListPtr::JListPtr()
+JPtrList::JPtrList()
 {
 	m_pHead = 0;
 	m_pTail = 0;
@@ -8,12 +8,12 @@ JListPtr::JListPtr()
 	m_nCount = 0;
 }
 
-JListPtr::~JListPtr()
+JPtrList::~JPtrList()
 {
 
 }
 
-void JListPtr::PushBack( void* obj )
+void JPtrList::PushBack( void* obj )
 {
 	Node* new_node = new Node;
 	new_node->data = obj;
@@ -34,13 +34,41 @@ void JListPtr::PushBack( void* obj )
 	m_nCount++;
 }
 
-void* JListPtr::First()
+void JPtrList::Pop( void *obj )
+{
+	Node *ptr = m_pHead;
+	while(ptr)
+	{
+		if(obj == ptr->data)
+			break;
+
+		ptr = ptr->next;
+	}
+
+	if(ptr == 0)
+		return;
+
+	if(ptr->prev)
+		ptr->prev->next = ptr->next;
+	else
+		m_pHead = ptr->next;
+
+	if(ptr->next)
+		ptr->next->prev = ptr->prev;
+	else
+		m_pTail = ptr->prev;
+
+	delete ptr;
+	m_nCount--;
+}
+
+void* JPtrList::First()
 {
 	m_pWork = m_pHead;
 	return m_pWork ? m_pWork->data : 0;
 }
 
-void* JListPtr::Next()
+void* JPtrList::Next()
 {
 	if(m_pWork)
 		m_pWork = m_pWork->next;
@@ -48,7 +76,7 @@ void* JListPtr::Next()
 	return m_pWork ? m_pWork->data : 0;
 }
 
-int JListPtr::GetCount()
+int JPtrList::GetCount()
 {
 	return m_nCount;
 }

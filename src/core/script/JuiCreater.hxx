@@ -12,8 +12,10 @@ enum ControlClass
 	CTRL_CLASS_FRAME		= (0x0008 | CTRL_CLASS_CONTAINER),
 	CTRL_CLASS_SCROLL		= (0x0010 | CTRL_CLASS_CONTAINER),
 	CTRL_CLASS_HORIZLAYOUT	= (0x0020 | CTRL_CLASS_CONTAINER),
-	CTRL_CLASS_CHECK_BUTTON	= (0x0040 | CTRL_CLASS_BUTTON),
-	CTRL_CLASS_RADIO_BUTTON	= (0x0080 | CTRL_CLASS_CHECK_BUTTON),
+	CTRL_CLASS_TABBOOK		= (0x0040 | CTRL_CLASS_CONTAINER),
+	CTRL_CLASS_TABPAGE		= (0x0080 | CTRL_CLASS_CONTAINER),
+	CTRL_CLASS_CHECK_BUTTON	= (0x0100 | CTRL_CLASS_BUTTON),
+	CTRL_CLASS_RADIO_BUTTON	= (0x0200 | CTRL_CLASS_CHECK_BUTTON),
 };
 
 enum ImageEffect
@@ -37,8 +39,29 @@ enum PointEffect
 class JuiCreater
 {
 public:
-	static bool LoadScript(JuiContainer *root, const char* filename);
-	static bool SetAttribute(JuiControl *control, int ctrlClass, const char *name, char *value);
+	bool LoadScript(JuiContainer *root, const char* filename);
+	bool SetAttribute(JuiControl *control, int ctrlClass, const char *name, char *value);
+
+protected:
+	char* Squish( char* src );
+	void ParseName(JuiControl *com, char* line);
+	void ForwardSlash(char *str);
+	void CatPath(char *dst, const char *src, int len);
+	char* MakeFullPath( const char *file, char *buffer, int size );
+	int GetControlClass(char *line);
+	JuiControl *CreateControl( int ctrlClass );
+
+public:
+	void AttriPoint(JuiControl *control, int ctrlClass, int param, char* value);
+	void AttriHorizAlign(JuiControl *control, int ctrlClass, int param, char* value);
+	void AttriVertAlign(JuiControl *control, int ctrlClass, int param, char* value);
+	void AttriScaleMode(JuiControl *control, int ctrlClass, int param, char* value);
+	void AttriFlag(JuiControl *control, int ctrlClass, int param, char* value);
+	void AttriImage(JuiControl *control, int ctrlClass, int param, char* value);
+	void AttriStateOn(JuiControl *control, int ctrlClass, int param, char* value);
+
+private:
+	char m_szScriptPath[256];
 };
 
 #endif

@@ -47,24 +47,25 @@ void JuiScroll::OnRender( JPoint2I offset, const JRectI& rcPaint )
 	Parent::OnRender(offset, contentRect);
 
 	if(m_bVertBar)
-		DrawVScrollBar(offset);
+		DrawVScrollBar(offset, rcPaint);
 
 	if(m_bHorizBar)
-		DrawHScrollBar(offset);
+		DrawHScrollBar(offset, rcPaint);
 }
 
 void JuiScroll::UpdateLayout( const JRectI& newRect )
 {
 }
 
-void JuiScroll::DrawVScrollBar( const JPoint2I &offset )
+void JuiScroll::DrawVScrollBar( const JPoint2I &offset, const JRectI& rcPaint )
 {
 	JPoint2I pos = offset;
-	if(m_pBarImg == NULL)
-		return;
+	if(m_pArrowImg != NULL)
+	{
+	}
 }
 
-void JuiScroll::DrawHScrollBar( const JPoint2I &offset )
+void JuiScroll::DrawHScrollBar( const JPoint2I &offset, const JRectI& rcPaint )
 {
 
 }

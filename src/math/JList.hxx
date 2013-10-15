@@ -1,7 +1,7 @@
 #ifndef JLIST_H_
 #define JLIST_H_
 
-class JListPtr
+class JPtrList
 {
 	struct Node
 	{
@@ -11,10 +11,11 @@ class JListPtr
 	};
 
 public:
-	JListPtr();
-	~JListPtr();
+	JPtrList();
+	~JPtrList();
 
-	void PushBack(void* obj);
+	void PushBack(void *obj);
+	void Pop(void *obj);
 	void* First();
 	void* Next();
 	int GetCount();

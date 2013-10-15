@@ -11,7 +11,7 @@ JuiFrame::~JuiFrame()
 
 }
 
-void JuiFrame::SetUpdateRegion( JPoint2I pos, JPoint2I extent )
+void JuiFrame::AddUpdateRegion( const JPoint2I& pos, const JPoint2I& extent )
 {
 	if(m_pBackground->HasAlphaChannel())
 	{

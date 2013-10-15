@@ -68,8 +68,9 @@ public:
 	void SetVertAlign(VertAlignOptions vert);
 	void SetScaleMode(ScaleMode mode);
 
+	void SetUpdateRegion(const JPoint2I& pos, const JPoint2I& size);
 	void SetUpdate();
-	virtual void SetUpdateRegion(JPoint2I pos, JPoint2I size) {}
+	virtual void AddUpdateRegion(const JPoint2I& pos, const JPoint2I& size) {}
 
 	void MouseLock();
 	void MouseUnlock();
@@ -119,6 +120,9 @@ public:
 	bool IsMouseEnable();
 	bool IsKeyboardEnable();
 	bool IsContainer();
+
+	void SetVisible(bool value);
+
 	bool HasFlag(int flag);
 	virtual void AddFlag(int flag);
 	virtual void RemoveFlag(int flag);
@@ -147,8 +151,10 @@ public:
 
 
 protected:
-	void DrawImage(JImage* img, const JPoint2I &offset, const JRectI &rcPaint);
-	void DrawImageScaleCenter(JImage* img, const JPoint2I &offset, JRectI &rcPaint);
+	void DrawImage(JImage* img, const JPoint2I &offset, const JRectI &rcPaint,
+		const JRectI *srcRect = NULL, const JRectI *destRect = NULL);
+	void DrawImageScaleCenter(JImage* img, const JPoint2I &offset, JRectI &rcPaint,
+		const JRectI &srcRect, const JRectI &destRect);
 
 
 protected:

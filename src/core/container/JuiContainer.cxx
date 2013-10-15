@@ -12,7 +12,18 @@ JuiContainer::~JuiContainer()
 
 void JuiContainer::SetBounds( const JPoint2I& point, const JPoint2I& size )
 {
-	UpdateLayout(JRectI(point, size));
+	if(size != m_rcBounds.extent)
+	{
+		JRectI newRect(point, size);
+
+		JuiControl* pCom = (JuiControl*)m_lsChilds.First();
+		while(pCom)
+		{
+			pCom->OnParentResized(m_rcBounds, newRect);
+			pCom = (JuiControl*)m_lsChilds.Next();
+		}
+	}
+
 	JuiControl::SetBounds(point,size);
 }
 
@@ -34,24 +45,29 @@ void JuiContainer::OnRender(JPoint2I offset,  const JRectI& rcPaint )
 	}
 }
 
-void JuiContainer::UpdateLayout(const JRectI& newRect)
-{
-	if(newRect.extent == m_rcBounds.extent)
-		return;
-
-	JuiControl* pCom = (JuiControl*)m_lsChilds.First();
-	while(pCom)
-	{
-		pCom->OnParentResized(m_rcBounds, newRect);
-		pCom = (JuiControl*)m_lsChilds.Next();
-	}
-}
-
 void JuiContainer::AddControl( JuiControl *obj )
 {
+	if(obj == this)
+		return;
+
+	if(obj->GetParent() == this)
+		return;
+
+	if(obj->GetParent() != NULL)
+		obj->GetParent()->RemoveControl(obj);
+
 	m_lsChilds.PushBack(obj);
 	obj->SetParent(this);
-	UpdateLayout(m_rcBounds);
+
+	OnChildAdded(obj);
+}
+
+void JuiContainer::RemoveControl( JuiControl* obj )
+{
+	OnChildRemoved(obj);
+
+	m_lsChilds.Pop(obj);
+	obj->SetParent(NULL);
 }
 
 JuiControl * JuiContainer::FindControl( const JPoint2I& pt )
@@ -67,7 +83,8 @@ JuiControl * JuiContainer::FindControl( const JPoint2I& pt )
 				if(pContainer != NULL)
 				{
 					JPoint2I tmpPoint = pt - pCom->GetPosition();
-					return pContainer->FindControl(tmpPoint);
+					JuiControl *pHit = pContainer->FindControl(tmpPoint);
+					return pHit ? pHit : pContainer;
 				}
 			}
 

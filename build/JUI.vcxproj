@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\core\base\JuiControl.cxx" />
+    <ClCompile Include="..\src\core\base\JuiImageList.cxx" />
     <ClCompile Include="..\src\core\base\JuiInputManager.cxx" />
     <ClCompile Include="..\src\core\button\JuiButton.cxx" />
     <ClCompile Include="..\src\core\button\JuiCheckButton.cxx" />
@@ -19,10 +20,11 @@
     <ClCompile Include="..\src\core\container\JuiContainer.cxx" />
     <ClCompile Include="..\src\core\container\JuiRollout.cxx" />
     <ClCompile Include="..\src\core\container\JuiScroll.cxx" />
+    <ClCompile Include="..\src\core\container\JuiTabBook.cxx" />
     <ClCompile Include="..\src\core\layout\JuiHorizontalLayout.cxx" />
     <ClCompile Include="..\src\core\layout\JuiVerticalLayout.cxx" />
     <ClCompile Include="..\src\core\list\JuiListBox.cxx" />
-    <ClCompile Include="..\src\core\script\JuiAttribute.cxx" />
+    <ClCompile Include="..\src\core\script\JuiCreaterAttribute.cxx" />
     <ClCompile Include="..\src\core\script\JuiCreater.cxx" />
     <ClCompile Include="..\src\graphics\gdi\JGdiImage.cxx" />
     <ClCompile Include="..\src\graphics\gdi\JGdiRender.cxx" />
@@ -36,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\core\base\JuiControl.hxx" />
+    <ClInclude Include="..\src\core\base\JuiImageList.hxx" />
     <ClInclude Include="..\src\core\base\JuiInputEvent.hxx" />
     <ClInclude Include="..\src\core\base\JuiInputManager.hxx" />
     <ClInclude Include="..\src\core\base\JuiTypes.hxx" />
@@ -45,6 +48,7 @@
     <ClInclude Include="..\src\core\container\JuiContainer.hxx" />
     <ClInclude Include="..\src\core\container\JuiRollout.hxx" />
     <ClInclude Include="..\src\core\container\JuiScroll.hxx" />
+    <ClInclude Include="..\src\core\container\JuiTabBook.hxx" />
     <ClInclude Include="..\src\core\layout\JuiHorizontalLayout.hxx" />
     <ClInclude Include="..\src\core\layout\JuiVerticalLayout.hxx" />
     <ClInclude Include="..\src\core\list\JuiListBox.hxx" />
