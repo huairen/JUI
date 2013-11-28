@@ -103,7 +103,7 @@ bool JuiInputManager::OnMouseDown( const MouseEventInfo &event )
 		return true;
 	}
 
-	JuiControl *controlHit = m_pInputController->FindControl(event.pos);
+	JuiControl *controlHit = m_pInputController->FindHitControl(event.pos);
 	if(controlHit != NULL && controlHit->IsEnable())
 	{
 		controlHit->OnMouseDown(event);
@@ -121,7 +121,7 @@ bool JuiInputManager::OnMouseUp( const MouseEventInfo &event )
 		return true;
 	}
 
-	JuiControl *controlHit = m_pInputController->FindControl(event.pos);
+	JuiControl *controlHit = m_pInputController->FindHitControl(event.pos);
 	if(controlHit != NULL && controlHit->IsEnable())
 	{
 		controlHit->OnMouseUp(event);
@@ -152,7 +152,7 @@ bool JuiInputManager::OnMouseMove( const MouseEventInfo &event )
 
 void JuiInputManager::FindMouseControl( const MouseEventInfo &event )
 {
-	JuiControl *controlHit = m_pInputController->FindControl(event.pos);
+	JuiControl *controlHit = m_pInputController->FindHitControl(event.pos);
 	if(controlHit != m_pMouseControl)
 	{
 		if(m_pMouseControl != NULL)
@@ -167,7 +167,7 @@ void JuiInputManager::FindMouseControl( const MouseEventInfo &event )
 
 void JuiInputManager::CheckLockMouseMove( const MouseEventInfo &event )
 {
-	JuiControl *controlHit = m_pInputController->FindControl(event.pos);
+	JuiControl *controlHit = m_pInputController->FindHitControl(event.pos);
 	if(controlHit != m_pMouseControl)
 	{
 		if(m_pMouseControl == m_pMouseCapturedControl)

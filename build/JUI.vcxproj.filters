@@ -32,7 +32,7 @@
       <UniqueIdentifier>{c681c8d1-45fe-41f8-ac96-2df8c56405d0}</UniqueIdentifier>
     </Filter>
     <Filter Include="core\layout">
-      <UniqueIdentifier>{b8e79942-27bf-4e8b-997f-f858db459eb1}</UniqueIdentifier>
+      <UniqueIdentifier>{2acea8c1-7771-43ec-a466-af26c314e971}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -75,14 +75,8 @@
     <ClCompile Include="..\src\core\container\JuiScroll.cxx">
       <Filter>core\container</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\list\JuiListBox.cxx">
-      <Filter>core\list</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\core\script\JuiCreater.cxx">
       <Filter>core\script</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\core\layout\JuiHorizontalLayout.cxx">
-      <Filter>core\layout</Filter>
     </ClCompile>
     <ClCompile Include="..\src\core\base\JuiInputManager.cxx">
       <Filter>core\base</Filter>
@@ -96,9 +90,6 @@
     <ClCompile Include="..\src\core\container\JuiRollout.cxx">
       <Filter>core\container</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\layout\JuiVerticalLayout.cxx">
-      <Filter>core\layout</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\core\base\JuiImageList.cxx">
       <Filter>core\base</Filter>
     </ClCompile>
@@ -107,6 +98,15 @@
     </ClCompile>
     <ClCompile Include="..\src\core\script\JuiCreaterAttribute.cxx">
       <Filter>core\script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\list\JuiListBox.cxx">
+      <Filter>core\list</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\layout\JuiHBoxLayout.cxx">
+      <Filter>core\layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\layout\JuiVBoxLayout.cxx">
+      <Filter>core\layout</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -158,14 +158,8 @@
     <ClInclude Include="..\src\core\container\JuiScroll.hxx">
       <Filter>core\container</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\list\JuiListBox.hxx">
-      <Filter>core\list</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\core\script\JuiCreater.hxx">
       <Filter>core\script</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\core\layout\JuiHorizontalLayout.hxx">
-      <Filter>core\layout</Filter>
     </ClInclude>
     <ClInclude Include="..\src\core\base\JuiInputManager.hxx">
       <Filter>core\base</Filter>
@@ -182,14 +176,20 @@
     <ClInclude Include="..\src\core\container\JuiRollout.hxx">
       <Filter>core\container</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\layout\JuiVerticalLayout.hxx">
-      <Filter>core\layout</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\core\base\JuiImageList.hxx">
       <Filter>core\base</Filter>
     </ClInclude>
     <ClInclude Include="..\src\core\container\JuiTabBook.hxx">
       <Filter>core\container</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\list\JuiListBox.hxx">
+      <Filter>core\list</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\layout\JuiHBoxLayout.hxx">
+      <Filter>core\layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\core\layout\JuiVBoxLayout.hxx">
+      <Filter>core\layout</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

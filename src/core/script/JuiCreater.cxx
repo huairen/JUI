@@ -4,7 +4,6 @@
 #include "core/button/JuiRadioButton.hxx"
 #include "core/container/JuiScroll.hxx"
 #include "core/container/JuiTabBook.hxx"
-#include "core/layout/JuiHorizontalLayout.hxx"
 
 
 
@@ -247,13 +246,11 @@ int JuiCreater::GetControlClass(char *line)
 		return CTRL_CLASS_RADIO_BUTTON;
 	else if(_strnicmp(line, "frame", 5) == 0)
 		return CTRL_CLASS_FRAME;
-	else if(_strnicmp(line, "scroll", 5) == 0)
+	else if(_strnicmp(line, "scroll", 6) == 0)
 		return CTRL_CLASS_SCROLL;
-	else if(_strnicmp(line, "horizontalLayout", 16) == 0)
-		return CTRL_CLASS_HORIZLAYOUT;
-	else if(_strnicmp(line, "tabBook", 16) == 0)
+	else if(_strnicmp(line, "tabBook", 7) == 0)
 		return CTRL_CLASS_TABBOOK;
-	else if(_strnicmp(line, "tabPage", 16) == 0)
+	else if(_strnicmp(line, "tabPage", 7) == 0)
 		return CTRL_CLASS_TABPAGE;
 
 	return CTRL_CLASS_NONE;
@@ -271,8 +268,6 @@ JuiControl *JuiCreater::CreateControl( int ctrlClass )
 		return new JuiRadioButton;
 	case CTRL_CLASS_SCROLL:
 		return new JuiScroll;
-	case CTRL_CLASS_HORIZLAYOUT:
-		return new JuiHorizontalLayout;
 	case CTRL_CLASS_TABBOOK:
 		return new JuiTabBook;
 	case CTRL_CLASS_TABPAGE:

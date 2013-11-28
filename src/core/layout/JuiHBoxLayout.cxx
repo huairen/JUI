@@ -1,15 +1,15 @@
-#include "JuiHorizontalLayout.hxx"
+#include "JuiHBoxLayout.hxx"
 
-JuiHorizontalLayout::JuiHorizontalLayout()
+JuiHBoxLayout::JuiHBoxLayout()
 {
 }
 
-JuiHorizontalLayout::~JuiHorizontalLayout()
+JuiHBoxLayout::~JuiHBoxLayout()
 {
 
 }
 
-void JuiHorizontalLayout::UpdateLayout( const JRectI& newRect )
+void JuiHBoxLayout::UpdateLayout( const JRectI& newRect )
 {
 	int nCount = m_lsChilds.GetCount();
 	if(nCount == 0)

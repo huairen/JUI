@@ -13,6 +13,61 @@ JPtrList::~JPtrList()
 
 }
 
+void JPtrList::Insert( int index, void *obj )
+{
+	Node *node = m_pHead;
+	while(node && index-- > 0)
+		node = node->next;
+
+	if(!node)
+		node = m_pTail;
+
+	Node* new_node = new Node;
+	new_node->data = obj;
+	new_node->prev = node->prev;
+	new_node->next = node;
+
+	if(node->prev)
+		node->prev->next = new_node;
+
+	node->prev = new_node;
+
+	if(node == m_pHead)
+		m_pHead = new_node;
+
+	if(node == m_pTail)
+		m_pTail = new_node;
+
+	m_nCount++;
+}
+
+void JPtrList::Remove( int index )
+{
+	if(m_nCount == 0)
+		return;
+
+	Node *node = m_pHead;
+	while(node && index-- > 0)
+		node = node->next;
+
+	if(!node)
+		node = m_pTail;
+
+	if(node->prev)
+		node->prev->next = node->next;
+
+	if(node->next)
+		node->next->prev = node->prev;
+
+	if(node == m_pHead)
+		m_pHead = node->next;
+
+	if(node == m_pTail)
+		m_pTail = node->prev;
+
+	m_nCount--;
+}
+
 void JPtrList::PushBack( void* obj )
 {
 	Node* new_node = new Node;

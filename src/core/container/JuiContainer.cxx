@@ -70,7 +70,7 @@ void JuiContainer::RemoveControl( JuiControl* obj )
 	obj->SetParent(NULL);
 }
 
-JuiControl * JuiContainer::FindControl( const JPoint2I& pt )
+JuiControl * JuiContainer::FindHitControl( const JPoint2I& pt )
 {
 	JuiControl* pCom = (JuiControl*)m_lsChilds.First();
 	while(pCom)
@@ -83,7 +83,7 @@ JuiControl * JuiContainer::FindControl( const JPoint2I& pt )
 				if(pContainer != NULL)
 				{
 					JPoint2I tmpPoint = pt - pCom->GetPosition();
-					JuiControl *pHit = pContainer->FindControl(tmpPoint);
+					JuiControl *pHit = pContainer->FindHitControl(tmpPoint);
 					return pHit ? pHit : pContainer;
 				}
 			}
@@ -97,22 +97,23 @@ JuiControl * JuiContainer::FindControl( const JPoint2I& pt )
 	return NULL;
 }
 
-JuiControl * JuiContainer::FileControl( const char* name )
+JuiControl * JuiContainer::FindControl( const char* name )
 {
-	JuiControl* pCom = (JuiControl*)m_lsChilds.First();
-	while(pCom)
+	JuiControl* pCtrl = (JuiControl*)m_lsChilds.First();
+	while(pCtrl)
 	{
-		if(_stricmp(name, pCom->GetName()) == 0)
-			return pCom;
+		const char *ctrlName = pCtrl->GetName();
+		if(*ctrlName && _stricmp(name, ctrlName) == 0)
+			return pCtrl;
 
-		if(pCom->IsContainer())
+		if(pCtrl->IsContainer())
 		{
-			JuiContainer* pContainer = dynamic_cast<JuiContainer*>(pCom);
+			JuiContainer* pContainer = dynamic_cast<JuiContainer*>(pCtrl);
 			if(pContainer != NULL)
-				return pContainer->FileControl(name);
+				return pContainer->FindControl(name);
 		}
 
-		pCom = (JuiControl*)m_lsChilds.Next();
+		pCtrl = (JuiControl*)m_lsChilds.Next();
 	}
 
 	return NULL;

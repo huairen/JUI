@@ -21,8 +21,8 @@
     <ClCompile Include="..\src\core\container\JuiRollout.cxx" />
     <ClCompile Include="..\src\core\container\JuiScroll.cxx" />
     <ClCompile Include="..\src\core\container\JuiTabBook.cxx" />
-    <ClCompile Include="..\src\core\layout\JuiHorizontalLayout.cxx" />
-    <ClCompile Include="..\src\core\layout\JuiVerticalLayout.cxx" />
+    <ClCompile Include="..\src\core\layout\JuiHBoxLayout.cxx" />
+    <ClCompile Include="..\src\core\layout\JuiVBoxLayout.cxx" />
     <ClCompile Include="..\src\core\list\JuiListBox.cxx" />
     <ClCompile Include="..\src\core\script\JuiCreaterAttribute.cxx" />
     <ClCompile Include="..\src\core\script\JuiCreater.cxx" />
@@ -49,8 +49,8 @@
     <ClInclude Include="..\src\core\container\JuiRollout.hxx" />
     <ClInclude Include="..\src\core\container\JuiScroll.hxx" />
     <ClInclude Include="..\src\core\container\JuiTabBook.hxx" />
-    <ClInclude Include="..\src\core\layout\JuiHorizontalLayout.hxx" />
-    <ClInclude Include="..\src\core\layout\JuiVerticalLayout.hxx" />
+    <ClInclude Include="..\src\core\layout\JuiHBoxLayout.hxx" />
+    <ClInclude Include="..\src\core\layout\JuiVBoxLayout.hxx" />
     <ClInclude Include="..\src\core\list\JuiListBox.hxx" />
     <ClInclude Include="..\src\core\script\JuiCreater.hxx" />
     <ClInclude Include="..\src\graphics\gdi\JGdiImage.hxx" />

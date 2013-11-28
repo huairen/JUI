@@ -14,6 +14,8 @@ public:
 	JPtrList();
 	~JPtrList();
 
+	void Insert(int index, void *obj);
+	void Remove(int index);
 	void PushBack(void *obj);
 	void Pop(void *obj);
 	void* First();

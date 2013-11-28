@@ -16,8 +16,9 @@ public:
 	virtual void OnChildAdded(JuiControl *child) {};
 	virtual void OnChildRemoved(JuiControl *chile) {};
 
-	JuiControl *FindControl(const JPoint2I& pt);
-	JuiControl *FileControl(const char* name);
+	JuiControl *FindHitControl(const JPoint2I& pt);
+	JuiControl *FindControl(const char* name);
+
 	void AddControl(JuiControl *obj);
 	void RemoveControl(JuiControl* obj);
 
