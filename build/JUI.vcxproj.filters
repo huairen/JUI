@@ -36,159 +36,159 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\math\JList.cxx">
+    <ClCompile Include="..\src\math\JList.cpp">
       <Filter>math</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\win32\JuiWindow.cxx">
+    <ClCompile Include="..\src\win32\JuiWindow.cpp">
       <Filter>win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\graphics\JImage.cxx">
+    <ClCompile Include="..\src\graphics\JImage.cpp">
       <Filter>graphics</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\graphics\gdi\JGdiImage.cxx">
+    <ClCompile Include="..\src\graphics\gdi\JGdiImage.cpp">
       <Filter>graphics\gdi</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\graphics\gdi\JGdiRender.cxx">
+    <ClCompile Include="..\src\graphics\gdi\JGdiRender.cpp">
       <Filter>graphics\gdi</Filter>
     </ClCompile>
     <ClCompile Include="..\src\graphics\stb_image.c">
       <Filter>graphics</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\graphics\JResourceManager.cxx">
+    <ClCompile Include="..\src\graphics\JResourceManager.cpp">
       <Filter>graphics</Filter>
     </ClCompile>
     <ClCompile Include="..\src\graphics\lookup3.c">
       <Filter>graphics</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\win32\JuiFrame.cxx">
+    <ClCompile Include="..\src\win32\JuiFrame.cpp">
       <Filter>win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\base\JuiControl.cxx">
+    <ClCompile Include="..\src\core\base\JuiControl.cpp">
       <Filter>core\base</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\button\JuiButton.cxx">
+    <ClCompile Include="..\src\core\button\JuiButton.cpp">
       <Filter>core\button</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\container\JuiContainer.cxx">
+    <ClCompile Include="..\src\core\container\JuiContainer.cpp">
       <Filter>core\container</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\container\JuiScroll.cxx">
+    <ClCompile Include="..\src\core\container\JuiScroll.cpp">
       <Filter>core\container</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\script\JuiCreater.cxx">
+    <ClCompile Include="..\src\core\script\JuiCreater.cpp">
       <Filter>core\script</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\base\JuiInputManager.cxx">
+    <ClCompile Include="..\src\core\base\JuiInputManager.cpp">
       <Filter>core\base</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\button\JuiCheckButton.cxx">
+    <ClCompile Include="..\src\core\button\JuiCheckButton.cpp">
       <Filter>core\button</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\button\JuiRadioButton.cxx">
+    <ClCompile Include="..\src\core\button\JuiRadioButton.cpp">
       <Filter>core\button</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\container\JuiRollout.cxx">
+    <ClCompile Include="..\src\core\container\JuiRollout.cpp">
       <Filter>core\container</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\base\JuiImageList.cxx">
+    <ClCompile Include="..\src\core\base\JuiImageList.cpp">
       <Filter>core\base</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\container\JuiTabBook.cxx">
+    <ClCompile Include="..\src\core\container\JuiTabBook.cpp">
       <Filter>core\container</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\script\JuiCreaterAttribute.cxx">
+    <ClCompile Include="..\src\core\script\JuiCreaterAttribute.cpp">
       <Filter>core\script</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\list\JuiListBox.cxx">
+    <ClCompile Include="..\src\core\list\JuiListBox.cpp">
       <Filter>core\list</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\layout\JuiHBoxLayout.cxx">
+    <ClCompile Include="..\src\core\layout\JuiHBoxLayout.cpp">
       <Filter>core\layout</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\layout\JuiVBoxLayout.cxx">
+    <ClCompile Include="..\src\core\layout\JuiVBoxLayout.cpp">
       <Filter>core\layout</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\math\JPoint.hxx">
+    <ClInclude Include="..\src\math\JPoint.h">
       <Filter>math</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\math\JRect.hxx">
+    <ClInclude Include="..\src\math\JRect.h">
       <Filter>math</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\math\JList.hxx">
+    <ClInclude Include="..\src\math\JList.h">
       <Filter>math</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\win32\JuiWindow.hxx">
+    <ClInclude Include="..\src\win32\JuiWindow.h">
       <Filter>win32</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\math\JMath.hxx">
+    <ClInclude Include="..\src\math\JMath.h">
       <Filter>math</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\graphics\JImage.hxx">
+    <ClInclude Include="..\src\graphics\JImage.h">
       <Filter>graphics</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\graphics\JRender.hxx">
+    <ClInclude Include="..\src\graphics\JRender.h">
       <Filter>graphics</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\graphics\gdi\JGdiImage.hxx">
+    <ClInclude Include="..\src\graphics\gdi\JGdiImage.h">
       <Filter>graphics\gdi</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\graphics\gdi\JGdiRender.hxx">
+    <ClInclude Include="..\src\graphics\gdi\JGdiRender.h">
       <Filter>graphics\gdi</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\graphics\JResourceManager.hxx">
+    <ClInclude Include="..\src\graphics\JResourceManager.h">
       <Filter>graphics</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\win32\JuiFrame.hxx">
+    <ClInclude Include="..\src\win32\JuiFrame.h">
       <Filter>win32</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\base\JuiControl.hxx">
+    <ClInclude Include="..\src\core\base\JuiControl.h">
       <Filter>core\base</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\base\JuiTypes.hxx">
+    <ClInclude Include="..\src\core\base\JuiTypes.h">
       <Filter>core\base</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\button\JuiButton.hxx">
+    <ClInclude Include="..\src\core\button\JuiButton.h">
       <Filter>core\button</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\container\JuiContainer.hxx">
+    <ClInclude Include="..\src\core\container\JuiContainer.h">
       <Filter>core\container</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\container\JuiScroll.hxx">
+    <ClInclude Include="..\src\core\container\JuiScroll.h">
       <Filter>core\container</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\script\JuiCreater.hxx">
+    <ClInclude Include="..\src\core\script\JuiCreater.h">
       <Filter>core\script</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\base\JuiInputManager.hxx">
+    <ClInclude Include="..\src\core\base\JuiInputManager.h">
       <Filter>core\base</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\button\JuiCheckButton.hxx">
+    <ClInclude Include="..\src\core\button\JuiCheckButton.h">
       <Filter>core\button</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\button\JuiRadioButton.hxx">
+    <ClInclude Include="..\src\core\button\JuiRadioButton.h">
       <Filter>core\button</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\base\JuiInputEvent.hxx">
+    <ClInclude Include="..\src\core\base\JuiInputEvent.h">
       <Filter>core\base</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\container\JuiRollout.hxx">
+    <ClInclude Include="..\src\core\container\JuiRollout.h">
       <Filter>core\container</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\base\JuiImageList.hxx">
+    <ClInclude Include="..\src\core\base\JuiImageList.h">
       <Filter>core\base</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\container\JuiTabBook.hxx">
+    <ClInclude Include="..\src\core\container\JuiTabBook.h">
       <Filter>core\container</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\list\JuiListBox.hxx">
+    <ClInclude Include="..\src\core\list\JuiListBox.h">
       <Filter>core\list</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\layout\JuiHBoxLayout.hxx">
+    <ClInclude Include="..\src\core\layout\JuiHBoxLayout.h">
       <Filter>core\layout</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\layout\JuiVBoxLayout.hxx">
+    <ClInclude Include="..\src\core\layout\JuiVBoxLayout.h">
       <Filter>core\layout</Filter>
     </ClInclude>
   </ItemGroup>
