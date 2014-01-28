@@ -1,0 +1,3 @@
+[submodule "libs/JCore"]
+	path = libs/JCore
+	url = ../JCore.git

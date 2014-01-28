@@ -52,7 +52,7 @@
     <None Include="..\src\base\JuiControl.inl" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\JCore\build\JCore.vcxproj">
+    <ProjectReference Include="..\libs\JCore\build\JCore.vcxproj">
       <Project>{f8b57c55-65c9-4215-8296-09efeb83ea9e}</Project>
     </ProjectReference>
   </ItemGroup>
@@ -89,7 +89,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\src;..\..\JCore\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\src;..\libs\JCore\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
