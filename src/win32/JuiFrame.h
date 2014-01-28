@@ -2,8 +2,8 @@
 #define JUI_FRAME_H_
 
 #include "JuiWindow.h"
-#include "core/container/JuiContainer.h"
-#include "core/base/JuiInputManager.h"
+#include "container/JuiContainer.h"
+#include "base/JuiInputManager.h"
 
 class JuiFrame : public JuiContainer, public JuiWindow
 {

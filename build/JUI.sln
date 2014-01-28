@@ -3,13 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JUI", "JUI.vcxproj", "{76DF20BA-64E8-4F3C-B637-7639CB34A798}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "..\test\test.vcxproj", "{F560CDA1-53D1-4254-9423-7991A08B196C}"
-	ProjectSection(ProjectDependencies) = postProject
-		{76DF20BA-64E8-4F3C-B637-7639CB34A798} = {76DF20BA-64E8-4F3C-B637-7639CB34A798}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tinyxml", "..\deps\tinyxml\build\tinyxml_lib.vcxproj", "{C406DAEC-0886-4771-8DEA-9D7329B46CC1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -20,14 +13,6 @@ Global
 		{76DF20BA-64E8-4F3C-B637-7639CB34A798}.Debug|Win32.Build.0 = Debug|Win32
 		{76DF20BA-64E8-4F3C-B637-7639CB34A798}.Release|Win32.ActiveCfg = Release|Win32
 		{76DF20BA-64E8-4F3C-B637-7639CB34A798}.Release|Win32.Build.0 = Release|Win32
-		{F560CDA1-53D1-4254-9423-7991A08B196C}.Debug|Win32.ActiveCfg = Debug|Win32
-		{F560CDA1-53D1-4254-9423-7991A08B196C}.Debug|Win32.Build.0 = Debug|Win32
-		{F560CDA1-53D1-4254-9423-7991A08B196C}.Release|Win32.ActiveCfg = Release|Win32
-		{F560CDA1-53D1-4254-9423-7991A08B196C}.Release|Win32.Build.0 = Release|Win32
-		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Debug|Win32.ActiveCfg = Debug|Win32
-		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Debug|Win32.Build.0 = Debug|Win32
-		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Release|Win32.ActiveCfg = Release|Win32
-		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,62 +11,50 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\core\base\JuiControl.cpp" />
-    <ClCompile Include="..\src\core\base\JuiImageList.cpp" />
-    <ClCompile Include="..\src\core\base\JuiInputManager.cpp" />
-    <ClCompile Include="..\src\core\button\JuiButton.cpp" />
-    <ClCompile Include="..\src\core\button\JuiCheckButton.cpp" />
-    <ClCompile Include="..\src\core\button\JuiRadioButton.cpp" />
-    <ClCompile Include="..\src\core\container\JuiContainer.cpp" />
-    <ClCompile Include="..\src\core\container\JuiRollout.cpp" />
-    <ClCompile Include="..\src\core\container\JuiScroll.cpp" />
-    <ClCompile Include="..\src\core\container\JuiTabBook.cpp" />
-    <ClCompile Include="..\src\core\layout\JuiHBoxLayout.cpp" />
-    <ClCompile Include="..\src\core\layout\JuiVBoxLayout.cpp" />
-    <ClCompile Include="..\src\core\list\JuiListBox.cpp" />
-    <ClCompile Include="..\src\core\script\JuiCreaterAttribute.cpp" />
-    <ClCompile Include="..\src\core\script\JuiCreater.cpp" />
-    <ClCompile Include="..\src\graphics\gdi\JGdiImage.cpp" />
-    <ClCompile Include="..\src\graphics\gdi\JGdiRender.cpp" />
-    <ClCompile Include="..\src\graphics\JImage.cpp" />
-    <ClCompile Include="..\src\graphics\JResourceManager.cpp" />
-    <ClCompile Include="..\src\graphics\lookup3.c" />
-    <ClCompile Include="..\src\graphics\stb_image.c" />
-    <ClCompile Include="..\src\math\JList.cpp" />
+    <ClCompile Include="..\src\base\JuiControl.cpp" />
+    <ClCompile Include="..\src\base\JuiReader.cpp" />
+    <ClCompile Include="..\src\base\JuiInputManager.cpp" />
+    <ClCompile Include="..\src\button\JuiButton.cpp" />
+    <ClCompile Include="..\src\button\JuiCheckButton.cpp" />
+    <ClCompile Include="..\src\button\JuiRadioButton.cpp" />
+    <ClCompile Include="..\src\container\JuiContainer.cpp" />
+    <ClCompile Include="..\src\container\JuiListBox.cpp" />
+    <ClCompile Include="..\src\container\JuiRollout.cpp" />
+    <ClCompile Include="..\src\container\JuiScroll.cpp" />
+    <ClCompile Include="..\src\container\JuiStack.cpp" />
+    <ClCompile Include="..\src\container\JuiTabBook.cpp" />
+    <ClCompile Include="..\src\layout\JuiHBoxLayout.cpp" />
+    <ClCompile Include="..\src\layout\JuiVBoxLayout.cpp" />
     <ClCompile Include="..\src\win32\JuiFrame.cpp" />
     <ClCompile Include="..\src\win32\JuiWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\core\base\JuiControl.h" />
-    <ClInclude Include="..\src\core\base\JuiImageList.h" />
-    <ClInclude Include="..\src\core\base\JuiInputEvent.h" />
-    <ClInclude Include="..\src\core\base\JuiInputManager.h" />
-    <ClInclude Include="..\src\core\base\JuiTypes.h" />
-    <ClInclude Include="..\src\core\button\JuiButton.h" />
-    <ClInclude Include="..\src\core\button\JuiCheckButton.h" />
-    <ClInclude Include="..\src\core\button\JuiRadioButton.h" />
-    <ClInclude Include="..\src\core\container\JuiContainer.h" />
-    <ClInclude Include="..\src\core\container\JuiRollout.h" />
-    <ClInclude Include="..\src\core\container\JuiScroll.h" />
-    <ClInclude Include="..\src\core\container\JuiTabBook.h" />
-    <ClInclude Include="..\src\core\layout\JuiHBoxLayout.h" />
-    <ClInclude Include="..\src\core\layout\JuiVBoxLayout.h" />
-    <ClInclude Include="..\src\core\list\JuiListBox.h" />
-    <ClInclude Include="..\src\core\script\JuiCreater.h" />
-    <ClInclude Include="..\src\graphics\gdi\JGdiImage.h" />
-    <ClInclude Include="..\src\graphics\gdi\JGdiRender.h" />
-    <ClInclude Include="..\src\graphics\JImage.h" />
-    <ClInclude Include="..\src\graphics\JRender.h" />
-    <ClInclude Include="..\src\graphics\JResourceManager.h" />
-    <ClInclude Include="..\src\math\JList.h" />
-    <ClInclude Include="..\src\math\JMath.h" />
-    <ClInclude Include="..\src\math\JPoint.h" />
-    <ClInclude Include="..\src\math\JRect.h" />
+    <ClInclude Include="..\src\base\JuiControl.h" />
+    <ClInclude Include="..\src\base\JuiReader.h" />
+    <ClInclude Include="..\src\base\JuiInputEvent.h" />
+    <ClInclude Include="..\src\base\JuiInputManager.h" />
+    <ClInclude Include="..\src\base\JuiTypes.h" />
+    <ClInclude Include="..\src\button\JuiButton.h" />
+    <ClInclude Include="..\src\button\JuiCheckButton.h" />
+    <ClInclude Include="..\src\button\JuiRadioButton.h" />
+    <ClInclude Include="..\src\container\JuiContainer.h" />
+    <ClInclude Include="..\src\container\JuiListBox.h" />
+    <ClInclude Include="..\src\container\JuiRollout.h" />
+    <ClInclude Include="..\src\container\JuiScroll.h" />
+    <ClInclude Include="..\src\container\JuiStack.h" />
+    <ClInclude Include="..\src\container\JuiTabBook.h" />
+    <ClInclude Include="..\src\layout\JuiHBoxLayout.h" />
+    <ClInclude Include="..\src\layout\JuiVBoxLayout.h" />
     <ClInclude Include="..\src\win32\JuiFrame.h" />
     <ClInclude Include="..\src\win32\JuiWindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\src\core\base\JuiControl.inl" />
+    <None Include="..\src\base\JuiControl.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\JCore\build\JCore.vcxproj">
+      <Project>{f8b57c55-65c9-4215-8296-09efeb83ea9e}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{76DF20BA-64E8-4F3C-B637-7639CB34A798}</ProjectGuid>
@@ -101,7 +89,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\src;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\src;..\..\JCore\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -109,8 +97,7 @@
     <Lib>
       <AdditionalDependencies>
       </AdditionalDependencies>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

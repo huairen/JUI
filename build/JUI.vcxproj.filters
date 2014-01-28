@@ -1,200 +1,131 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="core">
-      <UniqueIdentifier>{b134cb2e-9861-4c9f-8ee8-b248a467de69}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="math">
-      <UniqueIdentifier>{793b0c4e-333f-49dc-aca4-a6440f10f8d6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="win32">
       <UniqueIdentifier>{c67fec98-9f89-4dec-a69f-d226c83a05e8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="graphics">
-      <UniqueIdentifier>{f57ca1d7-f24b-4d93-b548-829e5fa6259d}</UniqueIdentifier>
+    <Filter Include="base">
+      <UniqueIdentifier>{947b5ebd-15ec-453e-b7e7-b7623d730719}</UniqueIdentifier>
     </Filter>
-    <Filter Include="graphics\gdi">
-      <UniqueIdentifier>{d1fcb275-213d-4d50-a1f2-8748477574d3}</UniqueIdentifier>
+    <Filter Include="container">
+      <UniqueIdentifier>{79cd0b36-80dc-458d-b121-b721ae583fb0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="core\base">
-      <UniqueIdentifier>{c0cdd419-08e1-4c07-8ca4-b5c31db29af3}</UniqueIdentifier>
+    <Filter Include="button">
+      <UniqueIdentifier>{08bc1307-d9da-4aab-b3c8-6bc14ff98540}</UniqueIdentifier>
     </Filter>
-    <Filter Include="core\container">
-      <UniqueIdentifier>{ac69e78e-9b1e-46e4-804f-d9c65ee189e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\button">
-      <UniqueIdentifier>{51208db9-5c35-493a-a97d-d8a5e1431d7b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\list">
-      <UniqueIdentifier>{3f16ef0d-7351-4d61-b8a5-9f19a5c0a0b5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\script">
-      <UniqueIdentifier>{c681c8d1-45fe-41f8-ac96-2df8c56405d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core\layout">
-      <UniqueIdentifier>{2acea8c1-7771-43ec-a466-af26c314e971}</UniqueIdentifier>
+    <Filter Include="layout">
+      <UniqueIdentifier>{fdb2b052-2ad4-42e7-87c5-0c24479d02a5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\math\JList.cpp">
-      <Filter>math</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\win32\JuiWindow.cpp">
       <Filter>win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\graphics\JImage.cpp">
-      <Filter>graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\graphics\gdi\JGdiImage.cpp">
-      <Filter>graphics\gdi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\graphics\gdi\JGdiRender.cpp">
-      <Filter>graphics\gdi</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\graphics\stb_image.c">
-      <Filter>graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\graphics\JResourceManager.cpp">
-      <Filter>graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\graphics\lookup3.c">
-      <Filter>graphics</Filter>
     </ClCompile>
     <ClCompile Include="..\src\win32\JuiFrame.cpp">
       <Filter>win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\base\JuiControl.cpp">
-      <Filter>core\base</Filter>
+    <ClCompile Include="..\src\base\JuiControl.cpp">
+      <Filter>base</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\button\JuiButton.cpp">
-      <Filter>core\button</Filter>
+    <ClCompile Include="..\src\container\JuiContainer.cpp">
+      <Filter>container</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\container\JuiContainer.cpp">
-      <Filter>core\container</Filter>
+    <ClCompile Include="..\src\base\JuiInputManager.cpp">
+      <Filter>base</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\container\JuiScroll.cpp">
-      <Filter>core\container</Filter>
+    <ClCompile Include="..\src\button\JuiButton.cpp">
+      <Filter>button</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\script\JuiCreater.cpp">
-      <Filter>core\script</Filter>
+    <ClCompile Include="..\src\button\JuiCheckButton.cpp">
+      <Filter>button</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\base\JuiInputManager.cpp">
-      <Filter>core\base</Filter>
+    <ClCompile Include="..\src\button\JuiRadioButton.cpp">
+      <Filter>button</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\button\JuiCheckButton.cpp">
-      <Filter>core\button</Filter>
+    <ClCompile Include="..\src\container\JuiRollout.cpp">
+      <Filter>container</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\button\JuiRadioButton.cpp">
-      <Filter>core\button</Filter>
+    <ClCompile Include="..\src\container\JuiScroll.cpp">
+      <Filter>container</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\container\JuiRollout.cpp">
-      <Filter>core\container</Filter>
+    <ClCompile Include="..\src\container\JuiTabBook.cpp">
+      <Filter>container</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\base\JuiImageList.cpp">
-      <Filter>core\base</Filter>
+    <ClCompile Include="..\src\layout\JuiHBoxLayout.cpp">
+      <Filter>layout</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\container\JuiTabBook.cpp">
-      <Filter>core\container</Filter>
+    <ClCompile Include="..\src\layout\JuiVBoxLayout.cpp">
+      <Filter>layout</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\script\JuiCreaterAttribute.cpp">
-      <Filter>core\script</Filter>
+    <ClCompile Include="..\src\container\JuiListBox.cpp">
+      <Filter>container</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\list\JuiListBox.cpp">
-      <Filter>core\list</Filter>
+    <ClCompile Include="..\src\container\JuiStack.cpp">
+      <Filter>container</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\core\layout\JuiHBoxLayout.cpp">
-      <Filter>core\layout</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\core\layout\JuiVBoxLayout.cpp">
-      <Filter>core\layout</Filter>
+    <ClCompile Include="..\src\base\JuiReader.cpp">
+      <Filter>base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\math\JPoint.h">
-      <Filter>math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\math\JRect.h">
-      <Filter>math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\math\JList.h">
-      <Filter>math</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\win32\JuiWindow.h">
       <Filter>win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\math\JMath.h">
-      <Filter>math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\graphics\JImage.h">
-      <Filter>graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\graphics\JRender.h">
-      <Filter>graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\graphics\gdi\JGdiImage.h">
-      <Filter>graphics\gdi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\graphics\gdi\JGdiRender.h">
-      <Filter>graphics\gdi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\graphics\JResourceManager.h">
-      <Filter>graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\src\win32\JuiFrame.h">
       <Filter>win32</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\base\JuiControl.h">
-      <Filter>core\base</Filter>
+    <ClInclude Include="..\src\base\JuiControl.h">
+      <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\base\JuiTypes.h">
-      <Filter>core\base</Filter>
+    <ClInclude Include="..\src\base\JuiTypes.h">
+      <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\button\JuiButton.h">
-      <Filter>core\button</Filter>
+    <ClInclude Include="..\src\container\JuiContainer.h">
+      <Filter>container</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\container\JuiContainer.h">
-      <Filter>core\container</Filter>
+    <ClInclude Include="..\src\base\JuiInputEvent.h">
+      <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\container\JuiScroll.h">
-      <Filter>core\container</Filter>
+    <ClInclude Include="..\src\base\JuiInputManager.h">
+      <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\script\JuiCreater.h">
-      <Filter>core\script</Filter>
+    <ClInclude Include="..\src\button\JuiButton.h">
+      <Filter>button</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\base\JuiInputManager.h">
-      <Filter>core\base</Filter>
+    <ClInclude Include="..\src\button\JuiCheckButton.h">
+      <Filter>button</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\button\JuiCheckButton.h">
-      <Filter>core\button</Filter>
+    <ClInclude Include="..\src\button\JuiRadioButton.h">
+      <Filter>button</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\button\JuiRadioButton.h">
-      <Filter>core\button</Filter>
+    <ClInclude Include="..\src\container\JuiRollout.h">
+      <Filter>container</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\base\JuiInputEvent.h">
-      <Filter>core\base</Filter>
+    <ClInclude Include="..\src\container\JuiScroll.h">
+      <Filter>container</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\container\JuiRollout.h">
-      <Filter>core\container</Filter>
+    <ClInclude Include="..\src\container\JuiTabBook.h">
+      <Filter>container</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\base\JuiImageList.h">
-      <Filter>core\base</Filter>
+    <ClInclude Include="..\src\layout\JuiHBoxLayout.h">
+      <Filter>layout</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\container\JuiTabBook.h">
-      <Filter>core\container</Filter>
+    <ClInclude Include="..\src\layout\JuiVBoxLayout.h">
+      <Filter>layout</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\list\JuiListBox.h">
-      <Filter>core\list</Filter>
+    <ClInclude Include="..\src\container\JuiListBox.h">
+      <Filter>container</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\layout\JuiHBoxLayout.h">
-      <Filter>core\layout</Filter>
+    <ClInclude Include="..\src\container\JuiStack.h">
+      <Filter>container</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\core\layout\JuiVBoxLayout.h">
-      <Filter>core\layout</Filter>
+    <ClInclude Include="..\src\base\JuiReader.h">
+      <Filter>base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\src\core\base\JuiControl.inl">
-      <Filter>core\base</Filter>
+    <None Include="..\src\base\JuiControl.inl">
+      <Filter>base</Filter>
     </None>
   </ItemGroup>
 </Project>
