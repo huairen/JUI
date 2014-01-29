@@ -1,5 +1,8 @@
 #include "JuiFrame.h"
 
+JIMPLEMENT_DYNAMIC_CLASS(JuiFrame, JuiContainer)
+	JCLASS_WRITEONLY_PROPERTY(JuiFrame, image, std::string, SetBackground)
+
 JuiFrame::JuiFrame()
 {
 	m_InputMgr.SetController(this);
@@ -50,6 +53,12 @@ void JuiFrame::OnRender( JPoint2I offset, const JRectI& rcPaint )
 bool JuiFrame::SetBackground( const char* filename )
 {
 	m_pBackground = sm_pRender->CreateImage(filename);
+	return m_pBackground != NULL;
+}
+
+bool JuiFrame::SetBackground(const std::string& filename)
+{
+	m_pBackground = sm_pRender->CreateImage(filename.c_str());
 	return m_pBackground != NULL;
 }
 

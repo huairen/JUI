@@ -37,7 +37,7 @@ void JuiCheckButton::OnRender( JPoint2I offset, const JRectI& rcPaint )
 	else if(m_bDepressed || m_bStateOn)
 		pImg = m_pPressImage;
 	else if(m_bMouseOver)
-		pImg = m_pHighlightImage;
+		pImg = m_pHoverImage;
 
 	if(pImg != NULL)
 		DrawImage(pImg, offset, rcPaint);

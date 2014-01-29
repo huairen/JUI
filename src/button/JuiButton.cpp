@@ -1,6 +1,10 @@
 #include "JuiButton.h"
 
 JIMPLEMENT_DYNAMIC_CLASS(JuiButton, JuiControl)
+	JCLASS_WRITEONLY_PROPERTY(JuiButton, NormalImage, std::string, LoadNormalImage)
+	JCLASS_WRITEONLY_PROPERTY(JuiButton, HoverImage, std::string, LoadHoverImage)
+	JCLASS_WRITEONLY_PROPERTY(JuiButton, PressImage, std::string, LoadPressImage)
+	JCLASS_WRITEONLY_PROPERTY(JuiButton, DisableImage, std::string, LoadDisableImage)
 
 JuiButton::JuiButton()
 {
@@ -8,7 +12,7 @@ JuiButton::JuiButton()
 	m_bMouseOver = false;
 
 	m_pNormalImage = NULL;
-	m_pHighlightImage = NULL;
+	m_pHoverImage = NULL;
 	m_pPressImage = NULL;
 	m_pDisabledImage = NULL;
 }
@@ -18,29 +22,28 @@ JuiButton::~JuiButton()
 
 }
 
-bool JuiButton::LoadImage( const char* filename, int state )
+bool JuiButton::LoadNormalImage(const std::string& filename)
 {
-	switch (state)
-	{
-	case 1:
-		m_pNormalImage = sm_pRender->CreateImage(filename);
-		return (m_pNormalImage != NULL);
-		break;
-	case 2:
-		m_pHighlightImage = sm_pRender->CreateImage(filename);
-		return (m_pHighlightImage != NULL);
-		break;
-	case 3:
-		m_pHighlightImage = sm_pRender->CreateImage(filename);
-		return (m_pHighlightImage != NULL);
-		break;
-	case 4:
-		m_pPressImage = sm_pRender->CreateImage(filename);
-		return (m_pPressImage != NULL);
-		break;
-	}
+	m_pNormalImage = sm_pRender->CreateImage(filename.c_str());
+	return (m_pNormalImage != NULL);
+}
 
-	return false;
+bool JuiButton::LoadHoverImage(const std::string& filename)
+{
+	m_pHoverImage = sm_pRender->CreateImage(filename.c_str());
+	return (m_pHoverImage != NULL);
+}
+
+bool JuiButton::LoadPressImage(const std::string& filename)
+{
+	m_pPressImage = sm_pRender->CreateImage(filename.c_str());
+	return (m_pPressImage != NULL);
+}
+
+bool JuiButton::LoadDisableImage(const std::string& filename)
+{
+	m_pDisabledImage = sm_pRender->CreateImage(filename.c_str());
+	return (m_pDisabledImage != NULL);
 }
 
 void JuiButton::OnClick()
@@ -104,7 +107,7 @@ void JuiButton::OnRender( JPoint2I offset, const JRectI& rcPaint )
 	else if(m_bDepressed)
 		pImg = m_pPressImage;
 	else if(m_bMouseOver)
-		pImg = m_pHighlightImage;
+		pImg = m_pHoverImage;
 
 	if(pImg != NULL)
 		DrawImage(pImg, offset, rcPaint);

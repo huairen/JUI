@@ -1,6 +1,20 @@
 #include "JuiControl.h"
 #include "container/JuiContainer.h"
 
+JBEGIN_CLASS_ENUM(JuiControl,HorizAlignOptions)
+	JENUM_NAME_MEMBER(left, JuiControl::HORIZ_ALIGN_LEFT)
+	JENUM_NAME_MEMBER(right, JuiControl::HORIZ_ALIGN_RIGHT)
+	JENUM_NAME_MEMBER(center, JuiControl::HORIZ_ALIGN_CENTER)
+	JENUM_NAME_MEMBER(width, JuiControl::HORIZ_ALIGN_WIDTH)
+JEND_CLASS_ENUM(JuiControl,HorizAlignOptions)
+
+JBEGIN_CLASS_ENUM(JuiControl,VertAlignOptions)
+	JENUM_NAME_MEMBER(top, JuiControl::VERT_ALIGN_TOP)
+	JENUM_NAME_MEMBER(bottom, JuiControl::VERT_ALIGN_BOTTOM)
+	JENUM_NAME_MEMBER(center, JuiControl::VERT_ALIGN_CENTER)
+	JENUM_NAME_MEMBER(height, JuiControl::VERT_ALIGN_HEIGHT)
+JEND_CLASS_ENUM(JuiControl,VertAlignOptions)
+
 JIMPLEMENT_CLASS_COMMON(JuiControl, JObject, NULL)
 	JCLASS_PROPERTY(JuiControl, position, JPoint2I, SetPosition, GetPosition)
 	JCLASS_PROPERTY(JuiControl, size, JPoint2I, SetExtent, GetExtent)
@@ -9,6 +23,9 @@ JIMPLEMENT_CLASS_COMMON(JuiControl, JObject, NULL)
 	JCLASS_PROPERTY(JuiControl, visible, bool, SetVisible, IsVisible)
 	JCLASS_PROPERTY(JuiControl, enable, bool, SetEnable, IsEnable)
 	JCLASS_PROPERTY(JuiControl, mouseEnable, bool, SetMouseEnable, IsMouseEnable)
+	JCLASS_WRITEONLY_PROPERTY(JuiControl, horizAlign, JuiControl::HorizAlignOptions, SetHorizAlign)
+	JCLASS_WRITEONLY_PROPERTY(JuiControl, vertAlign, JuiControl::VertAlignOptions, SetVertAlign)
+
 
 JRender* JuiControl::sm_pRender = NULL;
 

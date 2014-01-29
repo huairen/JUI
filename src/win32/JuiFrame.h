@@ -7,6 +7,7 @@
 
 class JuiFrame : public JuiContainer, public JuiWindow
 {
+	JDECLARE_DYNAMIC_CLASS(JuiFrame)
 	typedef JuiContainer Parent;
 
 public:
@@ -19,6 +20,7 @@ public:
 	virtual void OnRender(JPoint2I offset, const JRectI& rcPaint);
 
 	bool SetBackground(const char* filename);
+	bool SetBackground(const std::string& filename);
 
 protected:
 	virtual LRESULT HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam);

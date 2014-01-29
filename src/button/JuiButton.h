@@ -12,7 +12,10 @@ public:
 	JuiButton();
 	~JuiButton();
 
-	bool LoadImage(const char* filename, int state);
+	bool LoadNormalImage(const std::string& filename);
+	bool LoadHoverImage(const std::string& filename);
+	bool LoadPressImage(const std::string& filename);
+	bool LoadDisableImage(const std::string& filename);
 
 	virtual void OnClick();
 
@@ -28,7 +31,7 @@ protected:
 	bool m_bMouseOver;
 
 	JImage *m_pNormalImage;
-	JImage *m_pHighlightImage;
+	JImage *m_pHoverImage;
 	JImage *m_pPressImage;
 	JImage *m_pDisabledImage;
 };
