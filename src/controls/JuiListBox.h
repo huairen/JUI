@@ -1,16 +1,20 @@
 #ifndef JUI_LISTBOX_H_
 #define JUI_LISTBOX_H_
 
-#include "JuiContainer.h"
-#include "graphics/JImage.h"
+#include "base/JuiControl.h"
+#include "DataType/JArray.h"
+#include "Graphics/JImage.h"
 
-class JuiListBox : public JuiContainer
+class JuiListBox : public JuiControl
 {
-	typedef JuiContainer Parent;
+	JDECLARE_DYNAMIC_CLASS(JuiListBox)
+	typedef JuiControl Parent;
+
 protected:
 	struct Item
 	{
-		const char *itemText;
+		std::string itemText;
+		const JuiControl *ctrl;
 		bool isSelected;
 		void *itemData;
 	};
@@ -25,11 +29,14 @@ public:
 
 	virtual void OnRenderItem(JRectI itemRect, Item *item);
 
+	void SetItemModel(JuiControl *pCtrl);
 	int GetItemCount();
 	int GetSelCount();
 
-	int AddItem(const char* text, void *itemData = NULL);
-	int InsertItem(int index, const char *text, void *itemData = NULL);
+	void AddItem(const char* text, void *itemData = NULL);
+	void InsertItem(int index, const char *text, void *itemData = NULL);
+	void PushDefaultItem();
+
 
 	void DeleteItem(int index);
 	void ClearItems();
@@ -37,9 +44,12 @@ public:
 	void UpdateSize();
 
 protected:
-	JList m_lsItems;
-	JList m_lsSelectedItems;
+	JArray m_lsItems;
+	JArray m_lsSelectedItems;
+	JuiControl *m_pItemModel;
 };
+
+JFORCE_LINK_OBJ(JuiListBox)
 
 inline int JuiListBox::GetItemCount()
 {
@@ -49,6 +59,11 @@ inline int JuiListBox::GetItemCount()
 inline int JuiListBox::GetSelCount()
 {
 	return m_lsSelectedItems.GetCount();
+}
+
+inline void JuiListBox::SetItemModel(JuiControl *pCtrl)
+{
+	m_pItemModel = pCtrl;
 }
 
 #endif

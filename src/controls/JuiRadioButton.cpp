@@ -1,7 +1,8 @@
 #include "JuiRadioButton.h"
 
-JIMPLEMENT_DYNAMIC_CLASS(JuiRadioButton, JuiCheckButton)
 JIMPLEMENT_FORCE_LINK_OBJ(JuiRadioButton)
+JIMPLEMENT_DYNAMIC_CLASS(JuiRadioButton, JuiCheckButton)
+	JCLASS_PROPERTY(JuiRadioButton, radioGroup, int, SetRadioGroup, GetRadioGroup)
 
 JuiRadioButton::JuiRadioButton()
 {
@@ -13,7 +14,12 @@ JuiRadioButton::~JuiRadioButton()
 
 }
 
-int JuiRadioButton::GetRadioGroup()
+void JuiRadioButton::SetRadioGroup(int nGroup)
+{
+	m_nRadioGroup = nGroup;
+}
+
+int JuiRadioButton::GetRadioGroup() const
 {
 	return m_nRadioGroup;
 }

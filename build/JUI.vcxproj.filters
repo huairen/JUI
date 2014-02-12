@@ -1,29 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="win32">
-      <UniqueIdentifier>{c67fec98-9f89-4dec-a69f-d226c83a05e8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="base">
       <UniqueIdentifier>{947b5ebd-15ec-453e-b7e7-b7623d730719}</UniqueIdentifier>
     </Filter>
     <Filter Include="container">
       <UniqueIdentifier>{79cd0b36-80dc-458d-b121-b721ae583fb0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="button">
+    <Filter Include="controls">
+      <UniqueIdentifier>{361cd64b-6a70-420c-b975-ef1106befbec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="controls\button">
       <UniqueIdentifier>{08bc1307-d9da-4aab-b3c8-6bc14ff98540}</UniqueIdentifier>
     </Filter>
-    <Filter Include="layout">
+    <Filter Include="base\win32">
+      <UniqueIdentifier>{c67fec98-9f89-4dec-a69f-d226c83a05e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="container\layout">
       <UniqueIdentifier>{fdb2b052-2ad4-42e7-87c5-0c24479d02a5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\win32\JuiWindow.cpp">
-      <Filter>win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\win32\JuiFrame.cpp">
-      <Filter>win32</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\base\JuiControl.cpp">
       <Filter>base</Filter>
     </ClCompile>
@@ -32,15 +29,6 @@
     </ClCompile>
     <ClCompile Include="..\src\base\JuiInputManager.cpp">
       <Filter>base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\button\JuiButton.cpp">
-      <Filter>button</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\button\JuiCheckButton.cpp">
-      <Filter>button</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\button\JuiRadioButton.cpp">
-      <Filter>button</Filter>
     </ClCompile>
     <ClCompile Include="..\src\container\JuiRollout.cpp">
       <Filter>container</Filter>
@@ -51,29 +39,35 @@
     <ClCompile Include="..\src\container\JuiTabBook.cpp">
       <Filter>container</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\layout\JuiHBoxLayout.cpp">
-      <Filter>layout</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\layout\JuiVBoxLayout.cpp">
-      <Filter>layout</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\container\JuiListBox.cpp">
-      <Filter>container</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\container\JuiStack.cpp">
-      <Filter>container</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\base\JuiReader.cpp">
       <Filter>base</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\controls\JuiListBox.cpp">
+      <Filter>controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\controls\JuiRadioButton.cpp">
+      <Filter>controls\button</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\controls\JuiButton.cpp">
+      <Filter>controls\button</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\controls\JuiCheckButton.cpp">
+      <Filter>controls\button</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\win32\JuiFrame.cpp">
+      <Filter>base\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\win32\JuiWindow.cpp">
+      <Filter>base\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\container\layout\JuiHBoxLayout.cpp">
+      <Filter>container\layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\container\layout\JuiVBoxLayout.cpp">
+      <Filter>container\layout</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\win32\JuiWindow.h">
-      <Filter>win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\win32\JuiFrame.h">
-      <Filter>win32</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\base\JuiControl.h">
       <Filter>base</Filter>
     </ClInclude>
@@ -89,15 +83,6 @@
     <ClInclude Include="..\src\base\JuiInputManager.h">
       <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\button\JuiButton.h">
-      <Filter>button</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\button\JuiCheckButton.h">
-      <Filter>button</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\button\JuiRadioButton.h">
-      <Filter>button</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\container\JuiRollout.h">
       <Filter>container</Filter>
     </ClInclude>
@@ -107,20 +92,35 @@
     <ClInclude Include="..\src\container\JuiTabBook.h">
       <Filter>container</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\layout\JuiHBoxLayout.h">
-      <Filter>layout</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\layout\JuiVBoxLayout.h">
-      <Filter>layout</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\container\JuiListBox.h">
-      <Filter>container</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\container\JuiStack.h">
-      <Filter>container</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\base\JuiReader.h">
       <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\controls\JuiListBox.h">
+      <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\controls\JuiCheckButton.h">
+      <Filter>controls\button</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\controls\JuiRadioButton.h">
+      <Filter>controls\button</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\controls\JuiButton.h">
+      <Filter>controls\button</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\win32\JuiWindow.h">
+      <Filter>base\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\win32\JuiDialog.h">
+      <Filter>base\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\win32\JuiFrame.h">
+      <Filter>base\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\container\layout\JuiVBoxLayout.h">
+      <Filter>container\layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\container\layout\JuiHBoxLayout.h">
+      <Filter>container\layout</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

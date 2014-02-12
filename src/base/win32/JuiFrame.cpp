@@ -338,13 +338,20 @@ bool JuiFrame::HandleMinMaxInfo( LPMINMAXINFO lpMMI )
 	RECT rcWork = monitor.rcWork;
 	rcWork.left -= monitor.rcMonitor.left;
 	rcWork.top -= monitor.rcMonitor.top;
+	
+	POINT ptMax;
+	ptMax.x = (m_ptMaxSize.x >= m_ptMinSize.x) ? m_ptMaxSize.x : (rcWork.right - rcWork.left);
+	ptMax.y = (m_ptMaxSize.y >= m_ptMinSize.y) ? m_ptMaxSize.y : (rcWork.bottom - rcWork.top);
 
 	// 计算最大化时，正确的原点坐标
-	lpMMI->ptMaxPosition.x	= rcWork.left;
-	lpMMI->ptMaxPosition.y	= rcWork.top;
+	lpMMI->ptMaxPosition.x	= rcWork.left + ((rcWork.right - rcWork.left - ptMax.x)>>1);
+	lpMMI->ptMaxPosition.y	= rcWork.top + ((rcWork.bottom - rcWork.top - ptMax.y)>>1);
 
-	lpMMI->ptMaxTrackSize.x = (m_ptMaxSize.x >= m_ptMinSize.x) ? m_ptMaxSize.x : (rcWork.right - rcWork.left);
-	lpMMI->ptMaxTrackSize.y = (m_ptMaxSize.y >= m_ptMinSize.y) ? m_ptMaxSize.y : (rcWork.bottom - rcWork.top);
+	lpMMI->ptMaxSize.x = ptMax.x;
+	lpMMI->ptMaxSize.y = ptMax.y;
+
+	lpMMI->ptMaxTrackSize.x = ptMax.x;
+	lpMMI->ptMaxTrackSize.y = ptMax.y;
 
 	lpMMI->ptMinTrackSize.x = m_ptMinSize.x;
 	lpMMI->ptMinTrackSize.y = m_ptMinSize.y;

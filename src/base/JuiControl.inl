@@ -98,6 +98,11 @@ inline void JuiControl::SetMaxSize( const JPoint2I& size )
 }
 
 //get point and size
+inline const JRectI& JuiControl::GetBounds() const
+{
+	return m_rcBounds;
+}
+
 inline const JPoint2I& JuiControl::GetPosition() const
 {
 	return m_rcBounds.position;

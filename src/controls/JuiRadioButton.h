@@ -12,7 +12,8 @@ public:
 	~JuiRadioButton();
 
 	void SetStateOn();
-	int GetRadioGroup();
+	void SetRadioGroup(int nGroup);
+	int GetRadioGroup()  const;
 
 	virtual void OnClick();
 	virtual void OnControlEvent(JuiControl* sender, int message, int param);

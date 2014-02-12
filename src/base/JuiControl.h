@@ -102,6 +102,7 @@ public:
 	void SetMaxSize(const JPoint2I& size);
 
 	//get point and size
+	const JRectI& GetBounds() const;
 	const JPoint2I& GetPosition() const;
 	const JPoint2I& GetExtent() const;
 

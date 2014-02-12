@@ -14,19 +14,18 @@
     <ClCompile Include="..\src\base\JuiControl.cpp" />
     <ClCompile Include="..\src\base\JuiReader.cpp" />
     <ClCompile Include="..\src\base\JuiInputManager.cpp" />
-    <ClCompile Include="..\src\button\JuiButton.cpp" />
-    <ClCompile Include="..\src\button\JuiCheckButton.cpp" />
-    <ClCompile Include="..\src\button\JuiRadioButton.cpp" />
+    <ClCompile Include="..\src\base\win32\JuiFrame.cpp" />
+    <ClCompile Include="..\src\base\win32\JuiWindow.cpp" />
     <ClCompile Include="..\src\container\JuiContainer.cpp" />
-    <ClCompile Include="..\src\container\JuiListBox.cpp" />
     <ClCompile Include="..\src\container\JuiRollout.cpp" />
     <ClCompile Include="..\src\container\JuiScroll.cpp" />
-    <ClCompile Include="..\src\container\JuiStack.cpp" />
     <ClCompile Include="..\src\container\JuiTabBook.cpp" />
-    <ClCompile Include="..\src\layout\JuiHBoxLayout.cpp" />
-    <ClCompile Include="..\src\layout\JuiVBoxLayout.cpp" />
-    <ClCompile Include="..\src\win32\JuiFrame.cpp" />
-    <ClCompile Include="..\src\win32\JuiWindow.cpp" />
+    <ClCompile Include="..\src\container\layout\JuiHBoxLayout.cpp" />
+    <ClCompile Include="..\src\container\layout\JuiVBoxLayout.cpp" />
+    <ClCompile Include="..\src\controls\JuiButton.cpp" />
+    <ClCompile Include="..\src\controls\JuiCheckButton.cpp" />
+    <ClCompile Include="..\src\controls\JuiListBox.cpp" />
+    <ClCompile Include="..\src\controls\JuiRadioButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\base\JuiControl.h" />
@@ -34,25 +33,25 @@
     <ClInclude Include="..\src\base\JuiInputEvent.h" />
     <ClInclude Include="..\src\base\JuiInputManager.h" />
     <ClInclude Include="..\src\base\JuiTypes.h" />
-    <ClInclude Include="..\src\button\JuiButton.h" />
-    <ClInclude Include="..\src\button\JuiCheckButton.h" />
-    <ClInclude Include="..\src\button\JuiRadioButton.h" />
+    <ClInclude Include="..\src\base\win32\JuiDialog.h" />
+    <ClInclude Include="..\src\base\win32\JuiFrame.h" />
+    <ClInclude Include="..\src\base\win32\JuiWindow.h" />
     <ClInclude Include="..\src\container\JuiContainer.h" />
-    <ClInclude Include="..\src\container\JuiListBox.h" />
     <ClInclude Include="..\src\container\JuiRollout.h" />
     <ClInclude Include="..\src\container\JuiScroll.h" />
-    <ClInclude Include="..\src\container\JuiStack.h" />
     <ClInclude Include="..\src\container\JuiTabBook.h" />
-    <ClInclude Include="..\src\layout\JuiHBoxLayout.h" />
-    <ClInclude Include="..\src\layout\JuiVBoxLayout.h" />
-    <ClInclude Include="..\src\win32\JuiFrame.h" />
-    <ClInclude Include="..\src\win32\JuiWindow.h" />
+    <ClInclude Include="..\src\container\layout\JuiHBoxLayout.h" />
+    <ClInclude Include="..\src\container\layout\JuiVBoxLayout.h" />
+    <ClInclude Include="..\src\controls\JuiButton.h" />
+    <ClInclude Include="..\src\controls\JuiCheckButton.h" />
+    <ClInclude Include="..\src\controls\JuiListBox.h" />
+    <ClInclude Include="..\src\controls\JuiRadioButton.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\base\JuiControl.inl" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\libs\JCore\build\JCore.vcxproj">
+    <ProjectReference Include="..\..\JCore\build\JCore.vcxproj">
       <Project>{f8b57c55-65c9-4215-8296-09efeb83ea9e}</Project>
     </ProjectReference>
   </ItemGroup>
@@ -89,7 +88,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\src;..\libs\JCore\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\src;..\..\JCore\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
