@@ -14,7 +14,7 @@ protected:
 	struct Item
 	{
 		std::string itemText;
-		const JuiControl *ctrl;
+		JuiControl *ctrl;
 		bool isSelected;
 		void *itemData;
 	};
@@ -27,25 +27,23 @@ public:
 	virtual void OnMouseUp(const MouseEventInfo& event);
 	virtual void OnRender(JPoint2I offset, const JRectI& rcPaint);
 
-	virtual void OnRenderItem(JRectI itemRect, Item *item);
-
 	void SetItemModel(JuiControl *pCtrl);
 	int GetItemCount();
 	int GetSelCount();
 
 	void AddItem(const char* text, void *itemData = NULL);
 	void InsertItem(int index, const char *text, void *itemData = NULL);
-	void PushDefaultItem();
+	JuiControl* PushDefaultItem();
 
 
 	void DeleteItem(int index);
 	void ClearItems();
 
-	void UpdateSize();
+	void UpdateSize(int index, int count);
 
 protected:
-	JArray m_lsItems;
-	JArray m_lsSelectedItems;
+	JArray<Item> m_lsItems;
+	JArray<Item> m_lsSelectedItems;
 	JuiControl *m_pItemModel;
 };
 

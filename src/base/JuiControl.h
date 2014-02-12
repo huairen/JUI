@@ -80,6 +80,8 @@ public:
 	void MouseUnlock();
 	bool IsMouseLocked();
 
+	virtual JuiControl* Clone();
+
 public:
 	// @ point and size
 	// @ {

@@ -47,6 +47,24 @@ void JuiContainer::OnRender(JPoint2I offset,  const JRectI& rcPaint )
 	}
 }
 
+JuiControl* JuiContainer::Clone()
+{
+	JuiContainer* pClone = dynamic_cast<JuiContainer*>(Parent::Clone());
+	if(pClone == NULL)
+		return NULL;
+
+	JuiControl* pSubCtrl = FirstChild();
+	while(pSubCtrl)
+	{
+		JuiControl* pSubClone = pSubCtrl->Clone();
+		if(pSubClone != NULL)
+			pClone->AddControl(pSubClone);
+		pSubCtrl = NextChild();
+	}
+
+	return pClone;
+}
+
 void JuiContainer::AddControl( JuiControl *obj )
 {
 	if(obj == this || obj == NULL)
@@ -112,7 +130,11 @@ JuiControl * JuiContainer::FindControl( const char* name )
 		{
 			JuiContainer* pContainer = dynamic_cast<JuiContainer*>(pCtrl);
 			if(pContainer != NULL)
-				return pContainer->FindControl(name);
+			{
+				JuiControl *pSubCtrl = pContainer->FindControl(name);
+				if(pSubCtrl != NULL)
+					return pSubCtrl;
+			}
 		}
 
 		pCtrl = (JuiControl*)m_lsChilds.Next();

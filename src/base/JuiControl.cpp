@@ -100,6 +100,11 @@ bool JuiControl::IsMouseLocked()
 	return false;
 }
 
+JuiControl* JuiControl::Clone()
+{
+	return static_cast<JuiControl*>(JObject::Clone());
+}
+
 void JuiControl::SetBounds(const JPoint2I& position, const JPoint2I& extent)
 {
 	m_rcBounds.extent = extent;

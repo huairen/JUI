@@ -17,6 +17,7 @@ public:
 	virtual void OnRender(JPoint2I offset, const JRectI& rcPaint);
 	virtual void OnChildAdded(JuiControl *child) {};
 	virtual void OnChildRemoved(JuiControl *chile) {};
+	virtual JuiControl* Clone();
 
 	JuiControl *FindHitControl(const JPoint2I& pt);
 	JuiControl *FindControl(const char* name);
