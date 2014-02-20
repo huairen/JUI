@@ -13,15 +13,16 @@
   <ItemGroup>
     <ClCompile Include="..\src\base\JuiControl.cpp" />
     <ClCompile Include="..\src\base\JuiReader.cpp" />
-    <ClCompile Include="..\src\base\JuiInputManager.cpp" />
+    <ClCompile Include="..\src\base\JuiEventManager.cpp" />
+    <ClCompile Include="..\src\base\win32\JuiDialog.cpp" />
     <ClCompile Include="..\src\base\win32\JuiFrame.cpp" />
     <ClCompile Include="..\src\base\win32\JuiWindow.cpp" />
     <ClCompile Include="..\src\container\JuiContainer.cpp" />
     <ClCompile Include="..\src\container\JuiRollout.cpp" />
     <ClCompile Include="..\src\container\JuiScroll.cpp" />
     <ClCompile Include="..\src\container\JuiTabBook.cpp" />
-    <ClCompile Include="..\src\container\layout\JuiHBoxLayout.cpp" />
-    <ClCompile Include="..\src\container\layout\JuiVBoxLayout.cpp" />
+    <ClCompile Include="..\src\container\layout\JuiLinearLayout.cpp" />
+    <ClCompile Include="..\src\container\layout\JuiRelativeLayout.cpp" />
     <ClCompile Include="..\src\controls\JuiButton.cpp" />
     <ClCompile Include="..\src\controls\JuiCheckButton.cpp" />
     <ClCompile Include="..\src\controls\JuiListBox.cpp" />
@@ -31,7 +32,7 @@
     <ClInclude Include="..\src\base\JuiControl.h" />
     <ClInclude Include="..\src\base\JuiReader.h" />
     <ClInclude Include="..\src\base\JuiInputEvent.h" />
-    <ClInclude Include="..\src\base\JuiInputManager.h" />
+    <ClInclude Include="..\src\base\JuiEventManager.h" />
     <ClInclude Include="..\src\base\JuiTypes.h" />
     <ClInclude Include="..\src\base\win32\JuiDialog.h" />
     <ClInclude Include="..\src\base\win32\JuiFrame.h" />
@@ -40,8 +41,8 @@
     <ClInclude Include="..\src\container\JuiRollout.h" />
     <ClInclude Include="..\src\container\JuiScroll.h" />
     <ClInclude Include="..\src\container\JuiTabBook.h" />
-    <ClInclude Include="..\src\container\layout\JuiHBoxLayout.h" />
-    <ClInclude Include="..\src\container\layout\JuiVBoxLayout.h" />
+    <ClInclude Include="..\src\container\layout\JuiLinearLayout.h" />
+    <ClInclude Include="..\src\container\layout\JuiRelativeLayout.h" />
     <ClInclude Include="..\src\controls\JuiButton.h" />
     <ClInclude Include="..\src\controls\JuiCheckButton.h" />
     <ClInclude Include="..\src\controls\JuiListBox.h" />
@@ -89,6 +90,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\src;..\..\JCore\src</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

@@ -3,7 +3,7 @@
 
 #include "base/JuiControl.h"
 #include "DataType/JArray.h"
-#include "Graphics/JImage.h"
+#include "Graphics/JTexture2D.h"
 
 class JuiListBox : public JuiControl
 {

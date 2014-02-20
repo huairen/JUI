@@ -2,7 +2,7 @@
 #define JUI_TABBOOK_H_
 
 #include "JuiContainer.h"
-#include "graphics/JImage.h"
+#include "graphics/JTexture2D.h"
 
 class JuiTabPage : public JuiContainer
 {
@@ -47,9 +47,9 @@ protected:
 
 	int m_nTabHeight;
 	
-	JImage *m_pNormalImage;
-	JImage *m_pHighlightImage;
-	JImage *m_pPressImage;
+	JTexture2D *m_pNormalImage;
+	JTexture2D *m_pHighlightImage;
+	JTexture2D *m_pPressImage;
 };
 
 #endif

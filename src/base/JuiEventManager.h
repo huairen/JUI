@@ -6,11 +6,11 @@
 class JuiContainer;
 class JuiControl;
 
-class JuiInputManager
+class JuiEventManager
 {
 public:
-	JuiInputManager();
-	~JuiInputManager();
+	JuiEventManager();
+	~JuiEventManager();
 
 	bool ProcessInputEvent(InputEventInfo &inputEvent);
 

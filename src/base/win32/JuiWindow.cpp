@@ -5,6 +5,7 @@ JuiWindow::JuiWindow()
 	m_hWnd = NULL;
 	m_pOldWndProc = NULL;
 	m_pParent = NULL;
+	m_bMouseTrack = true;
 }
 
 JuiWindow::~JuiWindow()
@@ -130,7 +131,153 @@ LPCTSTR JuiWindow::GetWindowClassName() const
 
 LRESULT JuiWindow::HandleMessage( UINT uMsg, WPARAM wParam, LPARAM lParam )
 {
-	return DefaultWndProc(uMsg, wParam, lParam);
+	bool done = false;
+	LRESULT result = 0;
+
+	switch(uMsg)
+	{
+	case WM_CREATE:
+		done = HandleCreate((LPCREATESTRUCT)lParam);
+		break;
+	case WM_CLOSE:
+		done = HandleClose();
+		break;
+	case WM_DESTROY:
+		done = HandleDestroy();
+		break;
+	case WM_SYSCOMMAND:
+		done = HandleSysCommand((UINT)wParam, MAKEPOINTS(lParam));
+		break;
+	case WM_NCHITTEST:
+		{
+			POINT pt;
+			POINTSTOPOINT(pt, lParam);
+			::ScreenToClient(m_hWnd, &pt);
+
+			LONG pts = POINTTOPOINTS(pt);
+			done = HandleHitTest(MAKEPOINTS(pts), &result);
+		}
+		break;
+	case WM_NCMOUSEMOVE:
+		{
+			POINT pt;
+			POINTSTOPOINT(pt, lParam);
+			::ScreenToClient(m_hWnd, &pt);
+
+			LONG pts = POINTTOPOINTS(pt);
+			done = HandleMouseMove((UINT)wParam, MAKEPOINTS(pts));
+		}
+		break;
+	case WM_MOUSEMOVE:
+		{
+			if(m_bMouseTrack)
+			{
+				TRACKMOUSEEVENT tme = {0};
+				tme.cbSize = sizeof(tme);
+				tme.dwFlags = TME_LEAVE;
+				tme.hwndTrack = m_hWnd;
+				tme.dwHoverTime = HOVER_DEFAULT;
+				::TrackMouseEvent(&tme);
+				m_bMouseTrack = false;
+			}
+
+			done = HandleMouseMove((UINT)wParam, MAKEPOINTS(lParam));
+		}
+		break;
+	case WM_MOUSELEAVE:
+		{
+			LPARAM pos = -1;
+			done = HandleMouseMove((UINT)wParam, MAKEPOINTS(pos));
+			m_bMouseTrack = true;
+		}
+		break;
+	case WM_LBUTTONDOWN:
+	case WM_LBUTTONUP:
+	case WM_LBUTTONDBLCLK:
+	case WM_RBUTTONDOWN:
+	case WM_RBUTTONUP:
+	case WM_RBUTTONDBLCLK:
+	case WM_MBUTTONDOWN:
+	case WM_MBUTTONUP:
+	case WM_MBUTTONDBLCLK:
+	case WM_NCLBUTTONDOWN:
+	case WM_NCLBUTTONUP:
+	case WM_NCLBUTTONDBLCLK:
+	case WM_NCRBUTTONDOWN:
+	case WM_NCRBUTTONUP:
+	case WM_NCRBUTTONDBLCLK:
+	case WM_NCMBUTTONDOWN:
+	case WM_NCMBUTTONUP:
+	case WM_NCMBUTTONDBLCLK:
+		done = HandleMouseButton(uMsg, (int)wParam, MAKEPOINTS(lParam));
+		break;
+	case WM_SIZE:
+		done = HandleSize((UINT)wParam,GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+		break;
+	case WM_PAINT:
+		done = HandlePaint();
+		break;
+	case WM_GETMINMAXINFO:
+		done = HandleMinMaxInfo((LPMINMAXINFO) lParam);
+		break;
+	case WM_KILLFOCUS:
+		done = 0;
+		break;
+	}
+
+	return done ? result : DefaultWndProc(uMsg, wParam, lParam);
+}
+
+bool JuiWindow::HandleCreate( LPCREATESTRUCT lpCS )
+{
+	return false;
+}
+
+bool JuiWindow::HandleClose()
+{
+	return false;
+}
+
+bool JuiWindow::HandleDestroy()
+{
+	PostQuitMessage(0);
+	return true;
+}
+
+
+bool JuiWindow::HandleSysCommand( UINT uCmdType, POINTS pt )
+{
+	return false;
+}
+
+bool JuiWindow::HandleHitTest( POINTS pt, LRESULT* result )
+{
+	return false;
+}
+
+bool JuiWindow::HandleMouseMove( UINT fwKeys, POINTS pt)
+{
+	return false;
+}
+
+bool JuiWindow::HandleMouseButton( UINT uMsg, UINT fwKeys, POINTS pt)
+{
+	return false;
+}
+
+bool JuiWindow::HandleSize(UINT nSizeType, WORD nWidht, WORD nHeight)
+{
+	return false;
+}
+
+bool JuiWindow::HandlePaint()
+{
+	return false;
+}
+
+bool JuiWindow::HandleMinMaxInfo( LPMINMAXINFO lpMMI )
+{
+	return false;
 }
 
 bool JuiWindow::RegisterWindowClass()

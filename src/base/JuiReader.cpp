@@ -14,9 +14,9 @@ bool JuiReader::LoadScript( JuiContainer *root, const char* filename )
 	JuiControl *currObject = NULL;
 	int stackIndex = -1;
 
-	FILE *pf;
+	FILE *pf = fopen(filename, "rb");
 
-	if(fopen_s(&pf, filename, "rb"))
+	if(pf == NULL)
 		return false;
 
 	strcpy_s(m_szScriptPath, sizeof(m_szScriptPath), filename);

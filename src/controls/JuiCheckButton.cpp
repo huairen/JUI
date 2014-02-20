@@ -30,7 +30,7 @@ void JuiCheckButton::OnClick()
 
 void JuiCheckButton::OnRender( JPoint2I offset, const JRectI& rcPaint )
 {
-	JImage *pImg = m_pNormalImage;
+	JTexture2D *pImg = m_pNormalImage;
 
 	if(!IsEnable())
 		pImg = m_pDisabledImage;

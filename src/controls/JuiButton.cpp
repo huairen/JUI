@@ -24,25 +24,25 @@ JuiButton::~JuiButton()
 
 bool JuiButton::LoadNormalImage(const std::string& filename)
 {
-	m_pNormalImage = sm_pRender->CreateImage(filename.c_str());
+	m_pNormalImage = sm_pRender->CreateTexture(filename.c_str());
 	return (m_pNormalImage != NULL);
 }
 
 bool JuiButton::LoadHoverImage(const std::string& filename)
 {
-	m_pHoverImage = sm_pRender->CreateImage(filename.c_str());
+	m_pHoverImage = sm_pRender->CreateTexture(filename.c_str());
 	return (m_pHoverImage != NULL);
 }
 
 bool JuiButton::LoadPressImage(const std::string& filename)
 {
-	m_pPressImage = sm_pRender->CreateImage(filename.c_str());
+	m_pPressImage = sm_pRender->CreateTexture(filename.c_str());
 	return (m_pPressImage != NULL);
 }
 
 bool JuiButton::LoadDisableImage(const std::string& filename)
 {
-	m_pDisabledImage = sm_pRender->CreateImage(filename.c_str());
+	m_pDisabledImage = sm_pRender->CreateTexture(filename.c_str());
 	return (m_pDisabledImage != NULL);
 }
 
@@ -100,7 +100,7 @@ void JuiButton::OnMouseUp( const MouseEventInfo& event )
 
 void JuiButton::OnRender( JPoint2I offset, const JRectI& rcPaint )
 {
-	JImage *pImg = m_pNormalImage;
+	JTexture2D *pImg = m_pNormalImage;
 
 	if(!IsEnable())
 		pImg = m_pDisabledImage;

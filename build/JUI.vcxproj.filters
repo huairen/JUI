@@ -27,9 +27,6 @@
     <ClCompile Include="..\src\container\JuiContainer.cpp">
       <Filter>container</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\base\JuiInputManager.cpp">
-      <Filter>base</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\container\JuiRollout.cpp">
       <Filter>container</Filter>
     </ClCompile>
@@ -60,11 +57,17 @@
     <ClCompile Include="..\src\base\win32\JuiWindow.cpp">
       <Filter>base\win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\container\layout\JuiHBoxLayout.cpp">
+    <ClCompile Include="..\src\container\layout\JuiLinearLayout.cpp">
       <Filter>container\layout</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\container\layout\JuiVBoxLayout.cpp">
+    <ClCompile Include="..\src\container\layout\JuiRelativeLayout.cpp">
       <Filter>container\layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\win32\JuiDialog.cpp">
+      <Filter>base\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\JuiEventManager.cpp">
+      <Filter>base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -78,9 +81,6 @@
       <Filter>container</Filter>
     </ClInclude>
     <ClInclude Include="..\src\base\JuiInputEvent.h">
-      <Filter>base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\base\JuiInputManager.h">
       <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="..\src\container\JuiRollout.h">
@@ -110,17 +110,20 @@
     <ClInclude Include="..\src\base\win32\JuiWindow.h">
       <Filter>base\win32</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\base\win32\JuiDialog.h">
-      <Filter>base\win32</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\base\win32\JuiFrame.h">
       <Filter>base\win32</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\container\layout\JuiVBoxLayout.h">
+    <ClInclude Include="..\src\container\layout\JuiLinearLayout.h">
       <Filter>container\layout</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\container\layout\JuiHBoxLayout.h">
+    <ClInclude Include="..\src\container\layout\JuiRelativeLayout.h">
       <Filter>container\layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\win32\JuiDialog.h">
+      <Filter>base\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\JuiEventManager.h">
+      <Filter>base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

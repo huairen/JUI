@@ -1,14 +1,14 @@
-#include "JuiVBoxLayout.h"
+#include "JuiRelativeLayout.h"
 
-JuiVBoxLayout::JuiVBoxLayout()
+JuiRelativeLayout::JuiRelativeLayout()
 {
 }
 
-JuiVBoxLayout::~JuiVBoxLayout()
+JuiRelativeLayout::~JuiRelativeLayout()
 {
 }
 
-void JuiVBoxLayout::UpdateLayout( const JRectI& newRect )
+void JuiRelativeLayout::UpdateLayout( const JRectI& newRect )
 {
 	int nCount = m_lsChilds.GetCount();
 	if(nCount == 0)

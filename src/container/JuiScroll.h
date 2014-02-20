@@ -36,8 +36,8 @@ protected:
 	bool m_bVertBar;
 	bool m_bHorizBar;
 
-	JImage *m_pBarImg;
-	JImage *m_pArrowImg;
+	JTexture2D *m_pBarImg;
+	JTexture2D *m_pArrowImg;
 };
 
 #endif

@@ -16,12 +16,12 @@ JuiScroll::~JuiScroll()
 
 void JuiScroll::LoadBarImage( const char* filename )
 {
-	m_pBarImg = sm_pRender->CreateImage(filename);
+	m_pBarImg = sm_pRender->CreateTexture(filename);
 }
 
 void JuiScroll::LoadArrowImage( const char* filename )
 {
-	m_pArrowImg = sm_pRender->CreateImage(filename);
+	m_pArrowImg = sm_pRender->CreateTexture(filename);
 }
 
 void JuiScroll::OnMouseDown( const MouseEventInfo& event )

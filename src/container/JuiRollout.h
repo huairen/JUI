@@ -2,7 +2,7 @@
 #define JUI_ROLLOUT_H_
 
 #include "JuiContainer.h"
-#include "graphics/JImage.h"
+#include "graphics/JTexture2D.h"
 
 class JuiRollout : public JuiContainer
 {
@@ -21,8 +21,8 @@ protected:
 	bool m_bExtanded;
 	int m_nBarHeight;
 
-	JImage *m_pBarImg;
-	JImage *m_pPanel;
+	JTexture2D *m_pBarImg;
+	JTexture2D *m_pPanel;
 };
 
 #endif

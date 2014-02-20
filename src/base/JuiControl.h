@@ -2,12 +2,13 @@
 #define JUI_CONTROL_H_
 
 #include "JuiTypes.h"
-#include "JuiInputManager.h"
+#include "JuiEventManager.h"
 #include "Object/JObject.h"
 #include "math/JRect.h"
 #include "graphics/JRender.h"
 
 class JuiContainer;
+class JDrawable;
 
 class JuiControl : public JObject
 {
@@ -66,7 +67,7 @@ public:
 	JuiContainer* GetParent();
 
 	JuiControl* GetRoot();
-	virtual JuiInputManager *GetInputGenerator() { return NULL; }
+	virtual JuiEventManager *GetInputGenerator() { return NULL; }
 
 	void SetHorizAlign(HorizAlignOptions horiz);
 	void SetVertAlign(VertAlignOptions vert);
@@ -79,6 +80,8 @@ public:
 	void MouseLock();
 	void MouseUnlock();
 	bool IsMouseLocked();
+
+	void SetBackground(const std::string& drawable);
 
 	virtual JuiControl* Clone();
 
@@ -157,13 +160,13 @@ public:
 
 	virtual void OnKeyDown() {}
 
-	virtual void OnRender(JPoint2I offset, const JRectI& rcPaint) = 0;
+	virtual void OnRender(JPoint2I offset, const JRectI& rcPaint);
 	// @ }
 
 protected:
-	void DrawImage(JImage* img, const JPoint2I &offset, const JRectI &rcPaint,
+	void DrawImage(JTexture2D* img, const JPoint2I &offset, const JRectI &rcPaint,
 		const JRectI *srcRect = NULL, const JRectI *destRect = NULL);
-	void DrawImageScaleCenter(JImage* img, const JPoint2I &offset, JRectI &rcPaint,
+	void DrawImageScaleCenter(JTexture2D* img, const JPoint2I &offset, JRectI &rcPaint,
 		const JRectI &srcRect, const JRectI &destRect);
 
 
@@ -179,6 +182,8 @@ protected:
 	JRectI m_rcBounds;
 	JPoint2I m_ptMinSize;
 	JPoint2I m_ptMaxSize;
+
+	JDrawable* m_pBackground;
 
 	static JRender* sm_pRender;
 };

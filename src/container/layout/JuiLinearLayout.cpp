@@ -1,15 +1,15 @@
-#include "JuiHBoxLayout.h"
+#include "JuiLinearLayout.h"
 
-JuiHBoxLayout::JuiHBoxLayout()
+JuiLinearLayout::JuiLinearLayout()
 {
 }
 
-JuiHBoxLayout::~JuiHBoxLayout()
+JuiLinearLayout::~JuiLinearLayout()
 {
 
 }
 
-void JuiHBoxLayout::UpdateLayout( const JRectI& newRect )
+void JuiLinearLayout::UpdateLayout( const JRectI& newRect )
 {
 	int nCount = m_lsChilds.GetCount();
 	if(nCount == 0)

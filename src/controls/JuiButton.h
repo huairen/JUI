@@ -2,7 +2,7 @@
 #define JUI_BUTTON_H_
 
 #include "base/JuiControl.h"
-#include "graphics/JImage.h"
+#include "graphics/JTexture2D.h"
 
 class JuiButton : public JuiControl
 {
@@ -30,10 +30,10 @@ protected:
 	bool m_bDepressed;
 	bool m_bMouseOver;
 
-	JImage *m_pNormalImage;
-	JImage *m_pHoverImage;
-	JImage *m_pPressImage;
-	JImage *m_pDisabledImage;
+	JTexture2D *m_pNormalImage;
+	JTexture2D *m_pHoverImage;
+	JTexture2D *m_pPressImage;
+	JTexture2D *m_pDisabledImage;
 };
 
 #endif

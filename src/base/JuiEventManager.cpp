@@ -1,7 +1,7 @@
-#include "JuiInputManager.h"
+#include "JuiEventManager.h"
 #include "container/JuiContainer.h"
 
-JuiInputManager::JuiInputManager()
+JuiEventManager::JuiEventManager()
 {
 	m_pInputController = NULL;
 	m_pMouseControl = NULL;
@@ -9,17 +9,17 @@ JuiInputManager::JuiInputManager()
 	memset(&m_LastEvent, 0, sizeof(m_LastEvent));
 }
 
-JuiInputManager::~JuiInputManager()
+JuiEventManager::~JuiEventManager()
 {
 
 }
 
-void JuiInputManager::SetController( JuiContainer* controller )
+void JuiEventManager::SetController( JuiContainer* controller )
 {
 	m_pInputController = controller;
 }
 
-void JuiInputManager::MouseLock( JuiControl *control )
+void JuiEventManager::MouseLock( JuiControl *control )
 {
 	if(m_pMouseCapturedControl != NULL)
 		return;
@@ -30,7 +30,7 @@ void JuiInputManager::MouseLock( JuiControl *control )
 		m_pMouseControl->OnMouseLeave();
 }
 
-void JuiInputManager::MouseUnlock( JuiControl *control )
+void JuiEventManager::MouseUnlock( JuiControl *control )
 {
 	if(m_pMouseCapturedControl != control)
 		return;
@@ -38,17 +38,17 @@ void JuiInputManager::MouseUnlock( JuiControl *control )
 	m_pMouseCapturedControl = NULL;
 }
 
-JuiControl* JuiInputManager::GetMouseControl()
+JuiControl* JuiEventManager::GetMouseControl()
 {
 	return m_pMouseControl;
 }
 
-JuiControl* JuiInputManager::GetMouseCaptureControl()
+JuiControl* JuiEventManager::GetMouseCaptureControl()
 {
 	return m_pMouseCapturedControl;
 }
 
-bool JuiInputManager::ProcessInputEvent( InputEventInfo &inputEvent )
+bool JuiEventManager::ProcessInputEvent( InputEventInfo &inputEvent )
 {
 	if(!m_pInputController)
 		return false;
@@ -64,12 +64,12 @@ bool JuiInputManager::ProcessInputEvent( InputEventInfo &inputEvent )
 	return false;
 }
 
-bool JuiInputManager::ProcessKeyboardEvent( InputEventInfo &inputEvent )
+bool JuiEventManager::ProcessKeyboardEvent( InputEventInfo &inputEvent )
 {
 	return false;
 }
 
-bool JuiInputManager::ProcessMouseEvent( InputEventInfo &inputEvent )
+bool JuiEventManager::ProcessMouseEvent( InputEventInfo &inputEvent )
 {
 	m_LastEvent.button = inputEvent.objInst;
 	m_LastEvent.pos = inputEvent.pos;
@@ -95,7 +95,7 @@ bool JuiInputManager::ProcessMouseEvent( InputEventInfo &inputEvent )
 }
 
 
-bool JuiInputManager::OnMouseDown( const MouseEventInfo &event )
+bool JuiEventManager::OnMouseDown( const MouseEventInfo &event )
 {
 	if(m_pMouseCapturedControl != NULL)
 	{
@@ -113,7 +113,7 @@ bool JuiInputManager::OnMouseDown( const MouseEventInfo &event )
 	return false;
 }
 
-bool JuiInputManager::OnMouseUp( const MouseEventInfo &event )
+bool JuiEventManager::OnMouseUp( const MouseEventInfo &event )
 {
 	if(m_pMouseCapturedControl != NULL)
 	{
@@ -131,7 +131,7 @@ bool JuiInputManager::OnMouseUp( const MouseEventInfo &event )
 	return false;
 }
 
-bool JuiInputManager::OnMouseMove( const MouseEventInfo &event )
+bool JuiEventManager::OnMouseMove( const MouseEventInfo &event )
 {
 	if(m_pMouseCapturedControl != NULL)
 	{
@@ -150,7 +150,7 @@ bool JuiInputManager::OnMouseMove( const MouseEventInfo &event )
 	return false;
 }
 
-void JuiInputManager::FindMouseControl( const MouseEventInfo &event )
+void JuiEventManager::FindMouseControl( const MouseEventInfo &event )
 {
 	JuiControl *controlHit = m_pInputController->FindHitControl(event.pos);
 	if(controlHit != m_pMouseControl)
@@ -165,7 +165,7 @@ void JuiInputManager::FindMouseControl( const MouseEventInfo &event )
 	}
 }
 
-void JuiInputManager::CheckLockMouseMove( const MouseEventInfo &event )
+void JuiEventManager::CheckLockMouseMove( const MouseEventInfo &event )
 {
 	JuiControl *controlHit = m_pInputController->FindHitControl(event.pos);
 	if(controlHit != m_pMouseControl)

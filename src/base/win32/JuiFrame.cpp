@@ -6,7 +6,6 @@ JIMPLEMENT_DYNAMIC_CLASS(JuiFrame, JuiContainer)
 JuiFrame::JuiFrame()
 {
 	m_InputMgr.SetController(this);
-	m_bMouseTrack = true;
 }
 
 JuiFrame::~JuiFrame()
@@ -16,11 +15,11 @@ JuiFrame::~JuiFrame()
 
 void JuiFrame::AddUpdateRegion( const JPoint2I& pos, const JPoint2I& extent )
 {
-	if(m_pBackground->HasAlphaChannel())
-	{
-		::InvalidateRect(m_hWnd, NULL, FALSE);
-		return;
-	}
+// 	if(m_pBackground->HasAlphaChannel())
+// 	{
+// 		::InvalidateRect(m_hWnd, NULL, FALSE);
+// 		return;
+// 	}
 
 	RECT rcUpdate;
 	rcUpdate.left = pos.x;
@@ -31,7 +30,7 @@ void JuiFrame::AddUpdateRegion( const JPoint2I& pos, const JPoint2I& extent )
 	::InvalidateRect(m_hWnd, &rcUpdate, FALSE);
 }
 
-JuiInputManager * JuiFrame::GetInputGenerator()
+JuiEventManager * JuiFrame::GetInputGenerator()
 {
 	return &m_InputMgr;
 }
@@ -40,147 +39,6 @@ void JuiFrame::SetBounds( const JPoint2I& position, const JPoint2I& extent )
 {
 	Parent::SetBounds(position, extent);
 	JuiWindow::SetSize(extent.x,extent.y);
-}
-
-void JuiFrame::OnRender( JPoint2I offset, const JRectI& rcPaint )
-{
-	if(m_pBackground != NULL)
-		DrawImage(m_pBackground, offset, rcPaint);
-
-	Parent::OnRender(offset, rcPaint);
-}
-
-bool JuiFrame::SetBackground( const char* filename )
-{
-	m_pBackground = sm_pRender->CreateImage(filename);
-	return m_pBackground != NULL;
-}
-
-bool JuiFrame::SetBackground(const std::string& filename)
-{
-	m_pBackground = sm_pRender->CreateImage(filename.c_str());
-	return m_pBackground != NULL;
-}
-
-LRESULT JuiFrame::HandleMessage( UINT uMsg, WPARAM wParam, LPARAM lParam )
-{
-	bool done = false;
-	LRESULT result = 0;
-
-	switch(uMsg)
-	{
-	case WM_CREATE:
-		done = HandleCreate((LPCREATESTRUCT)lParam);
-		break;
-	case WM_CLOSE:
-		done = HandleClose();
-		break;
-	case WM_DESTROY:
-		done = HandleDestroy();
-		break;
-	case WM_SYSCOMMAND:
-		done = HandleSysCommand((UINT)wParam, MAKEPOINTS(lParam));
-		break;
-	case WM_NCHITTEST:
-		{
-			POINT pt;
-			POINTSTOPOINT(pt, lParam);
-			::ScreenToClient(m_hWnd, &pt);
-
-			LONG pts = POINTTOPOINTS(pt);
-			done = HandleHitTest(MAKEPOINTS(pts), &result);
-		}
-		break;
-	case WM_NCMOUSEMOVE:
-		{
-			POINT pt;
-			POINTSTOPOINT(pt, lParam);
-			::ScreenToClient(m_hWnd, &pt);
-
-			LONG pts = POINTTOPOINTS(pt);
-			done = HandleMouseMove((UINT)wParam, MAKEPOINTS(pts));
-		}
-		break;
-	case WM_MOUSEMOVE:
-		{
-			if(m_bMouseTrack)
-			{
-				TRACKMOUSEEVENT tme = {0};
-				tme.cbSize = sizeof(tme);
-				tme.dwFlags = TME_LEAVE;
-				tme.hwndTrack = m_hWnd;
-				tme.dwHoverTime = HOVER_DEFAULT;
-				::TrackMouseEvent(&tme);
-				m_bMouseTrack = false;
-			}
-
-			done = HandleMouseMove((UINT)wParam, MAKEPOINTS(lParam));
-		}
-		break;
-	case WM_MOUSELEAVE:
-		{
-			LPARAM pos = -1;
-			done = HandleMouseMove((UINT)wParam, MAKEPOINTS(pos));
-			m_bMouseTrack = true;
-		}
-		break;
-	case WM_LBUTTONDOWN:
-	case WM_LBUTTONUP:
-	case WM_LBUTTONDBLCLK:
-	case WM_RBUTTONDOWN:
-	case WM_RBUTTONUP:
-	case WM_RBUTTONDBLCLK:
-	case WM_MBUTTONDOWN:
-	case WM_MBUTTONUP:
-	case WM_MBUTTONDBLCLK:
-	case WM_NCLBUTTONDOWN:
-	case WM_NCLBUTTONUP:
-	case WM_NCLBUTTONDBLCLK:
-	case WM_NCRBUTTONDOWN:
-	case WM_NCRBUTTONUP:
-	case WM_NCRBUTTONDBLCLK:
-	case WM_NCMBUTTONDOWN:
-	case WM_NCMBUTTONUP:
-	case WM_NCMBUTTONDBLCLK:
-		done = HandleMouseButton(uMsg, (int)wParam, MAKEPOINTS(lParam));
-		break;
-	case WM_SIZE:
-		done = HandleSize((UINT)wParam,GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
-		break;
-	case WM_PAINT:
-		done = HandlePaint();
-		break;
-	case WM_GETMINMAXINFO:
-		done = HandleMinMaxInfo((LPMINMAXINFO) lParam);
-		break;
-	case WM_KILLFOCUS:
-		done = 0;
-		break;
-	}
-
-	return done ? result : DefaultWndProc(uMsg, wParam, lParam);
-}
-
-bool JuiFrame::HandleCreate( LPCREATESTRUCT lpCS )
-{
-	return false;
-}
-
-bool JuiFrame::HandleClose()
-{
-	return false;
-}
-
-bool JuiFrame::HandleDestroy()
-{
-	PostQuitMessage(0);
-	return true;
-}
-
-
-bool JuiFrame::HandleSysCommand( UINT uCmdType, POINTS pt )
-{
-	return false;
 }
 
 bool JuiFrame::HandleHitTest( POINTS pt, LRESULT* result )
@@ -335,17 +193,21 @@ bool JuiFrame::HandleMinMaxInfo( LPMINMAXINFO lpMMI )
 	monitor.cbSize = sizeof(monitor);
 	::GetMonitorInfo(::MonitorFromWindow(m_hWnd, MONITOR_DEFAULTTONEAREST), &monitor);
 
-	RECT rcWork = monitor.rcWork;
-	rcWork.left -= monitor.rcMonitor.left;
-	rcWork.top -= monitor.rcMonitor.top;
+	POINT rcWorkPos;
+	rcWorkPos.x = monitor.rcWork.left - monitor.rcMonitor.left;
+	rcWorkPos.y = monitor.rcWork.top - monitor.rcMonitor.top;
+
+	POINT rcWorkSize;
+	rcWorkSize.x = monitor.rcWork.right - monitor.rcWork.left;
+	rcWorkSize.y = monitor.rcWork.bottom - monitor.rcWork.top;
 	
 	POINT ptMax;
-	ptMax.x = (m_ptMaxSize.x >= m_ptMinSize.x) ? m_ptMaxSize.x : (rcWork.right - rcWork.left);
-	ptMax.y = (m_ptMaxSize.y >= m_ptMinSize.y) ? m_ptMaxSize.y : (rcWork.bottom - rcWork.top);
+	ptMax.x = (m_ptMaxSize.x >= m_ptMinSize.x) ? m_ptMaxSize.x : rcWorkSize.x;
+	ptMax.y = (m_ptMaxSize.y >= m_ptMinSize.y) ? m_ptMaxSize.y : rcWorkSize.y;
 
 	// 计算最大化时，正确的原点坐标
-	lpMMI->ptMaxPosition.x	= rcWork.left + ((rcWork.right - rcWork.left - ptMax.x)>>1);
-	lpMMI->ptMaxPosition.y	= rcWork.top + ((rcWork.bottom - rcWork.top - ptMax.y)>>1);
+	lpMMI->ptMaxPosition.x	= rcWorkPos.x + ((rcWorkSize.x - ptMax.x)>>1);
+	lpMMI->ptMaxPosition.y	= rcWorkPos.y + ((rcWorkSize.y - ptMax.y)>>1);
 
 	lpMMI->ptMaxSize.x = ptMax.x;
 	lpMMI->ptMaxSize.y = ptMax.y;

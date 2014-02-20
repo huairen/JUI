@@ -1,5 +1,6 @@
 #include "JuiControl.h"
 #include "container/JuiContainer.h"
+#include "Graphics/Drawable/JDrawable.h"
 
 JBEGIN_CLASS_ENUM(JuiControl,HorizAlignOptions)
 	JENUM_NAME_MEMBER(left, JuiControl::HORIZ_ALIGN_LEFT)
@@ -25,13 +26,20 @@ JIMPLEMENT_CLASS_COMMON(JuiControl, JObject, NULL)
 	JCLASS_PROPERTY(JuiControl, mouseEnable, bool, SetMouseEnable, IsMouseEnable)
 	JCLASS_WRITEONLY_PROPERTY(JuiControl, horizAlign, JuiControl::HorizAlignOptions, SetHorizAlign)
 	JCLASS_WRITEONLY_PROPERTY(JuiControl, vertAlign, JuiControl::VertAlignOptions, SetVertAlign)
+	JCLASS_WRITEONLY_PROPERTY(JuiControl, background, std::string, SetBackground)
 
 
 JRender* JuiControl::sm_pRender = NULL;
 
-JuiControl::JuiControl() : m_nFlags(FLAG_ENABLE | FLAG_VISIBLE | FLAG_MOUSE_ENABLE),
-	m_HorizAlign(HORIZ_ALIGN_LEFT), m_VerzAlign(VERT_ALIGN_TOP), m_ScaleMode(SCALE_CENTER),
-	m_pParent(0), m_rcBounds(0,0,100,100), m_ptMinSize(8,2), m_ptMaxSize(-1,-1)
+JuiControl::JuiControl()
+	: m_nFlags(FLAG_ENABLE | FLAG_VISIBLE | FLAG_MOUSE_ENABLE)
+	, m_HorizAlign(HORIZ_ALIGN_LEFT), m_VerzAlign(VERT_ALIGN_TOP)
+	, m_ScaleMode(SCALE_CENTER)
+	, m_pParent(0)
+	, m_rcBounds(0,0,100,100)
+	, m_ptMinSize(8,2)
+	, m_ptMaxSize(-1,-1)
+	, m_pBackground(0)
 {
 }
 
@@ -72,7 +80,7 @@ void JuiControl::MouseLock()
 	if(!root)
 		return;
 
-	JuiInputManager *input = root->GetInputGenerator();
+	JuiEventManager *input = root->GetInputGenerator();
 	if(input)
 		input->MouseLock(this);
 }
@@ -83,7 +91,7 @@ void JuiControl::MouseUnlock()
 	if(!root)
 		return;
 
-	JuiInputManager *input = root->GetInputGenerator();
+	JuiEventManager *input = root->GetInputGenerator();
 	if(input)
 		input->MouseUnlock(this);
 }
@@ -94,10 +102,15 @@ bool JuiControl::IsMouseLocked()
 	if(!root)
 		return false;
 
-	JuiInputManager *input = root->GetInputGenerator();
+	JuiEventManager *input = root->GetInputGenerator();
 	if(input)
 		return input->GetMouseCaptureControl() == this;
 	return false;
+}
+
+void JuiControl::SetBackground(const std::string& drawable)
+{
+	m_pBackground = JDrawable::Create(drawable.c_str());
 }
 
 JuiControl* JuiControl::Clone()
@@ -207,8 +220,14 @@ void JuiControl::NotifySiblings( int message, int param )
 	}
 }
 
+void JuiControl::OnRender(JPoint2I offset, const JRectI& rcPaint)
+{
+	if(m_pBackground != NULL)
+		m_pBackground->Draw();
+}
 
-void JuiControl::DrawImage( JImage* img, const JPoint2I &offset, const JRectI &rcPaint,
+
+void JuiControl::DrawImage( JTexture2D* img, const JPoint2I &offset, const JRectI &rcPaint,
 						   const JRectI *srcRect, const JRectI *destRect )
 {
 	if(img == NULL)
@@ -284,7 +303,7 @@ void JuiControl::DrawImage( JImage* img, const JPoint2I &offset, const JRectI &r
 	}
 }
 
-void JuiControl::DrawImageScaleCenter( JImage* img, const JPoint2I &offset, JRectI &rcPaint,
+void JuiControl::DrawImageScaleCenter( JTexture2D* img, const JPoint2I &offset, JRectI &rcPaint,
 									  const JRectI &srcRect, const JRectI &destRect )
 {
 	JRectI imgRect;

@@ -1,18 +1,19 @@
-#ifndef JUI_HBOXLAYOUT_H_
-#define JUI_HBOXLAYOUT_H_
+#ifndef JUI_RELATIVELAYOUT_H_
+#define JUI_RELATIVELAYOUT_H_
 
 #include "container/JuiContainer.h"
 
-class JuiHBoxLayout : public JuiContainer
+class JuiRelativeLayout : public JuiContainer
 {
 	typedef JuiContainer Parent;
 public:
-	JuiHBoxLayout();
-	~JuiHBoxLayout();
+	JuiRelativeLayout();
+	~JuiRelativeLayout();
 
 	virtual void UpdateLayout(const JRectI& newRect);
 
 protected:
+
 };
 
 #endif

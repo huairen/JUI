@@ -25,7 +25,7 @@ JuiTabBook::~JuiTabBook()
 
 bool JuiTabBook::LoadNormalImage( const char* filename )
 {
-	m_pNormalImage = sm_pRender->CreateImage(filename);
+	m_pNormalImage = sm_pRender->CreateTexture(filename);
 	if(m_pNormalImage != NULL)
 	{
 		m_nTabHeight = m_pNormalImage->GetHeight();
@@ -36,13 +36,13 @@ bool JuiTabBook::LoadNormalImage( const char* filename )
 
 bool JuiTabBook::LoadHighlightImage( const char* filename )
 {
-	m_pHighlightImage = sm_pRender->CreateImage(filename);
+	m_pHighlightImage = sm_pRender->CreateTexture(filename);
 	return (m_pHighlightImage != NULL);
 }
 
 bool JuiTabBook::LoadPressImage( const char* filename )
 {
-	m_pPressImage = sm_pRender->CreateImage(filename);
+	m_pPressImage = sm_pRender->CreateTexture(filename);
 	return (m_pPressImage != NULL);
 }
 

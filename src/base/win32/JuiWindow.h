@@ -28,17 +28,27 @@ public:
 
 protected:
 	virtual LPCTSTR GetWindowClassName() const;
-	virtual LRESULT HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+	virtual LRESULT HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam);	virtual bool HandleCreate(LPCREATESTRUCT lpCS);
+	virtual bool HandleClose();
+	virtual bool HandleDestroy();
+	virtual bool HandleSysCommand(UINT uCmdType, POINTS pt);
+	virtual bool HandleHitTest(POINTS pt, LRESULT* result);
+	virtual bool HandleMouseMove(UINT fwKeys, POINTS pt);
+	virtual bool HandleMouseButton(UINT uMsg, UINT fwKeys, POINTS pt);
+	virtual bool HandleSize(UINT nSizeType, WORD nWidht, WORD nHeight);
+	virtual bool HandlePaint();
+	virtual bool HandleMinMaxInfo(LPMINMAXINFO lpMMI);
 
 	bool RegisterWindowClass();
 	LRESULT DefaultWndProc(UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 	static LRESULT CALLBACK WndProc(HWND,UINT,WPARAM,LPARAM);
-
 protected:
 	HWND m_hWnd;
 	WNDPROC m_pOldWndProc;
 	JuiWindow *m_pParent;
+	bool m_bMouseTrack;
 };
 
 inline HWND JuiWindow::GetHander()
