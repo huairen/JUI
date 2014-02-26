@@ -1,4 +1,5 @@
 #include "JuiFrame.h"
+#include "Graphics/JRenderSystem.h"
 
 JIMPLEMENT_DYNAMIC_CLASS(JuiFrame, JuiContainer)
 	JCLASS_WRITEONLY_PROPERTY(JuiFrame, image, std::string, SetBackground)
@@ -174,15 +175,16 @@ bool JuiFrame::HandleSize(UINT nSizeType, WORD nWidht, WORD nHeight)
 bool JuiFrame::HandlePaint()
 {
 	JRectI rcPaint;
-	if(sm_pRender == NULL)
+	JRenderer* pRenderer = JRenderSystem::GetInstance().GetRenderer();
+	if(pRenderer == NULL)
 		return false;
 
-	if(sm_pRender->BeginPaint())
+	if(pRenderer->BeginPaint())
 	{
-		sm_pRender->GetUpdateRect(rcPaint);
+		pRenderer->GetUpdateRect(rcPaint);
 		OnRender(JPoint2I(0,0), rcPaint);
 
-		sm_pRender->EndPaint();
+		pRenderer->EndPaint();
 	}
 	return true;
 }

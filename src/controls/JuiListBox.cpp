@@ -28,10 +28,10 @@ void JuiListBox::OnRender( JPoint2I offset, const JRectI& rcPaint )
 {
 	for (int i=0; i<m_lsItems.GetCount(); ++i)
 	{
-		Item* pItem = static_cast<Item*>(m_lsItems.At(i));
-		if(pItem->ctrl != NULL)
+		Item& pItem = m_lsItems.At(i);
+		if(pItem.ctrl != NULL)
 		{
-			pItem->ctrl->OnRender(offset, rcPaint);
+			pItem.ctrl->OnRender(offset, rcPaint);
 			continue;
 		}
 	}
@@ -43,13 +43,13 @@ void JuiListBox::AddItem( const char* text, void *itemData /*= NULL*/ )
 	if( !text )
 		return;
 
-	Item *newItem = m_lsItems.Increment();
-	if( !newItem )
-		return;
+	m_lsItems.Increment();
 
-	newItem->itemText    = text;
-	newItem->itemData    = itemData;
-	newItem->isSelected  = false;
+	Item& newItem = m_lsItems.Last();
+
+	newItem.itemText    = text;
+	newItem.itemData    = itemData;
+	newItem.isSelected  = false;
 
 	UpdateSize(m_lsItems.GetCount() - 1, 1);
 }
@@ -62,13 +62,12 @@ void JuiListBox::InsertItem( int index, const char *text, void *itemData /*= NUL
 	if( index >= m_lsItems.GetCount() )
 		index = m_lsItems.GetCount();
 
-	Item *newItem = m_lsItems.Increment();
-	if( !newItem )
-		return;
+	m_lsItems.Increment();
 
-	newItem->itemText    = text;
-	newItem->itemData    = itemData;
-	newItem->isSelected  = false;
+	Item &newItem = m_lsItems.Last();
+	newItem.itemText    = text;
+	newItem.itemData    = itemData;
+	newItem.isSelected  = false;
 
 	UpdateSize(index, m_lsItems.GetCount() - index);
 }
@@ -84,14 +83,13 @@ JuiControl* JuiListBox::PushDefaultItem()
 
 	pClone->SetVisible(true);
 
-	Item *newItem = m_lsItems.Increment();
-	if( !newItem )
-		return NULL;
+	m_lsItems.Increment();
 
-	newItem->itemText.clear();
-	newItem->itemData    = NULL;
-	newItem->isSelected  = false;
-	newItem->ctrl = pClone;
+	Item &newItem = m_lsItems.Last();
+	newItem.itemText.clear();
+	newItem.itemData    = NULL;
+	newItem.isSelected  = false;
+	newItem.ctrl = pClone;
 
 	UpdateSize(m_lsItems.GetCount() - 1, 1);
 
@@ -118,10 +116,10 @@ void JuiListBox::UpdateSize( int index, int count )
 
 	for (int i=index; i<count; ++i)
 	{
-		Item* pItem = m_lsItems.At(i);
-		if(pItem->ctrl != NULL)
+		Item& pItem = m_lsItems.At(i);
+		if(pItem.ctrl != NULL)
 		{
-			JuiControl* pCtrl = pItem->ctrl;
+			JuiControl* pCtrl = pItem.ctrl;
 			if(i == index)
 			{
 				nPosX = pCtrl->GetPosX();

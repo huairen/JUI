@@ -1,10 +1,6 @@
 #include "JuiButton.h"
 
 JIMPLEMENT_DYNAMIC_CLASS(JuiButton, JuiControl)
-	JCLASS_WRITEONLY_PROPERTY(JuiButton, NormalImage, std::string, LoadNormalImage)
-	JCLASS_WRITEONLY_PROPERTY(JuiButton, HoverImage, std::string, LoadHoverImage)
-	JCLASS_WRITEONLY_PROPERTY(JuiButton, PressImage, std::string, LoadPressImage)
-	JCLASS_WRITEONLY_PROPERTY(JuiButton, DisableImage, std::string, LoadDisableImage)
 
 JuiButton::JuiButton()
 {
@@ -20,30 +16,6 @@ JuiButton::JuiButton()
 JuiButton::~JuiButton()
 {
 
-}
-
-bool JuiButton::LoadNormalImage(const std::string& filename)
-{
-	m_pNormalImage = sm_pRender->CreateTexture(filename.c_str());
-	return (m_pNormalImage != NULL);
-}
-
-bool JuiButton::LoadHoverImage(const std::string& filename)
-{
-	m_pHoverImage = sm_pRender->CreateTexture(filename.c_str());
-	return (m_pHoverImage != NULL);
-}
-
-bool JuiButton::LoadPressImage(const std::string& filename)
-{
-	m_pPressImage = sm_pRender->CreateTexture(filename.c_str());
-	return (m_pPressImage != NULL);
-}
-
-bool JuiButton::LoadDisableImage(const std::string& filename)
-{
-	m_pDisabledImage = sm_pRender->CreateTexture(filename.c_str());
-	return (m_pDisabledImage != NULL);
 }
 
 void JuiButton::OnClick()
@@ -108,7 +80,4 @@ void JuiButton::OnRender( JPoint2I offset, const JRectI& rcPaint )
 		pImg = m_pPressImage;
 	else if(m_bMouseOver)
 		pImg = m_pHoverImage;
-
-	if(pImg != NULL)
-		DrawImage(pImg, offset, rcPaint);
 }

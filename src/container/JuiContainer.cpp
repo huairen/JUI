@@ -31,6 +31,8 @@ void JuiContainer::SetBounds( const JPoint2I& point, const JPoint2I& size )
 
 void JuiContainer::OnRender(JPoint2I offset,  const JRectI& rcPaint )
 {
+	Parent::OnRender(offset, rcPaint);
+
 	JuiControl* pControl = (JuiControl*)m_lsChilds.First();
 	while(pControl)
 	{

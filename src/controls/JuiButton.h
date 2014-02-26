@@ -12,11 +12,6 @@ public:
 	JuiButton();
 	~JuiButton();
 
-	bool LoadNormalImage(const std::string& filename);
-	bool LoadHoverImage(const std::string& filename);
-	bool LoadPressImage(const std::string& filename);
-	bool LoadDisableImage(const std::string& filename);
-
 	virtual void OnClick();
 
 	virtual void OnMouseEnter();

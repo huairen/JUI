@@ -5,7 +5,6 @@
 #include "JuiEventManager.h"
 #include "Object/JObject.h"
 #include "math/JRect.h"
-#include "graphics/JRender.h"
 
 class JuiContainer;
 class JDrawable;
@@ -164,13 +163,6 @@ public:
 	// @ }
 
 protected:
-	void DrawImage(JTexture2D* img, const JPoint2I &offset, const JRectI &rcPaint,
-		const JRectI *srcRect = NULL, const JRectI *destRect = NULL);
-	void DrawImageScaleCenter(JTexture2D* img, const JPoint2I &offset, JRectI &rcPaint,
-		const JRectI &srcRect, const JRectI &destRect);
-
-
-protected:
 	std::string m_Name;
 	uint32_t m_nFlags;
 	HorizAlignOptions m_HorizAlign;
@@ -184,8 +176,6 @@ protected:
 	JPoint2I m_ptMaxSize;
 
 	JDrawable* m_pBackground;
-
-	static JRender* sm_pRender;
 };
 
 #include "JuiControl.inl"

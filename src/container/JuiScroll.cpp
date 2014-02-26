@@ -6,7 +6,7 @@ JuiScroll::JuiScroll()
 	m_bVertBar = true;
 	m_bHorizBar = false;
 
-	m_pBarImg = NULL;
+// 	m_pBarImg = NULL;
 }
 
 JuiScroll::~JuiScroll()
@@ -16,12 +16,10 @@ JuiScroll::~JuiScroll()
 
 void JuiScroll::LoadBarImage( const char* filename )
 {
-	m_pBarImg = sm_pRender->CreateTexture(filename);
 }
 
 void JuiScroll::LoadArrowImage( const char* filename )
 {
-	m_pArrowImg = sm_pRender->CreateTexture(filename);
 }
 
 void JuiScroll::OnMouseDown( const MouseEventInfo& event )
@@ -60,9 +58,6 @@ void JuiScroll::UpdateLayout( const JRectI& newRect )
 void JuiScroll::DrawVScrollBar( const JPoint2I &offset, const JRectI& rcPaint )
 {
 	JPoint2I pos = offset;
-	if(m_pArrowImg != NULL)
-	{
-	}
 }
 
 void JuiScroll::DrawHScrollBar( const JPoint2I &offset, const JRectI& rcPaint )

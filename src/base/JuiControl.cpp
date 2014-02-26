@@ -28,9 +28,6 @@ JIMPLEMENT_CLASS_COMMON(JuiControl, JObject, NULL)
 	JCLASS_WRITEONLY_PROPERTY(JuiControl, vertAlign, JuiControl::VertAlignOptions, SetVertAlign)
 	JCLASS_WRITEONLY_PROPERTY(JuiControl, background, std::string, SetBackground)
 
-
-JRender* JuiControl::sm_pRender = NULL;
-
 JuiControl::JuiControl()
 	: m_nFlags(FLAG_ENABLE | FLAG_VISIBLE | FLAG_MOUSE_ENABLE)
 	, m_HorizAlign(HORIZ_ALIGN_LEFT), m_VerzAlign(VERT_ALIGN_TOP)
@@ -223,10 +220,10 @@ void JuiControl::NotifySiblings( int message, int param )
 void JuiControl::OnRender(JPoint2I offset, const JRectI& rcPaint)
 {
 	if(m_pBackground != NULL)
-		m_pBackground->Draw();
+		m_pBackground->Draw(JRectI(offset, m_rcBounds.extent), rcPaint);
 }
 
-
+/*
 void JuiControl::DrawImage( JTexture2D* img, const JPoint2I &offset, const JRectI &rcPaint,
 						   const JRectI *srcRect, const JRectI *destRect )
 {
@@ -381,3 +378,4 @@ void JuiControl::DrawImageScaleCenter( JTexture2D* img, const JPoint2I &offset, 
 	rcPaint.extent.y -= paintRect.extent.y;
 }
 
+*/

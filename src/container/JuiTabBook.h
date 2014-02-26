@@ -23,10 +23,6 @@ class JuiTabBook : public JuiContainer
 public:
 	JuiTabBook();
 	~JuiTabBook();
-	
-	bool LoadNormalImage(const char* filename);
-	bool LoadHighlightImage(const char* filename);
-	bool LoadPressImage(const char* filename);
 
 	virtual void OnRender(JPoint2I offset, const JRectI& rcPaint);
 	virtual void OnChildAdded(JuiControl *child);

@@ -23,29 +23,6 @@ JuiTabBook::~JuiTabBook()
 
 }
 
-bool JuiTabBook::LoadNormalImage( const char* filename )
-{
-	m_pNormalImage = sm_pRender->CreateTexture(filename);
-	if(m_pNormalImage != NULL)
-	{
-		m_nTabHeight = m_pNormalImage->GetHeight();
-		return true;
-	}
-	return false;
-}
-
-bool JuiTabBook::LoadHighlightImage( const char* filename )
-{
-	m_pHighlightImage = sm_pRender->CreateTexture(filename);
-	return (m_pHighlightImage != NULL);
-}
-
-bool JuiTabBook::LoadPressImage( const char* filename )
-{
-	m_pPressImage = sm_pRender->CreateTexture(filename);
-	return (m_pPressImage != NULL);
-}
-
 void JuiTabBook::OnRender( JPoint2I offset, const JRectI& rcPaint )
 {
 	int nWidth;
@@ -147,12 +124,12 @@ void JuiTabBook::OnMouseMove( const MouseEventInfo& event )
 
 void JuiTabBook::RenderTab(const JRectI& tabRect, JuiTabPage *tab)
 {
-	if(tab == m_pActivePage)
-		DrawImage(m_pPressImage, tabRect.position, tabRect, NULL, &tabRect);
-	else if(tab == m_pHoverTab)
-		DrawImage(m_pHighlightImage, tabRect.position, tabRect, NULL, &tabRect);
-	else
-		DrawImage(m_pNormalImage, tabRect.position, tabRect, NULL, &tabRect);
+// 	if(tab == m_pActivePage)
+// 		DrawImage(m_pPressImage, tabRect.position, tabRect, NULL, &tabRect);
+// 	else if(tab == m_pHoverTab)
+// 		DrawImage(m_pHighlightImage, tabRect.position, tabRect, NULL, &tabRect);
+// 	else
+// 		DrawImage(m_pNormalImage, tabRect.position, tabRect, NULL, &tabRect);
 }
 
 JuiTabPage * JuiTabBook::FindHitTab( const JPoint2I &pt )
