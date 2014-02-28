@@ -14,21 +14,6 @@ inline JuiContainer*  JuiControl::GetParent()
 	return m_pParent;
 }
 
-inline void JuiControl::SetHorizAlign(HorizAlignOptions horiz)
-{
-	m_HorizAlign = horiz;
-}
-
-inline void JuiControl::SetVertAlign(VertAlignOptions vert)
-{
-	m_VerzAlign = vert;
-}
-
-inline void JuiControl::SetScaleMode( ScaleMode mode )
-{
-	m_ScaleMode = mode;
-}
-
 inline const char* JuiControl::GetName()
 {
 	return m_Name.c_str();

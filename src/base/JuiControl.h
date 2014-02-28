@@ -13,7 +13,6 @@ class JuiControl : public JObject
 {
 	JDECLARE_ABSTRACT_CLASS(JuiControl)
 
-public:
 	enum ControlFlags
 	{
 		FLAG_VISIBLE			= 0x0001,
@@ -26,51 +25,14 @@ public:
 		FLAG_CONTAINER			= 0x0200,
 	};
 
-	enum HorizAlignOptions
-	{
-		HORIZ_ALIGN_LEFT,
-		HORIZ_ALIGN_RIGHT,
-		HORIZ_ALIGN_CENTER,
-		HORIZ_ALIGN_WIDTH,
-	};
-
-	enum VertAlignOptions
-	{
-		VERT_ALIGN_TOP,
-		VERT_ALIGN_BOTTOM,
-		VERT_ALIGN_CENTER,
-		VERT_ALIGN_HEIGHT,
-	};
-
-	enum ScaleMode
-	{
-		SCALE_ALL,
-		SCALE_CENTER,
-		SCALE_SIDE,
-	};
-
-	enum ControlMessage
-	{
-		MSG_CLICK,
-		MSG_RADIO_CLICK,
-	};
-
 public:
 	JuiControl();
 	virtual ~JuiControl();
 
-	void SetName(const char* name);
-	const char* GetName();
-
-	void SetParent(JuiContainer* control);
-	JuiContainer* GetParent();
+	virtual JuiControl* Clone();
 
 	JuiControl* GetRoot();
 	virtual JuiEventManager *GetInputGenerator() { return NULL; }
-
-	void SetHorizAlign(HorizAlignOptions horiz);
-	void SetVertAlign(VertAlignOptions vert);
-	void SetScaleMode(ScaleMode mode);
 
 	void SetUpdateRegion(const JPoint2I& pos, const JPoint2I& size);
 	void SetUpdate();
@@ -80,9 +42,14 @@ public:
 	void MouseUnlock();
 	bool IsMouseLocked();
 
-	void SetBackground(const std::string& drawable);
 
-	virtual JuiControl* Clone();
+	void SetName(const char* name);
+	const char* GetName();
+
+	void SetParent(JuiContainer* control);
+	JuiContainer* GetParent();
+
+	void SetBackground(const std::string& drawable);
 
 public:
 	// @ point and size
@@ -136,6 +103,7 @@ public:
 	void SetEnable(bool value);
 	void SetMouseEnable(bool value);
 
+protected:
 	bool HasFlag(int flag) const;
 	virtual void AddFlag(int flag);
 	virtual void RemoveFlag(int flag);
@@ -165,16 +133,11 @@ public:
 protected:
 	std::string m_Name;
 	uint32_t m_nFlags;
-	HorizAlignOptions m_HorizAlign;
-	VertAlignOptions m_VerzAlign;
-	ScaleMode m_ScaleMode;
-
-	JuiContainer *m_pParent;
-
 	JRectI m_rcBounds;
 	JPoint2I m_ptMinSize;
 	JPoint2I m_ptMaxSize;
 
+	JuiContainer *m_pParent;
 	JDrawable* m_pBackground;
 };
 

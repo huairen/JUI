@@ -1,30 +1,30 @@
-#include "JuiListBox.h"
+#include "JuiListView.h"
 #include "container/JuiContainer.h"
 
-JIMPLEMENT_FORCE_LINK_OBJ(JuiListBox)
-JIMPLEMENT_DYNAMIC_CLASS(JuiListBox, JuiControl)
+JIMPLEMENT_FORCE_LINK_OBJ(JuiListView)
+JIMPLEMENT_DYNAMIC_CLASS(JuiListView, JuiControl)
 
-JuiListBox::JuiListBox()
+JuiListView::JuiListView()
 	: m_pItemModel(NULL)
 {
 }
 
-JuiListBox::~JuiListBox()
+JuiListView::~JuiListView()
 {
 
 }
 
-void JuiListBox::OnMouseDown( const MouseEventInfo& event )
+void JuiListView::OnMouseDown( const MouseEventInfo& event )
 {
 
 }
 
-void JuiListBox::OnMouseUp( const MouseEventInfo& event )
+void JuiListView::OnMouseUp( const MouseEventInfo& event )
 {
 
 }
 
-void JuiListBox::OnRender( JPoint2I offset, const JRectI& rcPaint )
+void JuiListView::OnRender( JPoint2I offset, const JRectI& rcPaint )
 {
 	for (int i=0; i<m_lsItems.GetCount(); ++i)
 	{
@@ -38,7 +38,7 @@ void JuiListBox::OnRender( JPoint2I offset, const JRectI& rcPaint )
 	
 }
 
-void JuiListBox::AddItem( const char* text, void *itemData /*= NULL*/ )
+void JuiListView::AddItem( const char* text, void *itemData /*= NULL*/ )
 {
 	if( !text )
 		return;
@@ -54,7 +54,7 @@ void JuiListBox::AddItem( const char* text, void *itemData /*= NULL*/ )
 	UpdateSize(m_lsItems.GetCount() - 1, 1);
 }
 
-void JuiListBox::InsertItem( int index, const char *text, void *itemData /*= NULL*/ )
+void JuiListView::InsertItem( int index, const char *text, void *itemData /*= NULL*/ )
 {
 	if( !text )
 		return;
@@ -72,7 +72,7 @@ void JuiListBox::InsertItem( int index, const char *text, void *itemData /*= NUL
 	UpdateSize(index, m_lsItems.GetCount() - index);
 }
 
-JuiControl* JuiListBox::PushDefaultItem()
+JuiControl* JuiListView::PushDefaultItem()
 {
 	if(m_pItemModel == NULL)
 		return NULL;
@@ -96,17 +96,17 @@ JuiControl* JuiListBox::PushDefaultItem()
 	return pClone;
 }
 
-void JuiListBox::DeleteItem( int index )
+void JuiListView::DeleteItem( int index )
 {
 
 }
 
-void JuiListBox::ClearItems()
+void JuiListView::ClearItems()
 {
 
 }
 
-void JuiListBox::UpdateSize( int index, int count )
+void JuiListView::UpdateSize( int index, int count )
 {
 	if(index + count > m_lsItems.GetCount())
 		count = m_lsItems.GetCount() - index;

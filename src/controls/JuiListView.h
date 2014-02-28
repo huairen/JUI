@@ -5,9 +5,9 @@
 #include "DataType/JArray.h"
 #include "Graphics/JTexture2D.h"
 
-class JuiListBox : public JuiControl
+class JuiListView : public JuiControl
 {
-	JDECLARE_DYNAMIC_CLASS(JuiListBox)
+	JDECLARE_DYNAMIC_CLASS(JuiListView)
 	typedef JuiControl Parent;
 
 protected:
@@ -20,8 +20,8 @@ protected:
 	};
 
 public:
-	JuiListBox();
-	~JuiListBox();
+	JuiListView();
+	~JuiListView();
 
 	virtual void OnMouseDown(const MouseEventInfo& event);
 	virtual void OnMouseUp(const MouseEventInfo& event);
@@ -47,19 +47,19 @@ protected:
 	JuiControl *m_pItemModel;
 };
 
-JFORCE_LINK_OBJ(JuiListBox)
+JFORCE_LINK_OBJ(JuiListView)
 
-inline int JuiListBox::GetItemCount()
+inline int JuiListView::GetItemCount()
 {
 	return m_lsItems.GetCount();
 }
 
-inline int JuiListBox::GetSelCount()
+inline int JuiListView::GetSelCount()
 {
 	return m_lsSelectedItems.GetCount();
 }
 
-inline void JuiListBox::SetItemModel(JuiControl *pCtrl)
+inline void JuiListView::SetItemModel(JuiControl *pCtrl)
 {
 	m_pItemModel = pCtrl;
 }

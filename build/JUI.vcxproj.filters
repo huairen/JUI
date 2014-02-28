@@ -39,9 +39,6 @@
     <ClCompile Include="..\src\base\JuiReader.cpp">
       <Filter>base</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\controls\JuiListBox.cpp">
-      <Filter>controls</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\controls\JuiRadioButton.cpp">
       <Filter>controls\button</Filter>
     </ClCompile>
@@ -69,6 +66,9 @@
     <ClCompile Include="..\src\base\JuiEventManager.cpp">
       <Filter>base</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\controls\JuiListView.cpp">
+      <Filter>controls</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\base\JuiControl.h">
@@ -94,9 +94,6 @@
     </ClInclude>
     <ClInclude Include="..\src\base\JuiReader.h">
       <Filter>base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\controls\JuiListBox.h">
-      <Filter>controls</Filter>
     </ClInclude>
     <ClInclude Include="..\src\controls\JuiCheckButton.h">
       <Filter>controls\button</Filter>
@@ -124,6 +121,9 @@
     </ClInclude>
     <ClInclude Include="..\src\base\JuiEventManager.h">
       <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\controls\JuiListView.h">
+      <Filter>controls</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -19,16 +19,9 @@ public:
 	virtual void OnMouseDown(const MouseEventInfo& event);
 	virtual void OnMouseUp(const MouseEventInfo& event);
 
-	virtual void OnRender(JPoint2I offset, const JRectI& rcPaint);
-
 protected:
 	bool m_bDepressed;
 	bool m_bMouseOver;
-
-	JTexture2D *m_pNormalImage;
-	JTexture2D *m_pHoverImage;
-	JTexture2D *m_pPressImage;
-	JTexture2D *m_pDisabledImage;
 };
 
 #endif

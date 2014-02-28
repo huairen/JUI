@@ -2,20 +2,6 @@
 #include "container/JuiContainer.h"
 #include "Graphics/Drawable/JDrawable.h"
 
-JBEGIN_CLASS_ENUM(JuiControl,HorizAlignOptions)
-	JENUM_NAME_MEMBER(left, JuiControl::HORIZ_ALIGN_LEFT)
-	JENUM_NAME_MEMBER(right, JuiControl::HORIZ_ALIGN_RIGHT)
-	JENUM_NAME_MEMBER(center, JuiControl::HORIZ_ALIGN_CENTER)
-	JENUM_NAME_MEMBER(width, JuiControl::HORIZ_ALIGN_WIDTH)
-JEND_CLASS_ENUM(JuiControl,HorizAlignOptions)
-
-JBEGIN_CLASS_ENUM(JuiControl,VertAlignOptions)
-	JENUM_NAME_MEMBER(top, JuiControl::VERT_ALIGN_TOP)
-	JENUM_NAME_MEMBER(bottom, JuiControl::VERT_ALIGN_BOTTOM)
-	JENUM_NAME_MEMBER(center, JuiControl::VERT_ALIGN_CENTER)
-	JENUM_NAME_MEMBER(height, JuiControl::VERT_ALIGN_HEIGHT)
-JEND_CLASS_ENUM(JuiControl,VertAlignOptions)
-
 JIMPLEMENT_CLASS_COMMON(JuiControl, JObject, NULL)
 	JCLASS_PROPERTY(JuiControl, position, JPoint2I, SetPosition, GetPosition)
 	JCLASS_PROPERTY(JuiControl, size, JPoint2I, SetExtent, GetExtent)
@@ -24,14 +10,10 @@ JIMPLEMENT_CLASS_COMMON(JuiControl, JObject, NULL)
 	JCLASS_PROPERTY(JuiControl, visible, bool, SetVisible, IsVisible)
 	JCLASS_PROPERTY(JuiControl, enable, bool, SetEnable, IsEnable)
 	JCLASS_PROPERTY(JuiControl, mouseEnable, bool, SetMouseEnable, IsMouseEnable)
-	JCLASS_WRITEONLY_PROPERTY(JuiControl, horizAlign, JuiControl::HorizAlignOptions, SetHorizAlign)
-	JCLASS_WRITEONLY_PROPERTY(JuiControl, vertAlign, JuiControl::VertAlignOptions, SetVertAlign)
 	JCLASS_WRITEONLY_PROPERTY(JuiControl, background, std::string, SetBackground)
 
 JuiControl::JuiControl()
 	: m_nFlags(FLAG_ENABLE | FLAG_VISIBLE | FLAG_MOUSE_ENABLE)
-	, m_HorizAlign(HORIZ_ALIGN_LEFT), m_VerzAlign(VERT_ALIGN_TOP)
-	, m_ScaleMode(SCALE_CENTER)
 	, m_pParent(0)
 	, m_rcBounds(0,0,100,100)
 	, m_ptMinSize(8,2)
@@ -42,7 +24,13 @@ JuiControl::JuiControl()
 
 JuiControl::~JuiControl()
 {
+	if(m_pBackground != NULL)
+		delete m_pBackground;
+}
 
+JuiControl* JuiControl::Clone()
+{
+	return static_cast<JuiControl*>(JObject::Clone());
 }
 
 JuiControl* JuiControl::GetRoot()
@@ -110,11 +98,6 @@ void JuiControl::SetBackground(const std::string& drawable)
 	m_pBackground = JDrawable::Create(drawable.c_str());
 }
 
-JuiControl* JuiControl::Clone()
-{
-	return static_cast<JuiControl*>(JObject::Clone());
-}
-
 void JuiControl::SetBounds(const JPoint2I& position, const JPoint2I& extent)
 {
 	m_rcBounds.extent = extent;
@@ -173,31 +156,31 @@ void JuiControl::OnParentResized( const JRectI &oldRect, const JRectI &newRect )
 	int deltaX = newRect.extent.x - oldRect.extent.x;
 	int deltaY = newRect.extent.y - oldRect.extent.y;
 
-	switch (m_HorizAlign)
-	{
-	case HORIZ_ALIGN_CENTER:
-		newPosition.x = (newRect.extent.x - GetWidth()) >> 1;
-		break;
-	case HORIZ_ALIGN_RIGHT:
-		newPosition.x += deltaX;
-		break;
-	case HORIZ_ALIGN_WIDTH:
-		newSize.x += deltaX;
-		break;
-	}
-
-	switch (m_VerzAlign)
-	{
-	case VERT_ALIGN_CENTER:
-		newPosition.y = (newRect.extent.y - GetHeight()) >> 1;
-		break;
-	case VERT_ALIGN_BOTTOM:
-		newPosition.y += deltaY;
-		break;
-	case VERT_ALIGN_HEIGHT:
-		newSize.y += deltaY;
-		break;
-	}
+// 	switch (m_HorizAlign)
+// 	{
+// 	case HORIZ_ALIGN_CENTER:
+// 		newPosition.x = (newRect.extent.x - GetWidth()) >> 1;
+// 		break;
+// 	case HORIZ_ALIGN_RIGHT:
+// 		newPosition.x += deltaX;
+// 		break;
+// 	case HORIZ_ALIGN_WIDTH:
+// 		newSize.x += deltaX;
+// 		break;
+// 	}
+// 
+// 	switch (m_VerzAlign)
+// 	{
+// 	case VERT_ALIGN_CENTER:
+// 		newPosition.y = (newRect.extent.y - GetHeight()) >> 1;
+// 		break;
+// 	case VERT_ALIGN_BOTTOM:
+// 		newPosition.y += deltaY;
+// 		break;
+// 	case VERT_ALIGN_HEIGHT:
+// 		newSize.y += deltaY;
+// 		break;
+// 	}
 
 	SetBounds(newPosition, newSize);
 }

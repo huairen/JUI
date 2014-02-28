@@ -25,7 +25,7 @@
     <ClCompile Include="..\src\container\layout\JuiRelativeLayout.cpp" />
     <ClCompile Include="..\src\controls\JuiButton.cpp" />
     <ClCompile Include="..\src\controls\JuiCheckButton.cpp" />
-    <ClCompile Include="..\src\controls\JuiListBox.cpp" />
+    <ClCompile Include="..\src\controls\JuiListView.cpp" />
     <ClCompile Include="..\src\controls\JuiRadioButton.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -45,7 +45,7 @@
     <ClInclude Include="..\src\container\layout\JuiRelativeLayout.h" />
     <ClInclude Include="..\src\controls\JuiButton.h" />
     <ClInclude Include="..\src\controls\JuiCheckButton.h" />
-    <ClInclude Include="..\src\controls\JuiListBox.h" />
+    <ClInclude Include="..\src\controls\JuiListView.h" />
     <ClInclude Include="..\src\controls\JuiRadioButton.h" />
   </ItemGroup>
   <ItemGroup>

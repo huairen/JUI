@@ -15,7 +15,6 @@ public:
 	bool GetStateOn();
 
 	virtual void OnClick();
-	virtual void OnRender(JPoint2I offset, const JRectI& rcPaint);
 
 protected:
 	bool m_bStateOn;

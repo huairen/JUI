@@ -44,6 +44,14 @@ enum InputModifiers
 	IM_ALT = (IM_LALT | IM_RALT),
 };
 
+
+enum ControlMessage
+{
+	MSG_CLICK,
+	MSG_RADIO_CLICK,
+};
+
+
 struct InputEventInfo
 {
 	InputDeviceType deviceType;

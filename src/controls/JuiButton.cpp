@@ -1,4 +1,5 @@
 #include "JuiButton.h"
+#include "Graphics/Drawable/JDrawable.h"
 
 JIMPLEMENT_DYNAMIC_CLASS(JuiButton, JuiControl)
 
@@ -6,11 +7,6 @@ JuiButton::JuiButton()
 {
 	m_bDepressed = false;
 	m_bMouseOver = false;
-
-	m_pNormalImage = NULL;
-	m_pHoverImage = NULL;
-	m_pPressImage = NULL;
-	m_pDisabledImage = NULL;
 }
 
 JuiButton::~JuiButton()
@@ -33,6 +29,8 @@ void JuiButton::OnMouseEnter()
 		m_bDepressed = true;
 
 	m_bMouseOver = true;
+	if(m_pBackground)
+		m_pBackground->SetState(m_bDepressed ? 2 : 1);
 }
 
 void JuiButton::OnMouseLeave()
@@ -43,6 +41,8 @@ void JuiButton::OnMouseLeave()
 		m_bDepressed = false;
 
 	m_bMouseOver = false;
+	if(m_pBackground && !m_bDepressed)
+		m_pBackground->SetState(0);
 }
 
 void JuiButton::OnMouseDown( const MouseEventInfo& event )
@@ -52,6 +52,8 @@ void JuiButton::OnMouseDown( const MouseEventInfo& event )
 
 	MouseLock();
 	m_bDepressed = true;
+	if(m_pBackground)
+		m_pBackground->SetState(2);
 
 	SetUpdate();
 }
@@ -68,16 +70,6 @@ void JuiButton::OnMouseUp( const MouseEventInfo& event )
 		OnClick();
 
 	m_bDepressed = false;
-}
-
-void JuiButton::OnRender( JPoint2I offset, const JRectI& rcPaint )
-{
-	JTexture2D *pImg = m_pNormalImage;
-
-	if(!IsEnable())
-		pImg = m_pDisabledImage;
-	else if(m_bDepressed)
-		pImg = m_pPressImage;
-	else if(m_bMouseOver)
-		pImg = m_pHoverImage;
+	if(m_pBackground)
+		m_pBackground->SetState(m_bMouseOver ? 1 : 0);
 }
