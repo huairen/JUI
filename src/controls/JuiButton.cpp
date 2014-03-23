@@ -1,5 +1,5 @@
 #include "JuiButton.h"
-#include "Graphics/Drawable/JDrawable.h"
+#include "base/drawable/JDrawable.h"
 
 JIMPLEMENT_DYNAMIC_CLASS(JuiButton, JuiControl)
 

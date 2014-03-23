@@ -11,6 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\base\drawable\JBitmapDrawable.cpp" />
+    <ClCompile Include="..\src\base\drawable\JDrawable.cpp" />
+    <ClCompile Include="..\src\base\drawable\JNinePatchDrawable.cpp" />
+    <ClCompile Include="..\src\base\drawable\JStateListDrawable.cpp" />
     <ClCompile Include="..\src\base\JuiControl.cpp" />
     <ClCompile Include="..\src\base\JuiReader.cpp" />
     <ClCompile Include="..\src\base\JuiEventManager.cpp" />
@@ -21,6 +25,7 @@
     <ClCompile Include="..\src\container\JuiRollout.cpp" />
     <ClCompile Include="..\src\container\JuiScroll.cpp" />
     <ClCompile Include="..\src\container\JuiTabBook.cpp" />
+    <ClCompile Include="..\src\container\layout\JuiFrameLayout.cpp" />
     <ClCompile Include="..\src\container\layout\JuiLinearLayout.cpp" />
     <ClCompile Include="..\src\container\layout\JuiRelativeLayout.cpp" />
     <ClCompile Include="..\src\controls\JuiButton.cpp" />
@@ -29,6 +34,10 @@
     <ClCompile Include="..\src\controls\JuiRadioButton.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\base\drawable\JBitmapDrawable.h" />
+    <ClInclude Include="..\src\base\drawable\JDrawable.h" />
+    <ClInclude Include="..\src\base\drawable\JNinePatchDrawable.h" />
+    <ClInclude Include="..\src\base\drawable\JStateListDrawable.h" />
     <ClInclude Include="..\src\base\JuiControl.h" />
     <ClInclude Include="..\src\base\JuiReader.h" />
     <ClInclude Include="..\src\base\JuiInputEvent.h" />
@@ -41,6 +50,7 @@
     <ClInclude Include="..\src\container\JuiRollout.h" />
     <ClInclude Include="..\src\container\JuiScroll.h" />
     <ClInclude Include="..\src\container\JuiTabBook.h" />
+    <ClInclude Include="..\src\container\layout\JuiFrameLayout.h" />
     <ClInclude Include="..\src\container\layout\JuiLinearLayout.h" />
     <ClInclude Include="..\src\container\layout\JuiRelativeLayout.h" />
     <ClInclude Include="..\src\controls\JuiButton.h" />

@@ -1,34 +1,22 @@
 #include "JuiRelativeLayout.h"
 
-JuiRelativeLayout::JuiRelativeLayout()
-{
-}
+JIMPLEMENT_DYNAMIC_CLASS(JuiRelativeLayoutParameter, JuiLayoutParameter)
 
-JuiRelativeLayout::~JuiRelativeLayout()
-{
-}
+JIMPLEMENT_FORCE_LINK_OBJ(JuiRelativeLayout)
+JIMPLEMENT_DYNAMIC_CLASS(JuiRelativeLayout, JuiContainer)
 
 void JuiRelativeLayout::UpdateLayout( const JRectI& newRect )
 {
-	int nCount = m_lsChilds.GetCount();
-	if(nCount == 0)
-		return;
+	Parent::UpdateLayout(newRect);
+}
 
-	int nWidth = newRect.extent.x;
-	int nHeight = newRect.extent.y / nCount;
-	int y = 0;
-	int index = 1;
+void JuiRelativeLayout::OnChildAdded(JuiControl *child)
+{
+	JuiRelativeLayoutParameter *pParam = new JuiRelativeLayoutParameter;
+	child->AddComponent("RelativeLayout",pParam);
+}
 
-	JuiControl* pCom = (JuiControl*)m_lsChilds.First();
-	while(pCom)
-	{
-		if(index == nCount)
-			nHeight = newRect.extent.y - y;
-
-		pCom->SetBounds(0, y, nWidth, nHeight);
-		y += nHeight;
-		index++;
-
-		pCom = (JuiControl*)m_lsChilds.Next();
-	}
+void JuiRelativeLayout::OnChildRemoved(JuiControl *child)
+{
+	child->RemoveComponent("RelativeLayout");
 }

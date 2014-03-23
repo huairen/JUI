@@ -1,10 +1,39 @@
 #include "JuiContainer.h"
 
+JBEGIN_CLASS_ENUM(JuiLayoutParameter,LayoutSizeType)
+	JENUM_NAME_MEMBER(fill_parent,JuiLayoutParameter::SIZE_FILL_PARENT)
+	JENUM_NAME_MEMBER(wrap_content,JuiLayoutParameter::SIZE_WRAP_CONTENT)
+JEND_CLASS_ENUM(JuiLayoutParameter,LayoutSizeType)
+
+JIMPLEMENT_DYNAMIC_CLASS(JuiLayoutParameter, JObject)
+JCLASS_WRITEONLY_PROPERTY(JuiLayoutParameter, layout_width, JuiLayoutParameter::LayoutSizeType, SetLayoutWidth)
+JCLASS_WRITEONLY_PROPERTY(JuiLayoutParameter, layout_height, JuiLayoutParameter::LayoutSizeType, SetLayoutHeight)
+
+JuiLayoutParameter::JuiLayoutParameter()
+	: m_LayoutWidth(SIZE_CUSTOM)
+	, m_LayoutHeight(SIZE_CUSTOM)
+{
+
+}
+
+void JuiLayoutParameter::SetLayoutWidth(const LayoutSizeType& type)
+{
+	m_LayoutWidth = type;
+}
+
+void JuiLayoutParameter::SetLayoutHeight(const LayoutSizeType& type)
+{
+	m_LayoutHeight = type;
+}
+
+
+
 JIMPLEMENT_DYNAMIC_CLASS(JuiContainer, JuiControl)
 
 JuiContainer::JuiContainer()
 {
-	m_nFlags |= FLAG_CONTAINER;
+	AddState(STATE_CONTAINER);
+	RemoveState(STATE_MOUSE_ENABLE);
 }
 
 JuiContainer::~JuiContainer()
@@ -15,16 +44,7 @@ JuiContainer::~JuiContainer()
 void JuiContainer::SetBounds( const JPoint2I& point, const JPoint2I& size )
 {
 	if(size != m_rcBounds.extent)
-	{
-		JRectI newRect(point, size);
-
-		JuiControl* pCom = (JuiControl*)m_lsChilds.First();
-		while(pCom)
-		{
-			pCom->OnParentResized(m_rcBounds, newRect);
-			pCom = (JuiControl*)m_lsChilds.Next();
-		}
-	}
+		UpdateLayout(JRectI(point, size));
 
 	JuiControl::SetBounds(point,size);
 }
@@ -82,6 +102,8 @@ void JuiContainer::AddControl( JuiControl *obj )
 	obj->SetParent(this);
 
 	OnChildAdded(obj);
+
+	UpdateLayout(m_rcBounds);
 }
 
 void JuiContainer::RemoveControl( JuiControl* obj )
@@ -90,6 +112,28 @@ void JuiContainer::RemoveControl( JuiControl* obj )
 
 	m_lsChilds.Remove(obj);
 	obj->SetParent(NULL);
+
+	UpdateLayout(m_rcBounds);
+}
+
+void JuiContainer::OnChildAdded(JuiControl *child)
+{
+	JuiLayoutParameter *pParam = new JuiLayoutParameter;
+	child->AddComponent("LayoutParameter",pParam);
+}
+
+void JuiContainer::OnChildRemoved(JuiControl *child)
+{
+	child->RemoveComponent("LayoutParameter");
+}
+
+void JuiContainer::UpdateLayout(const JRectI& newRect)
+{
+	JuiControl* pCtrl = (JuiControl*)m_lsChilds.First();
+	while(pCtrl)
+	{
+		pCtrl = (JuiControl*)m_lsChilds.Next();
+	}
 }
 
 JuiControl * JuiContainer::FindHitControl( const JPoint2I& pt )
@@ -97,7 +141,7 @@ JuiControl * JuiContainer::FindHitControl( const JPoint2I& pt )
 	JuiControl* pCtrl = (JuiControl*)m_lsChilds.First();
 	while(pCtrl)
 	{
-		if(pCtrl->IsVisible() && pCtrl->IsMouseEnable() && pCtrl->IsPointIn(pt))
+		if(pCtrl->IsVisible() && pCtrl->IsPointIn(pt))
 		{
 			if(pCtrl->IsContainer())
 			{
@@ -105,12 +149,13 @@ JuiControl * JuiContainer::FindHitControl( const JPoint2I& pt )
 				if(pContainer != NULL)
 				{
 					JPoint2I tmpPoint = pt - pCtrl->GetPosition();
-					JuiControl *pHit = pContainer->FindHitControl(tmpPoint);
-					return pHit ? pHit : pContainer;
+					JuiControl *pSub = pContainer->FindHitControl(tmpPoint);
+					if(pSub != NULL)
+						return pSub;
 				}
 			}
 
-			return pCtrl;
+			return pCtrl->IsMouseEnable() ? pCtrl : NULL;
 		}
 
 		pCtrl = (JuiControl*)m_lsChilds.Next();

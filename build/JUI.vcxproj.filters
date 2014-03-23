@@ -19,6 +19,9 @@
     <Filter Include="container\layout">
       <UniqueIdentifier>{fdb2b052-2ad4-42e7-87c5-0c24479d02a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="base\drawable">
+      <UniqueIdentifier>{ce0a7432-e123-4339-b078-ecf3e3c3f3ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\base\JuiControl.cpp">
@@ -68,6 +71,21 @@
     </ClCompile>
     <ClCompile Include="..\src\controls\JuiListView.cpp">
       <Filter>controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\container\layout\JuiFrameLayout.cpp">
+      <Filter>container\layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\drawable\JBitmapDrawable.cpp">
+      <Filter>base\drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\drawable\JDrawable.cpp">
+      <Filter>base\drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\drawable\JNinePatchDrawable.cpp">
+      <Filter>base\drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\base\drawable\JStateListDrawable.cpp">
+      <Filter>base\drawable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +142,21 @@
     </ClInclude>
     <ClInclude Include="..\src\controls\JuiListView.h">
       <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\container\layout\JuiFrameLayout.h">
+      <Filter>container\layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\drawable\JBitmapDrawable.h">
+      <Filter>base\drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\drawable\JDrawable.h">
+      <Filter>base\drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\drawable\JNinePatchDrawable.h">
+      <Filter>base\drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\drawable\JStateListDrawable.h">
+      <Filter>base\drawable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

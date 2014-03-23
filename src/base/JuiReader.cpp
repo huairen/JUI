@@ -2,6 +2,7 @@
 #include "container/JuiContainer.h"
 #include "controls/JuiListView.h"
 #include "controls/JuiRadioButton.h"
+#include "container/layout/JuiRelativeLayout.h"
 #include "String/JStringFunction.h"
 #include "FileSystem/JFileSystem.h"
 
@@ -50,35 +51,42 @@ bool JuiReader::LoadScript( JuiContainer *root, const char* filename )
 
 		if(strnicmp(line, "new", 3) == 0)
 		{
-			if(currObject != NULL)
-			{
-				objStack[++stackIndex]  = currObject;
-				currObject = NULL;
-			}
-
 			line += 4;
 			size_t len = strcspn(line, " (");
 			char tmp = line[len];
 			line[len] = 0;
 			line = JStringFunction::Trim(line);
-			currObject = dynamic_cast<JuiControl*>(JCreateDynamicObject(line));
+			JuiControl *newObject = dynamic_cast<JuiControl*>(JCreateDynamicObject(line));
 			line += len;
 			*line = tmp;
 
+			if(newObject != NULL)
+				ParseName(newObject, line);
+
 			if(currObject != NULL)
-				ParseName(currObject, line);
+			{
+				JuiContainer *parent = dynamic_cast<JuiContainer*>(currObject);
+				if(parent != NULL)
+					parent->AddControl(newObject);
+
+				objStack[++stackIndex]  = currObject;
+			}
+
+			currObject = newObject;
 		}
 		else if(strnicmp(line, "end", 3) == 0)
 		{
 			if(stackIndex < 0)
 				break;
 
-			JuiContainer *parent = dynamic_cast<JuiContainer*>(objStack[stackIndex]);
-			if(parent != NULL)
-				parent->AddControl(currObject);
+			if(currObject != NULL)
+			{
+				JuiContainer *container = dynamic_cast<JuiContainer*>(currObject);
+				if(container != NULL)
+					container->UpdateLayout(container->GetBounds());
+			}
 
-			currObject = parent;
-			stackIndex--;
+			currObject = objStack[stackIndex--];
 		}
 		else if(strnicmp(line, "root", 4) == 0)
 		{

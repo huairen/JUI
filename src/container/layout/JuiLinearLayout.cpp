@@ -1,13 +1,6 @@
 #include "JuiLinearLayout.h"
 
-JuiLinearLayout::JuiLinearLayout()
-{
-}
-
-JuiLinearLayout::~JuiLinearLayout()
-{
-
-}
+JIMPLEMENT_DYNAMIC_CLASS(JuiLinearLayout, JuiContainer)
 
 void JuiLinearLayout::UpdateLayout( const JRectI& newRect )
 {

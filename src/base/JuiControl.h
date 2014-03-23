@@ -13,16 +13,16 @@ class JuiControl : public JObject
 {
 	JDECLARE_ABSTRACT_CLASS(JuiControl)
 
-	enum ControlFlags
+	enum ControlState
 	{
-		FLAG_VISIBLE			= 0x0001,
-		FLAG_ENABLE				= 0x0002,
-		FLAG_FOCUSED			= 0x0004,
-		FLAG_SELECTED			= 0x0008,
-		FLAG_READONLY			= 0x0040,
-		FLAG_MOUSE_ENABLE		= 0x0080,
-		FLAG_KEYBOARD_ENABLE	= 0x0100,
-		FLAG_CONTAINER			= 0x0200,
+		STATE_VISIBLE			= 0x0001,
+		STATE_ENABLE			= 0x0002,
+		STATE_FOCUSED			= 0x0004,
+		STATE_SELECTED			= 0x0008,
+		STATE_READONLY			= 0x0040,
+		STATE_MOUSE_ENABLE		= 0x0080,
+		STATE_KEYBOARD_ENABLE	= 0x0100,
+		STATE_CONTAINER			= 0x0200,
 	};
 
 public:
@@ -90,7 +90,7 @@ public:
 
 
 public:
-	// @ flags
+	// @ state
 	// @ {
 	bool IsVisible() const;
 	bool IsEnable() const;
@@ -104,18 +104,15 @@ public:
 	void SetMouseEnable(bool value);
 
 protected:
-	bool HasFlag(int flag) const;
-	virtual void AddFlag(int flag);
-	virtual void RemoveFlag(int flag);
+	bool HasState(int flag) const;
+	virtual void AddState(int flag);
+	virtual void RemoveState(int flag);
 	// @ }
 	
 
 public:
 	// @ event
 	// @ {
-	void OnParentResized(const JRectI &oldRect, const JRectI &newRect);
-	void OnChildResized(JuiControl *child);
-
 	void NotifySiblings(int message, int param);
 	virtual void OnControlEvent(JuiControl* sender, int message, int param) {}
 
@@ -132,7 +129,7 @@ public:
 
 protected:
 	std::string m_Name;
-	uint32_t m_nFlags;
+	uint32_t m_nState;
 	JRectI m_rcBounds;
 	JPoint2I m_ptMinSize;
 	JPoint2I m_ptMaxSize;

@@ -1,3 +1,5 @@
+#ifndef JUI_CONTROL_INL_
+#define JUI_CONTROL_INL_
 
 inline void JuiControl::SetName(const char* name)
 {
@@ -132,45 +134,47 @@ inline int JuiControl::GetBottom() const
 //prop
 inline bool JuiControl::IsVisible() const
 {
-	return (m_nFlags & FLAG_VISIBLE) != 0;
+	return (m_nState & STATE_VISIBLE) != 0;
 }
 
 inline bool JuiControl::IsEnable() const
 {
-	return (m_nFlags & FLAG_ENABLE) != 0;
+	return (m_nState & STATE_ENABLE) != 0;
 }
 
 inline bool JuiControl::IsFocused() const
 {
-	return (m_nFlags & FLAG_FOCUSED) != 0;
+	return (m_nState & STATE_FOCUSED) != 0;
 }
 
 inline bool JuiControl::IsMouseEnable() const
 {
-	return (m_nFlags & FLAG_MOUSE_ENABLE) != 0;
+	return (m_nState & STATE_MOUSE_ENABLE) != 0;
 }
 
 inline bool JuiControl::IsKeyboardEnable() const
 {
-	return (m_nFlags & FLAG_KEYBOARD_ENABLE) != 0;
+	return (m_nState & STATE_KEYBOARD_ENABLE) != 0;
 }
 
 inline bool JuiControl::IsContainer() const
 {
-	return (m_nFlags & FLAG_CONTAINER) != 0;
+	return (m_nState & STATE_CONTAINER) != 0;
 }
 
-inline bool JuiControl::HasFlag(int flag) const
+inline bool JuiControl::HasState(int flag) const
 {
-	return (m_nFlags & flag) != 0;
+	return (m_nState & flag) != 0;
 }
 
-inline void JuiControl::AddFlag(int flag)
+inline void JuiControl::AddState(int flag)
 {
-	m_nFlags |= flag;
+	m_nState |= flag;
 }
 
-inline void JuiControl::RemoveFlag(int flag)
+inline void JuiControl::RemoveState(int flag)
 {
-	m_nFlags &= ~flag;
+	m_nState &= ~flag;
 }
+
+#endif

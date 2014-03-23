@@ -3,17 +3,26 @@
 
 #include "container/JuiContainer.h"
 
+class JuiRelativeLayoutParameter : public JuiLayoutParameter
+{
+	JDECLARE_DYNAMIC_CLASS(JuiRelativeLayoutParameter)
+public:
+	enum Align
+	{
+		ALIGN_TOP,
+	};
+};
+
 class JuiRelativeLayout : public JuiContainer
 {
+	JDECLARE_DYNAMIC_CLASS(JuiRelativeLayout)
 	typedef JuiContainer Parent;
 public:
-	JuiRelativeLayout();
-	~JuiRelativeLayout();
-
 	virtual void UpdateLayout(const JRectI& newRect);
-
-protected:
-
+	virtual void OnChildAdded(JuiControl *child);
+	virtual void OnChildRemoved(JuiControl *child);
 };
+
+JFORCE_LINK_OBJ(JuiRelativeLayout)
 
 #endif

@@ -3,16 +3,20 @@
 
 #include "container/JuiContainer.h"
 
+class JuiLinearLayoutParameter
+{
+protected:
+	int m_Orientaion;
+	int m_FillMode;
+	int m_Weight;
+};
+
 class JuiLinearLayout : public JuiContainer
 {
+	JDECLARE_DYNAMIC_CLASS(JuiLinearLayout)
 	typedef JuiContainer Parent;
 public:
-	JuiLinearLayout();
-	~JuiLinearLayout();
-
 	virtual void UpdateLayout(const JRectI& newRect);
-
-protected:
 };
 
 #endif
