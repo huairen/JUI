@@ -1,9 +1,9 @@
 #ifndef JUI_RELATIVELAYOUT_H_
 #define JUI_RELATIVELAYOUT_H_
 
-#include "container/JuiContainer.h"
+#include "JuiFrameLayout.h"
 
-class JuiRelativeLayoutParameter : public JuiLayoutParameter
+class JuiRelativeLayoutParameter : public JuiFrameLayoutParameter
 {
 	JDECLARE_DYNAMIC_CLASS(JuiRelativeLayoutParameter)
 public:

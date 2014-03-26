@@ -50,6 +50,7 @@ public:
 	JuiContainer* GetParent();
 
 	void SetBackground(const std::string& drawable);
+	JDrawable *GetDrawable();
 
 public:
 	// @ point and size

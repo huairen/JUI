@@ -1,6 +1,8 @@
 #ifndef JUI_FRAMELAYOUT_H_
 #define JUI_FRAMELAYOUT_H_
 
+#include "container/JuiContainer.h"
+
 struct Bound
 {
 	int left;
@@ -9,8 +11,10 @@ struct Bound
 	int bottom;
 };
 
-class JuiLayoutParameter
+
+class JuiFrameLayoutParameter : public JObject
 {
+	JDECLARE_DYNAMIC_CLASS(JuiFrameLayoutParameter)
 public:
 	enum LayoutSizeType
 	{
@@ -19,10 +23,25 @@ public:
 		SIZE_WRAP_CONTENT,
 	};
 
+	JuiFrameLayoutParameter();
+	void SetLayoutWidth(const LayoutSizeType& type);
+	void SetLayoutHeight(const LayoutSizeType& type);
+
+	void UpdateExtent(JuiControl *pCtrl);
+
 private:
 	LayoutSizeType m_LayoutWidth;
 	LayoutSizeType m_LayoutHeight;
-	Bound m_Margin;
+	//	Bound m_Margin;
+};
+
+class JuiFrameLayout : public JuiContainer
+{
+	JDECLARE_DYNAMIC_CLASS(JuiRelativeLayout)
+public:
+	virtual void UpdateLayout(const JRectI& newRect);
+	virtual void OnChildAdded(JuiControl *child);
+	virtual void OnChildRemoved(JuiControl *child);
 };
 
 #endif

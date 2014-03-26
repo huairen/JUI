@@ -76,9 +76,6 @@ bool JuiReader::LoadScript( JuiContainer *root, const char* filename )
 		}
 		else if(strnicmp(line, "end", 3) == 0)
 		{
-			if(stackIndex < 0)
-				break;
-
 			if(currObject != NULL)
 			{
 				JuiContainer *container = dynamic_cast<JuiContainer*>(currObject);
@@ -86,7 +83,8 @@ bool JuiReader::LoadScript( JuiContainer *root, const char* filename )
 					container->UpdateLayout(container->GetBounds());
 			}
 
-			currObject = objStack[stackIndex--];
+			if(stackIndex >= 0)
+				currObject = objStack[stackIndex--];
 		}
 		else if(strnicmp(line, "root", 4) == 0)
 		{

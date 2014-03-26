@@ -2,13 +2,13 @@
 #define JUI_FRAME_H_
 
 #include "JuiWindow.h"
-#include "container/JuiContainer.h"
+#include "container/layout/JuiFrameLayout.h"
 #include "base/JuiEventManager.h"
 
-class JuiFrame : public JuiContainer, public JuiWindow
+class JuiFrame : public JuiFrameLayout, public JuiWindow
 {
 	JDECLARE_DYNAMIC_CLASS(JuiFrame)
-	typedef JuiContainer Parent;
+	typedef JuiFrameLayout Parent;
 
 public:
 	JuiFrame();

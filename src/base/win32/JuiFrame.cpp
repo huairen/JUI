@@ -1,7 +1,7 @@
 #include "JuiFrame.h"
 #include "Graphics/JRenderSystem.h"
 
-JIMPLEMENT_DYNAMIC_CLASS(JuiFrame, JuiContainer)
+JIMPLEMENT_DYNAMIC_CLASS(JuiFrame, JuiFrameLayout)
 	JCLASS_WRITEONLY_PROPERTY(JuiFrame, image, std::string, SetBackground)
 
 JuiFrame::JuiFrame()

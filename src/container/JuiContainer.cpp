@@ -1,33 +1,5 @@
 #include "JuiContainer.h"
 
-JBEGIN_CLASS_ENUM(JuiLayoutParameter,LayoutSizeType)
-	JENUM_NAME_MEMBER(fill_parent,JuiLayoutParameter::SIZE_FILL_PARENT)
-	JENUM_NAME_MEMBER(wrap_content,JuiLayoutParameter::SIZE_WRAP_CONTENT)
-JEND_CLASS_ENUM(JuiLayoutParameter,LayoutSizeType)
-
-JIMPLEMENT_DYNAMIC_CLASS(JuiLayoutParameter, JObject)
-JCLASS_WRITEONLY_PROPERTY(JuiLayoutParameter, layout_width, JuiLayoutParameter::LayoutSizeType, SetLayoutWidth)
-JCLASS_WRITEONLY_PROPERTY(JuiLayoutParameter, layout_height, JuiLayoutParameter::LayoutSizeType, SetLayoutHeight)
-
-JuiLayoutParameter::JuiLayoutParameter()
-	: m_LayoutWidth(SIZE_CUSTOM)
-	, m_LayoutHeight(SIZE_CUSTOM)
-{
-
-}
-
-void JuiLayoutParameter::SetLayoutWidth(const LayoutSizeType& type)
-{
-	m_LayoutWidth = type;
-}
-
-void JuiLayoutParameter::SetLayoutHeight(const LayoutSizeType& type)
-{
-	m_LayoutHeight = type;
-}
-
-
-
 JIMPLEMENT_DYNAMIC_CLASS(JuiContainer, JuiControl)
 
 JuiContainer::JuiContainer()
@@ -114,26 +86,6 @@ void JuiContainer::RemoveControl( JuiControl* obj )
 	obj->SetParent(NULL);
 
 	UpdateLayout(m_rcBounds);
-}
-
-void JuiContainer::OnChildAdded(JuiControl *child)
-{
-	JuiLayoutParameter *pParam = new JuiLayoutParameter;
-	child->AddComponent("LayoutParameter",pParam);
-}
-
-void JuiContainer::OnChildRemoved(JuiControl *child)
-{
-	child->RemoveComponent("LayoutParameter");
-}
-
-void JuiContainer::UpdateLayout(const JRectI& newRect)
-{
-	JuiControl* pCtrl = (JuiControl*)m_lsChilds.First();
-	while(pCtrl)
-	{
-		pCtrl = (JuiControl*)m_lsChilds.Next();
-	}
 }
 
 JuiControl * JuiContainer::FindHitControl( const JPoint2I& pt )

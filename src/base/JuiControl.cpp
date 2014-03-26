@@ -98,6 +98,11 @@ void JuiControl::SetBackground(const std::string& drawable)
 	m_pBackground = JDrawable::Create(drawable.c_str());
 }
 
+JDrawable *JuiControl::GetDrawable()
+{
+	return m_pBackground;
+}
+
 void JuiControl::SetBounds(const JPoint2I& position, const JPoint2I& extent)
 {
 	m_rcBounds.extent = extent;
