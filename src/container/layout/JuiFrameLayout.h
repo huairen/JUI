@@ -27,7 +27,7 @@ public:
 	void SetLayoutWidth(const LayoutSizeType& type);
 	void SetLayoutHeight(const LayoutSizeType& type);
 
-	void UpdateExtent(JuiControl *pCtrl);
+	void UpdateExtent(JuiControl *pCtrl, const JRectI &parentRect);
 
 private:
 	LayoutSizeType m_LayoutWidth;
@@ -39,6 +39,7 @@ class JuiFrameLayout : public JuiContainer
 {
 	JDECLARE_DYNAMIC_CLASS(JuiRelativeLayout)
 public:
+	virtual JuiFrameLayoutParameter* CreateParameter();
 	virtual void UpdateLayout(const JRectI& newRect);
 	virtual void OnChildAdded(JuiControl *child);
 	virtual void OnChildRemoved(JuiControl *child);

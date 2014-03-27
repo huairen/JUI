@@ -13,14 +13,13 @@ public:
 	};
 };
 
-class JuiRelativeLayout : public JuiContainer
+class JuiRelativeLayout : public JuiFrameLayout
 {
 	JDECLARE_DYNAMIC_CLASS(JuiRelativeLayout)
-	typedef JuiContainer Parent;
+	typedef JuiFrameLayout Parent;
 public:
+	virtual JuiFrameLayoutParameter* CreateParameter();
 	virtual void UpdateLayout(const JRectI& newRect);
-	virtual void OnChildAdded(JuiControl *child);
-	virtual void OnChildRemoved(JuiControl *child);
 };
 
 JFORCE_LINK_OBJ(JuiRelativeLayout)

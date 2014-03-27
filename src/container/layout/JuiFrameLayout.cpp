@@ -27,13 +27,11 @@ void JuiFrameLayoutParameter::SetLayoutHeight(const LayoutSizeType& type)
 	m_LayoutHeight = type;
 }
 
-void JuiFrameLayoutParameter::UpdateExtent( JuiControl *pCtrl )
+void JuiFrameLayoutParameter::UpdateExtent( JuiControl *pCtrl, const JRectI &parentRect )
 {
 	if(m_LayoutWidth == SIZE_FILL_PARENT)
 	{
-		JuiContainer *pParent = pCtrl->GetParent();
-		if(pParent != NULL)
-			pCtrl->SetWidth(pParent->GetWidth());
+		pCtrl->SetWidth(parentRect.extent.x);
 	}
 	else if(m_LayoutWidth == SIZE_WRAP_CONTENT)
 	{
@@ -44,9 +42,7 @@ void JuiFrameLayoutParameter::UpdateExtent( JuiControl *pCtrl )
 
 	if(m_LayoutHeight == SIZE_FILL_PARENT)
 	{
-		JuiContainer *pParent = pCtrl->GetParent();
-		if(pParent != NULL)
-			pCtrl->SetHeight(pParent->GetHeight());
+		pCtrl->SetHeight(parentRect.extent.y);
 	}
 	else if(m_LayoutWidth == SIZE_WRAP_CONTENT)
 	{
@@ -60,15 +56,20 @@ void JuiFrameLayoutParameter::UpdateExtent( JuiControl *pCtrl )
 
 JIMPLEMENT_DYNAMIC_CLASS(JuiFrameLayout, JuiContainer)
 
+JuiFrameLayoutParameter* JuiFrameLayout::CreateParameter()
+{
+	return new JuiFrameLayoutParameter;
+}
+
 void JuiFrameLayout::UpdateLayout( const JRectI& newRect )
 {
 	JuiControl* pCtrl = (JuiControl*)m_lsChilds.First();
 	while(pCtrl)
 	{
-		JuiFrameLayoutParameter *pParam = static_cast<JuiFrameLayoutParameter*>(pCtrl->GetComponent("FrameLayout"));
+		JuiFrameLayoutParameter *pParam = static_cast<JuiFrameLayoutParameter*>(pCtrl->GetComponent("LayoutParamer"));
 		if(pParam != NULL)
 		{
-			pParam->UpdateExtent(pCtrl);
+			pParam->UpdateExtent(pCtrl, newRect);
 		}
 
 		pCtrl = (JuiControl*)m_lsChilds.Next();
@@ -77,11 +78,21 @@ void JuiFrameLayout::UpdateLayout( const JRectI& newRect )
 
 void JuiFrameLayout::OnChildAdded( JuiControl *child )
 {
-	JuiFrameLayoutParameter *pParam = new JuiFrameLayoutParameter;
-	child->AddComponent("FrameLayout",pParam);
+	JuiFrameLayoutParameter *pParam = CreateParameter();
+	if(child->IsContainer())
+	{
+		pParam->SetLayoutWidth(JuiFrameLayoutParameter::SIZE_FILL_PARENT);
+		pParam->SetLayoutHeight(JuiFrameLayoutParameter::SIZE_FILL_PARENT);
+	}
+	else
+	{
+		pParam->SetLayoutWidth(JuiFrameLayoutParameter::SIZE_WRAP_CONTENT);
+		pParam->SetLayoutHeight(JuiFrameLayoutParameter::SIZE_WRAP_CONTENT);
+	}
+	child->AddComponent("LayoutParamer",pParam);
 }
 
 void JuiFrameLayout::OnChildRemoved( JuiControl *child )
 {
-	child->RemoveComponent("FrameLayout");
+	child->RemoveComponent("LayoutParamer");
 }
