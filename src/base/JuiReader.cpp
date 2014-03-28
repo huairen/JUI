@@ -1,8 +1,8 @@
 #include "JuiReader.h"
-#include "container/JuiContainer.h"
+#include "JuiContainer.h"
 #include "controls/JuiListView.h"
 #include "controls/JuiRadioButton.h"
-#include "container/layout/JuiRelativeLayout.h"
+#include "layout/JuiRelativeLayout.h"
 #include "String/JStringFunction.h"
 #include "FileSystem/JFileSystem.h"
 
@@ -80,7 +80,7 @@ bool JuiReader::LoadScript( JuiContainer *root, const char* filename )
 			{
 				JuiContainer *container = dynamic_cast<JuiContainer*>(currObject);
 				if(container != NULL)
-					container->UpdateLayout(container->GetBounds());
+					container->OnSizeChanged(container->GetExtent());
 			}
 
 			if(stackIndex >= 0)

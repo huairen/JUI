@@ -19,7 +19,6 @@ class JuiRelativeLayout : public JuiFrameLayout
 	typedef JuiFrameLayout Parent;
 public:
 	virtual JuiFrameLayoutParameter* CreateParameter();
-	virtual void UpdateLayout(const JRectI& newRect);
 };
 
 JFORCE_LINK_OBJ(JuiRelativeLayout)

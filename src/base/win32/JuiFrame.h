@@ -2,7 +2,7 @@
 #define JUI_FRAME_H_
 
 #include "JuiWindow.h"
-#include "container/layout/JuiFrameLayout.h"
+#include "layout/JuiFrameLayout.h"
 #include "base/JuiEventManager.h"
 
 class JuiFrame : public JuiFrameLayout, public JuiWindow
@@ -16,7 +16,7 @@ public:
 
 	virtual void AddUpdateRegion( const JPoint2I& pos, const JPoint2I& extent );
 	virtual JuiEventManager *GetInputGenerator();
-	virtual void SetBounds(const JPoint2I& position, const JPoint2I& extent);
+	virtual void OnSizeChanged(const JPoint2I& newSize);
 
 protected:
 	virtual bool HandleHitTest(POINTS pt, LRESULT* result);

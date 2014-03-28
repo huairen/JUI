@@ -15,29 +15,30 @@
     <ClCompile Include="..\src\base\drawable\JDrawable.cpp" />
     <ClCompile Include="..\src\base\drawable\JNinePatchDrawable.cpp" />
     <ClCompile Include="..\src\base\drawable\JStateListDrawable.cpp" />
+    <ClCompile Include="..\src\base\JuiContainer.cpp" />
     <ClCompile Include="..\src\base\JuiControl.cpp" />
     <ClCompile Include="..\src\base\JuiReader.cpp" />
     <ClCompile Include="..\src\base\JuiEventManager.cpp" />
     <ClCompile Include="..\src\base\win32\JuiDialog.cpp" />
     <ClCompile Include="..\src\base\win32\JuiFrame.cpp" />
     <ClCompile Include="..\src\base\win32\JuiWindow.cpp" />
-    <ClCompile Include="..\src\container\JuiContainer.cpp" />
-    <ClCompile Include="..\src\container\JuiRollout.cpp" />
-    <ClCompile Include="..\src\container\JuiScroll.cpp" />
-    <ClCompile Include="..\src\container\JuiTabBook.cpp" />
-    <ClCompile Include="..\src\container\layout\JuiFrameLayout.cpp" />
-    <ClCompile Include="..\src\container\layout\JuiLinearLayout.cpp" />
-    <ClCompile Include="..\src\container\layout\JuiRelativeLayout.cpp" />
     <ClCompile Include="..\src\controls\JuiButton.cpp" />
     <ClCompile Include="..\src\controls\JuiCheckButton.cpp" />
     <ClCompile Include="..\src\controls\JuiListView.cpp" />
     <ClCompile Include="..\src\controls\JuiRadioButton.cpp" />
+    <ClCompile Include="..\src\controls\JuiRollout.cpp" />
+    <ClCompile Include="..\src\controls\JuiScroll.cpp" />
+    <ClCompile Include="..\src\controls\JuiTabBook.cpp" />
+    <ClCompile Include="..\src\layout\JuiFrameLayout.cpp" />
+    <ClCompile Include="..\src\layout\JuiLinearLayout.cpp" />
+    <ClCompile Include="..\src\layout\JuiRelativeLayout.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\base\drawable\JBitmapDrawable.h" />
     <ClInclude Include="..\src\base\drawable\JDrawable.h" />
     <ClInclude Include="..\src\base\drawable\JNinePatchDrawable.h" />
     <ClInclude Include="..\src\base\drawable\JStateListDrawable.h" />
+    <ClInclude Include="..\src\base\JuiContainer.h" />
     <ClInclude Include="..\src\base\JuiControl.h" />
     <ClInclude Include="..\src\base\JuiReader.h" />
     <ClInclude Include="..\src\base\JuiInputEvent.h" />
@@ -46,17 +47,17 @@
     <ClInclude Include="..\src\base\win32\JuiDialog.h" />
     <ClInclude Include="..\src\base\win32\JuiFrame.h" />
     <ClInclude Include="..\src\base\win32\JuiWindow.h" />
-    <ClInclude Include="..\src\container\JuiContainer.h" />
-    <ClInclude Include="..\src\container\JuiRollout.h" />
-    <ClInclude Include="..\src\container\JuiScroll.h" />
-    <ClInclude Include="..\src\container\JuiTabBook.h" />
-    <ClInclude Include="..\src\container\layout\JuiFrameLayout.h" />
-    <ClInclude Include="..\src\container\layout\JuiLinearLayout.h" />
-    <ClInclude Include="..\src\container\layout\JuiRelativeLayout.h" />
     <ClInclude Include="..\src\controls\JuiButton.h" />
     <ClInclude Include="..\src\controls\JuiCheckButton.h" />
     <ClInclude Include="..\src\controls\JuiListView.h" />
     <ClInclude Include="..\src\controls\JuiRadioButton.h" />
+    <ClInclude Include="..\src\controls\JuiRollout.h" />
+    <ClInclude Include="..\src\controls\JuiScroll.h" />
+    <ClInclude Include="..\src\controls\JuiTabBook.h" />
+    <ClInclude Include="..\src\layout\JuiFrameLayout.h" />
+    <ClInclude Include="..\src\layout\JuiLayoutParameter.h" />
+    <ClInclude Include="..\src\layout\JuiLinearLayout.h" />
+    <ClInclude Include="..\src\layout\JuiRelativeLayout.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\base\JuiControl.inl" />
@@ -99,7 +100,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\src;..\..\JCore\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\src;..\src\base;..\..\JCore\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>

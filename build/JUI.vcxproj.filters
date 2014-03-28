@@ -4,9 +4,6 @@
     <Filter Include="base">
       <UniqueIdentifier>{947b5ebd-15ec-453e-b7e7-b7623d730719}</UniqueIdentifier>
     </Filter>
-    <Filter Include="container">
-      <UniqueIdentifier>{79cd0b36-80dc-458d-b121-b721ae583fb0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="controls">
       <UniqueIdentifier>{361cd64b-6a70-420c-b975-ef1106befbec}</UniqueIdentifier>
     </Filter>
@@ -16,28 +13,16 @@
     <Filter Include="base\win32">
       <UniqueIdentifier>{c67fec98-9f89-4dec-a69f-d226c83a05e8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="container\layout">
-      <UniqueIdentifier>{fdb2b052-2ad4-42e7-87c5-0c24479d02a5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="base\drawable">
       <UniqueIdentifier>{ce0a7432-e123-4339-b078-ecf3e3c3f3ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="layout">
+      <UniqueIdentifier>{fdb2b052-2ad4-42e7-87c5-0c24479d02a5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\base\JuiControl.cpp">
       <Filter>base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\container\JuiContainer.cpp">
-      <Filter>container</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\container\JuiRollout.cpp">
-      <Filter>container</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\container\JuiScroll.cpp">
-      <Filter>container</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\container\JuiTabBook.cpp">
-      <Filter>container</Filter>
     </ClCompile>
     <ClCompile Include="..\src\base\JuiReader.cpp">
       <Filter>base</Filter>
@@ -57,23 +42,11 @@
     <ClCompile Include="..\src\base\win32\JuiWindow.cpp">
       <Filter>base\win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\container\layout\JuiLinearLayout.cpp">
-      <Filter>container\layout</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\container\layout\JuiRelativeLayout.cpp">
-      <Filter>container\layout</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\base\win32\JuiDialog.cpp">
       <Filter>base\win32</Filter>
     </ClCompile>
     <ClCompile Include="..\src\base\JuiEventManager.cpp">
       <Filter>base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\controls\JuiListView.cpp">
-      <Filter>controls</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\container\layout\JuiFrameLayout.cpp">
-      <Filter>container\layout</Filter>
     </ClCompile>
     <ClCompile Include="..\src\base\drawable\JBitmapDrawable.cpp">
       <Filter>base\drawable</Filter>
@@ -87,6 +60,30 @@
     <ClCompile Include="..\src\base\drawable\JStateListDrawable.cpp">
       <Filter>base\drawable</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\base\JuiContainer.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\controls\JuiListView.cpp">
+      <Filter>controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\controls\JuiRollout.cpp">
+      <Filter>controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\controls\JuiScroll.cpp">
+      <Filter>controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\controls\JuiTabBook.cpp">
+      <Filter>controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\layout\JuiFrameLayout.cpp">
+      <Filter>layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\layout\JuiLinearLayout.cpp">
+      <Filter>layout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\layout\JuiRelativeLayout.cpp">
+      <Filter>layout</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\base\JuiControl.h">
@@ -95,20 +92,8 @@
     <ClInclude Include="..\src\base\JuiTypes.h">
       <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\container\JuiContainer.h">
-      <Filter>container</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\base\JuiInputEvent.h">
       <Filter>base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\container\JuiRollout.h">
-      <Filter>container</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\container\JuiScroll.h">
-      <Filter>container</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\container\JuiTabBook.h">
-      <Filter>container</Filter>
     </ClInclude>
     <ClInclude Include="..\src\base\JuiReader.h">
       <Filter>base</Filter>
@@ -128,23 +113,11 @@
     <ClInclude Include="..\src\base\win32\JuiFrame.h">
       <Filter>base\win32</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\container\layout\JuiLinearLayout.h">
-      <Filter>container\layout</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\container\layout\JuiRelativeLayout.h">
-      <Filter>container\layout</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\base\win32\JuiDialog.h">
       <Filter>base\win32</Filter>
     </ClInclude>
     <ClInclude Include="..\src\base\JuiEventManager.h">
       <Filter>base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\controls\JuiListView.h">
-      <Filter>controls</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\container\layout\JuiFrameLayout.h">
-      <Filter>container\layout</Filter>
     </ClInclude>
     <ClInclude Include="..\src\base\drawable\JBitmapDrawable.h">
       <Filter>base\drawable</Filter>
@@ -157,6 +130,33 @@
     </ClInclude>
     <ClInclude Include="..\src\base\drawable\JStateListDrawable.h">
       <Filter>base\drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base\JuiContainer.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\controls\JuiListView.h">
+      <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\controls\JuiRollout.h">
+      <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\controls\JuiScroll.h">
+      <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\controls\JuiTabBook.h">
+      <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\layout\JuiRelativeLayout.h">
+      <Filter>layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\layout\JuiFrameLayout.h">
+      <Filter>layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\layout\JuiLayoutParameter.h">
+      <Filter>layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\layout\JuiLinearLayout.h">
+      <Filter>layout</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

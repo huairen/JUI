@@ -14,11 +14,10 @@ public:
 	JuiContainer();
 	virtual ~JuiContainer();
 
-	virtual void SetBounds(const JPoint2I& point, const JPoint2I& size);
 	virtual void OnRender(JPoint2I offset, const JRectI& rcPaint);
+
 	virtual void OnChildAdded(JuiControl *child){};
 	virtual void OnChildRemoved(JuiControl *child){};
-	virtual void UpdateLayout(const JRectI& newRect){};
 	virtual JuiControl* Clone();
 
 	JuiControl *FindHitControl(const JPoint2I& pt);
@@ -33,5 +32,6 @@ public:
 protected:
 	JList m_lsChilds;
 };
+
 
 #endif 

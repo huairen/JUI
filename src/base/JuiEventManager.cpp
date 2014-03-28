@@ -1,5 +1,5 @@
 #include "JuiEventManager.h"
-#include "container/JuiContainer.h"
+#include "JuiContainer.h"
 
 JuiEventManager::JuiEventManager()
 {

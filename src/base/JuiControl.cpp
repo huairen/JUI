@@ -1,6 +1,7 @@
 #include "JuiControl.h"
-#include "container/JuiContainer.h"
+#include "JuiContainer.h"
 #include "drawable/JDrawable.h"
+#include "layout/JuiLayoutParameter.h"
 
 JIMPLEMENT_CLASS_COMMON(JuiControl, JObject, NULL)
 	JCLASS_PROPERTY(JuiControl, position, JPoint2I, SetPosition, GetPosition)
@@ -19,6 +20,7 @@ JuiControl::JuiControl()
 	, m_ptMinSize(8,2)
 	, m_ptMaxSize(-1,-1)
 	, m_pBackground(0)
+	, m_pLayoutParam(0)
 {
 }
 
@@ -98,15 +100,33 @@ void JuiControl::SetBackground(const std::string& drawable)
 	m_pBackground = JDrawable::Create(drawable.c_str());
 }
 
-JDrawable *JuiControl::GetDrawable()
+void JuiControl::SetPosition(const JPoint2I& point)
 {
-	return m_pBackground;
+	m_rcBounds.position = point;
+	if(m_pLayoutParam != NULL)
+		m_pLayoutParam->UpdatePos(m_pParent, m_rcBounds);
 }
 
-void JuiControl::SetBounds(const JPoint2I& position, const JPoint2I& extent)
+void JuiControl::SetPosition( int x, int y )
 {
-	m_rcBounds.extent = extent;
-	m_rcBounds.position = position;
+	m_rcBounds.position.x = x;
+	m_rcBounds.position.y = y;
+	if(m_pLayoutParam != NULL)
+		m_pLayoutParam->UpdatePos(m_pParent, m_rcBounds);
+}
+
+void JuiControl::SetPosX(int x)
+{
+	m_rcBounds.position.x = x;
+	if(m_pLayoutParam != NULL)
+		m_pLayoutParam->UpdatePos(m_pParent, m_rcBounds);
+}
+
+void JuiControl::SetPosY(int y)
+{
+	m_rcBounds.position.y = y;
+	if(m_pLayoutParam != NULL)
+		m_pLayoutParam->UpdatePos(m_pParent, m_rcBounds);
 }
 
 bool JuiControl::IsPointIn( const JPoint2I& pt )

@@ -13,14 +13,6 @@ JuiContainer::~JuiContainer()
 
 }
 
-void JuiContainer::SetBounds( const JPoint2I& point, const JPoint2I& size )
-{
-	if(size != m_rcBounds.extent)
-		UpdateLayout(JRectI(point, size));
-
-	JuiControl::SetBounds(point,size);
-}
-
 void JuiContainer::OnRender(JPoint2I offset,  const JRectI& rcPaint )
 {
 	Parent::OnRender(offset, rcPaint);
@@ -74,8 +66,6 @@ void JuiContainer::AddControl( JuiControl *obj )
 	obj->SetParent(this);
 
 	OnChildAdded(obj);
-
-	UpdateLayout(m_rcBounds);
 }
 
 void JuiContainer::RemoveControl( JuiControl* obj )
@@ -84,8 +74,6 @@ void JuiContainer::RemoveControl( JuiControl* obj )
 
 	m_lsChilds.Remove(obj);
 	obj->SetParent(NULL);
-
-	UpdateLayout(m_rcBounds);
 }
 
 JuiControl * JuiContainer::FindHitControl( const JPoint2I& pt )

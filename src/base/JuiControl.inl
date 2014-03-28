@@ -6,6 +6,11 @@ inline void JuiControl::SetName(const char* name)
 	m_Name = name;
 }
 
+inline const char* JuiControl::GetName()
+{
+	return m_Name.c_str();
+}
+
 inline void JuiControl::SetParent( JuiContainer* control )
 {
 	m_pParent = control;
@@ -16,50 +21,76 @@ inline JuiContainer*  JuiControl::GetParent()
 	return m_pParent;
 }
 
-inline const char* JuiControl::GetName()
+inline JDrawable *JuiControl::GetDrawable()
 {
-	return m_Name.c_str();
+	return m_pBackground;
 }
+
+inline void JuiControl::SetLayoutParameter(JuiLayoutParameter *pParam)
+{
+	m_pLayoutParam = pParam;
+}
+
+inline JuiLayoutParameter * JuiControl::GetLayoutParameter()
+{
+	return m_pLayoutParam;
+}
+
 
 //---------------------------------------------------------------------------
+inline void JuiControl::SetBounds(const JPoint2I& position, const JPoint2I& extent)
+{
+	if(m_rcBounds.extent != extent)
+	{
+		OnSizeChanged(m_rcBounds.extent);
+		m_rcBounds.extent = extent;
+	}
+	m_rcBounds.position = position;
+}
+
 inline void JuiControl::SetBounds( const JRectI& bounds )
 {
-	SetBounds(bounds.position, bounds.extent);
-}
+	if(m_rcBounds.extent != bounds.extent)
+		OnSizeChanged(m_rcBounds.extent);
 
-inline void JuiControl::SetBounds( int x, int y, int width, int height )
-{
-	SetBounds(JPoint2I(x,y), JPoint2I(width, height));
-}
-
-inline void JuiControl::SetPosition(const JPoint2I& point)
-{
-	SetBounds(point, m_rcBounds.extent);
-}
-
-inline void JuiControl::SetPosition( int x, int y )
-{
-	SetBounds(JPoint2I(x,y), m_rcBounds.extent);
+	m_rcBounds = bounds;
 }
 
 inline void JuiControl::SetExtent(const JPoint2I& size)
 {
-	SetBounds(m_rcBounds.position, size);
+	if(m_rcBounds.extent != size)
+	{
+		OnSizeChanged(size);
+		m_rcBounds.extent = size;
+	}
 }
 
 inline void JuiControl::SetExtent( int width, int height )
 {
-	SetBounds(m_rcBounds.position, JPoint2I(width, height));
+	if(m_rcBounds.extent.x != width == m_rcBounds.extent.y != height)
+	{
+		OnSizeChanged(JPoint2I(width,height));
+		m_rcBounds.extent.x = width;
+		m_rcBounds.extent.y = height;
+	}
 }
 
 inline void JuiControl::SetWidth(int width)
 {
-	SetExtent(width, m_rcBounds.extent.y);
+	if(m_rcBounds.extent.x != width)
+	{
+		OnSizeChanged(JPoint2I(width,m_rcBounds.extent.y));
+		m_rcBounds.extent.x = width;
+	}
 }
 
 inline void JuiControl::SetHeight(int height)
 {
-	SetExtent(m_rcBounds.extent.x, height);
+	if(m_rcBounds.extent.y != height)
+	{
+		OnSizeChanged(JPoint2I(m_rcBounds.extent.x,height));
+		m_rcBounds.extent.y = height;
+	}
 }
 
 inline void JuiControl::SetMinSize( int width, int height )

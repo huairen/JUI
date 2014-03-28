@@ -9,8 +9,3 @@ JuiFrameLayoutParameter* JuiRelativeLayout::CreateParameter()
 {
 	return new JuiRelativeLayoutParameter;
 }
-
-void JuiRelativeLayout::UpdateLayout( const JRectI& newRect )
-{
-	Parent::UpdateLayout(newRect);
-}

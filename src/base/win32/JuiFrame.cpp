@@ -36,10 +36,11 @@ JuiEventManager * JuiFrame::GetInputGenerator()
 	return &m_InputMgr;
 }
 
-void JuiFrame::SetBounds( const JPoint2I& position, const JPoint2I& extent )
+
+void JuiFrame::OnSizeChanged(const JPoint2I& newSize)
 {
-	Parent::SetBounds(position, extent);
-	JuiWindow::SetSize(extent.x,extent.y);
+	Parent::OnSizeChanged(newSize);
+	JuiWindow::SetSize(newSize.x,newSize.y);
 }
 
 bool JuiFrame::HandleHitTest( POINTS pt, LRESULT* result )

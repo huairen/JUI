@@ -1,6 +1,6 @@
 #include "JuiLinearLayout.h"
 
-JIMPLEMENT_DYNAMIC_CLASS(JuiLinearLayout, JuiContainer)
+JIMPLEMENT_DYNAMIC_CLASS(JuiLinearLayout, JuiFrameLayout)
 
 void JuiLinearLayout::UpdateLayout( const JRectI& newRect )
 {
@@ -19,7 +19,7 @@ void JuiLinearLayout::UpdateLayout( const JRectI& newRect )
 		if(index == nCount)
 			nWidth = newRect.extent.x - x;
 
-		pCom->SetBounds(x, 0, nWidth, nHeight);
+//		pCom->SetBounds(x, 0, nWidth, nHeight);
 		x += nWidth;
 		index++;
 

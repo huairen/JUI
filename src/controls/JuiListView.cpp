@@ -1,5 +1,5 @@
 #include "JuiListView.h"
-#include "container/JuiContainer.h"
+#include "JuiContainer.h"
 
 JIMPLEMENT_FORCE_LINK_OBJ(JuiListView)
 JIMPLEMENT_DYNAMIC_CLASS(JuiListView, JuiControl)

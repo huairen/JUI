@@ -1,7 +1,7 @@
 #ifndef JUI_LINEARLAYOUT_H_
 #define JUI_LINEARLAYOUT_H_
 
-#include "container/JuiContainer.h"
+#include "JuiFrameLayout.h"
 
 class JuiLinearLayoutParameter
 {
@@ -11,10 +11,10 @@ protected:
 	int m_Weight;
 };
 
-class JuiLinearLayout : public JuiContainer
+class JuiLinearLayout : public JuiFrameLayout
 {
 	JDECLARE_DYNAMIC_CLASS(JuiLinearLayout)
-	typedef JuiContainer Parent;
+	typedef JuiFrameLayout Parent;
 public:
 	virtual void UpdateLayout(const JRectI& newRect);
 };

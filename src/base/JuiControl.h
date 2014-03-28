@@ -6,8 +6,9 @@
 #include "Object/JObject.h"
 #include "math/JRect.h"
 
-class JuiContainer;
 class JDrawable;
+class JuiContainer;
+class JuiLayoutParameter;
 
 class JuiControl : public JObject
 {
@@ -34,14 +35,13 @@ public:
 	JuiControl* GetRoot();
 	virtual JuiEventManager *GetInputGenerator() { return NULL; }
 
+	virtual void AddUpdateRegion(const JPoint2I& pos, const JPoint2I& size) {}
 	void SetUpdateRegion(const JPoint2I& pos, const JPoint2I& size);
 	void SetUpdate();
-	virtual void AddUpdateRegion(const JPoint2I& pos, const JPoint2I& size) {}
 
 	void MouseLock();
 	void MouseUnlock();
 	bool IsMouseLocked();
-
 
 	void SetName(const char* name);
 	const char* GetName();
@@ -52,16 +52,21 @@ public:
 	void SetBackground(const std::string& drawable);
 	JDrawable *GetDrawable();
 
-public:
+	void SetLayoutParameter(JuiLayoutParameter *pParam);
+	JuiLayoutParameter *GetLayoutParameter();
+
+
 	// @ point and size
 	// @ {
+public:
 	//set point and size
-	virtual void SetBounds(const JPoint2I& position, const JPoint2I& extent);
+	void SetBounds(const JPoint2I& position, const JPoint2I& extent);
 	void SetBounds(const JRectI& bounds);
-	void SetBounds(int x, int y, int width, int height);
 
 	void SetPosition(const JPoint2I& point);
 	void SetPosition(int x, int y);
+	void SetPosX(int x);
+	void SetPosY(int y);
 
 	void SetExtent(const JPoint2I& size);
 	void SetExtent(int width, int height);
@@ -90,9 +95,10 @@ public:
 	// @ }
 
 
-public:
+
 	// @ state
 	// @ {
+public:
 	bool IsVisible() const;
 	bool IsEnable() const;
 	bool IsFocused() const;
@@ -111,9 +117,9 @@ protected:
 	// @ }
 	
 
-public:
 	// @ event
 	// @ {
+public:
 	void NotifySiblings(int message, int param);
 	virtual void OnControlEvent(JuiControl* sender, int message, int param) {}
 
@@ -125,8 +131,10 @@ public:
 
 	virtual void OnKeyDown() {}
 
+	virtual void OnSizeChanged(const JPoint2I& newSize) {}
 	virtual void OnRender(JPoint2I offset, const JRectI& rcPaint);
 	// @ }
+
 
 protected:
 	std::string m_Name;
@@ -135,8 +143,9 @@ protected:
 	JPoint2I m_ptMinSize;
 	JPoint2I m_ptMaxSize;
 
+	JDrawable *m_pBackground;
 	JuiContainer *m_pParent;
-	JDrawable* m_pBackground;
+	JuiLayoutParameter *m_pLayoutParam;
 };
 
 #include "JuiControl.inl"
