@@ -40,28 +40,22 @@ inline JuiLayoutParameter * JuiControl::GetLayoutParameter()
 //---------------------------------------------------------------------------
 inline void JuiControl::SetBounds(const JPoint2I& position, const JPoint2I& extent)
 {
-	if(m_rcBounds.extent != extent)
-	{
-		OnSizeChanged(m_rcBounds.extent);
-		m_rcBounds.extent = extent;
-	}
-	m_rcBounds.position = position;
+	SetPosition(position);
+	SetExtent(extent);
 }
 
 inline void JuiControl::SetBounds( const JRectI& bounds )
 {
-	if(m_rcBounds.extent != bounds.extent)
-		OnSizeChanged(m_rcBounds.extent);
-
-	m_rcBounds = bounds;
+	SetPosition(bounds.position);
+	SetExtent(bounds.extent);
 }
 
 inline void JuiControl::SetExtent(const JPoint2I& size)
 {
 	if(m_rcBounds.extent != size)
 	{
-		OnSizeChanged(size);
 		m_rcBounds.extent = size;
+		OnSizeChanged();
 	}
 }
 
@@ -69,9 +63,9 @@ inline void JuiControl::SetExtent( int width, int height )
 {
 	if(m_rcBounds.extent.x != width == m_rcBounds.extent.y != height)
 	{
-		OnSizeChanged(JPoint2I(width,height));
 		m_rcBounds.extent.x = width;
 		m_rcBounds.extent.y = height;
+		OnSizeChanged();
 	}
 }
 
@@ -79,8 +73,8 @@ inline void JuiControl::SetWidth(int width)
 {
 	if(m_rcBounds.extent.x != width)
 	{
-		OnSizeChanged(JPoint2I(width,m_rcBounds.extent.y));
 		m_rcBounds.extent.x = width;
+		OnSizeChanged();
 	}
 }
 
@@ -88,8 +82,8 @@ inline void JuiControl::SetHeight(int height)
 {
 	if(m_rcBounds.extent.y != height)
 	{
-		OnSizeChanged(JPoint2I(m_rcBounds.extent.x,height));
 		m_rcBounds.extent.y = height;
+		OnSizeChanged();
 	}
 }
 

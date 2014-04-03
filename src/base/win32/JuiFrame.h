@@ -16,7 +16,7 @@ public:
 
 	virtual void AddUpdateRegion( const JPoint2I& pos, const JPoint2I& extent );
 	virtual JuiEventManager *GetInputGenerator();
-	virtual void OnSizeChanged(const JPoint2I& newSize);
+	virtual void OnSizeChanged();
 
 protected:
 	virtual bool HandleHitTest(POINTS pt, LRESULT* result);

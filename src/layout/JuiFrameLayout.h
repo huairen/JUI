@@ -39,7 +39,7 @@ public:
 
 	void UpdateControl(JuiControl *pCtrl, const JPoint2I &parentSize);
 
-	virtual void UpdatePos(JuiContainer* pParent, JRectI& bound);
+	virtual void UpdatePos(const JPoint2I &parentSize, JRectI& bound);
 
 private:
 	LayoutSizeType m_LayoutWidth;
@@ -54,7 +54,7 @@ class JuiFrameLayout : public JuiContainer
 	JDECLARE_DYNAMIC_CLASS(JuiRelativeLayout)
 public:
 	virtual JuiFrameLayoutParameter* CreateParameter();
-	virtual void OnSizeChanged(const JPoint2I& newSize);
+	virtual void OnSizeChanged();
 	virtual void OnChildAdded(JuiControl *child);
 	virtual void OnChildRemoved(JuiControl *child);
 };

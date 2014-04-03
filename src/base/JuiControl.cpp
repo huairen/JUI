@@ -103,30 +103,30 @@ void JuiControl::SetBackground(const std::string& drawable)
 void JuiControl::SetPosition(const JPoint2I& point)
 {
 	m_rcBounds.position = point;
-	if(m_pLayoutParam != NULL)
-		m_pLayoutParam->UpdatePos(m_pParent, m_rcBounds);
+	if(m_pLayoutParam != NULL && m_pParent != NULL)
+		m_pLayoutParam->UpdatePos(m_pParent->GetExtent(), m_rcBounds);
 }
 
 void JuiControl::SetPosition( int x, int y )
 {
 	m_rcBounds.position.x = x;
 	m_rcBounds.position.y = y;
-	if(m_pLayoutParam != NULL)
-		m_pLayoutParam->UpdatePos(m_pParent, m_rcBounds);
+	if(m_pLayoutParam != NULL && m_pParent != NULL)
+		m_pLayoutParam->UpdatePos(m_pParent->GetExtent(), m_rcBounds);
 }
 
 void JuiControl::SetPosX(int x)
 {
 	m_rcBounds.position.x = x;
-	if(m_pLayoutParam != NULL)
-		m_pLayoutParam->UpdatePos(m_pParent, m_rcBounds);
+	if(m_pLayoutParam != NULL && m_pParent != NULL)
+		m_pLayoutParam->UpdatePos(m_pParent->GetExtent(), m_rcBounds);
 }
 
 void JuiControl::SetPosY(int y)
 {
 	m_rcBounds.position.y = y;
-	if(m_pLayoutParam != NULL)
-		m_pLayoutParam->UpdatePos(m_pParent, m_rcBounds);
+	if(m_pLayoutParam != NULL && m_pParent != NULL)
+		m_pLayoutParam->UpdatePos(m_pParent->GetExtent(), m_rcBounds);
 }
 
 bool JuiControl::IsPointIn( const JPoint2I& pt )

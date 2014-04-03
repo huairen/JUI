@@ -80,7 +80,7 @@ bool JuiReader::LoadScript( JuiContainer *root, const char* filename )
 			{
 				JuiContainer *container = dynamic_cast<JuiContainer*>(currObject);
 				if(container != NULL)
-					container->OnSizeChanged(container->GetExtent());
+					container->OnSizeChanged();
 			}
 
 			if(stackIndex >= 0)

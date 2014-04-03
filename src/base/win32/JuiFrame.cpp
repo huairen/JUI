@@ -37,10 +37,10 @@ JuiEventManager * JuiFrame::GetInputGenerator()
 }
 
 
-void JuiFrame::OnSizeChanged(const JPoint2I& newSize)
+void JuiFrame::OnSizeChanged()
 {
-	Parent::OnSizeChanged(newSize);
-	JuiWindow::SetSize(newSize.x,newSize.y);
+	Parent::OnSizeChanged();
+	JuiWindow::SetSize(GetWidth(),GetHeight());
 }
 
 bool JuiFrame::HandleHitTest( POINTS pt, LRESULT* result )

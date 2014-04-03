@@ -8,7 +8,7 @@ class JuiLayoutParameter : public JObject
 {
 	JDECLARE_ABSTRACT_CLASS(JuiLayoutParameter)
 public:
-	virtual void UpdatePos(JuiContainer* pParent, JRectI& bound) = 0;
+	virtual void UpdatePos(const JPoint2I &parentSize, JRectI& bound) = 0;
 };
 
 #endif

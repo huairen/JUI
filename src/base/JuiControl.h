@@ -131,7 +131,7 @@ public:
 
 	virtual void OnKeyDown() {}
 
-	virtual void OnSizeChanged(const JPoint2I& newSize) {}
+	virtual void OnSizeChanged() {}
 	virtual void OnRender(JPoint2I offset, const JRectI& rcPaint);
 	// @ }
 

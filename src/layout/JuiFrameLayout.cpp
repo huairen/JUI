@@ -71,12 +71,8 @@ void JuiFrameLayoutParameter::UpdateControl( JuiControl *pCtrl, const JPoint2I &
 	pCtrl->SetPosition(m_ptOrigPos);
 }
 
-void JuiFrameLayoutParameter::UpdatePos(JuiContainer* pParent, JRectI& bound)
+void JuiFrameLayoutParameter::UpdatePos(const JPoint2I &parentSize, JRectI& bound)
 {
-	if(pParent == NULL)
-		return;
-
-	JPoint2I parentSize = pParent->GetExtent();
 	m_ptOrigPos = bound.position;
 
 	if(m_Gravity == GRAVITY_RIGHT)
@@ -98,7 +94,7 @@ JuiFrameLayoutParameter* JuiFrameLayout::CreateParameter()
 	return new JuiFrameLayoutParameter;
 }
 
-void JuiFrameLayout::OnSizeChanged(const JPoint2I& newSize)
+void JuiFrameLayout::OnSizeChanged()
 {
 	JuiControl* pCtrl = (JuiControl*)m_lsChilds.First();
 	while(pCtrl)
@@ -106,7 +102,7 @@ void JuiFrameLayout::OnSizeChanged(const JPoint2I& newSize)
 		JuiFrameLayoutParameter *pParam = static_cast<JuiFrameLayoutParameter*>(pCtrl->GetLayoutParameter());
 		if(pParam != NULL)
 		{
-			pParam->UpdateControl(pCtrl, newSize);
+			pParam->UpdateControl(pCtrl, GetExtent());
 		}
 
 		pCtrl = (JuiControl*)m_lsChilds.Next();
